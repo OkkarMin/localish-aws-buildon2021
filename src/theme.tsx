@@ -1,21 +1,72 @@
-import { extendTheme } from '@chakra-ui/react'
-import { createBreakpoints } from '@chakra-ui/theme-tools'
+import { extendTheme } from "@chakra-ui/react";
 
-const fonts = { mono: `'Menlo', monospace` }
-
-const breakpoints = createBreakpoints({
-  sm: '40em',
-  md: '52em',
-  lg: '64em',
-  xl: '80em',
-})
+const fonts = { mono: `'Menlo', monospace` };
 
 const theme = extendTheme({
   colors: {
-    black: '#16161D',
+    offWhite: "#FCFCFC",
+    greenPrimary: {
+      "50": "#E9FCF4",
+      "100": "#C0F6E1",
+      "200": "#98F1CE",
+      "300": "#6FEBBB",
+      "400": "#47E6A7",
+      "500": "#1EE194",
+      "600": "#18B477",
+      "700": "#128759",
+      "800": "#0C5A3B",
+      "900": "#062D1E",
+    },
+    greenSecondary: {
+      "50": "#F0F4F2",
+      "100": "#D6E0DB",
+      "200": "#BCCDC4",
+      "300": "#A2B9AD",
+      "400": "#87A695",
+      "500": "#6D927E",
+      "600": "#577565",
+      "700": "#41584C",
+      "800": "#2C3A33",
+      "900": "#161D19",
+    },
+    red: {
+      "50": "#F7EEF0",
+      "100": "#E8CFD6",
+      "200": "#D9B0BC",
+      "300": "#CA91A1",
+      "400": "#BB7287",
+      "500": "#AC536C",
+      "600": "#8A4257",
+      "700": "#673241",
+      "800": "#45212B",
+      "900": "#221116",
+    },
+    pink: {
+      "50": "#FCE9EF",
+      "100": "#F6C0D2",
+      "200": "#F198B5",
+      "300": "#EB6F98",
+      "400": "#E6477B",
+      "500": "#E01F5E",
+      "600": "#B4184B",
+      "700": "#871238",
+      "800": "#5A0C26",
+      "900": "#2D0613",
+    },
+    orange: {
+      "50": "#FCE9EF",
+      "100": "#F6C0D2",
+      "200": "#F198B5",
+      "300": "#EB6F98",
+      "400": "#E6477B",
+      "500": "#E01F5E",
+      "600": "#B4184B",
+      "700": "#871238",
+      "800": "#5A0C26",
+      "900": "#2D0613",
+    },
   },
   fonts,
-  breakpoints,
-})
+});
 
-export default theme
+export default theme;
