@@ -6,7 +6,7 @@ import { ArrowBackIcon } from "@chakra-ui/icons";
 
 const FriendAmongUs = () => {
   return (
-    <Flex direction="column" minH="100vh" align="center" justify="center">
+    <Flex direction="column" align="center" justify="center">
       <Heading>FriendAmongUs Page</Heading>
       <Link href="/">
         <ChakraLink>

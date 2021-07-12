@@ -7,8 +7,8 @@ import {
   DrawerContent,
   DrawerHeader,
   DrawerOverlay,
-  Heading,
   HStack,
+  Image,
   Link as ChakraLink,
   Text,
 } from "@chakra-ui/react";
@@ -44,12 +44,7 @@ const DrawerMenu = ({ isOpen, onClose }) => {
       <DrawerContent>
         <DrawerCloseButton />
         <DrawerHeader bg="greenPrimary.100">
-          <Heading as="h2" fontSize="2xl" color="green">
-            localish
-          </Heading>
-          <Text textColor="greenSecondary.400" fontSize="md">
-            hyper-local-communities
-          </Text>
+          <Image h="120px" src="/localish.svg" alt="localish logo" />
         </DrawerHeader>
 
         <DrawerBody bg="greenPrimary.100">

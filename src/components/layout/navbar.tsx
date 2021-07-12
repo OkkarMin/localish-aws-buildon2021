@@ -2,11 +2,10 @@ import Link from "next/link";
 
 import {
   Flex,
-  Heading,
   IconButton,
+  Image,
   Link as ChakraLink,
   Spacer,
-  Text,
   useDisclosure,
 } from "@chakra-ui/react";
 
@@ -21,14 +20,9 @@ const NavBar = () => {
     <Flex as="nav" align="center" p="4" bg="greenPrimary.100">
       <Link href="/">
         <ChakraLink>
-          <Heading as="h2" fontSize="2xl" color="green">
-            localish
-          </Heading>
+          <Image h="40px" src="/localish.svg" alt="localish logo" />
         </ChakraLink>
       </Link>
-      <Text ml="4" textColor="greenSecondary.400">
-        hyper-local-communities
-      </Text>
 
       <Spacer />
 
