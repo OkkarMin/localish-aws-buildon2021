@@ -43,11 +43,11 @@ const DrawerMenu = ({ isOpen, onClose }) => {
       <DrawerOverlay />
       <DrawerContent>
         <DrawerCloseButton />
-        <DrawerHeader bg="greenPrimary.100">
+        <DrawerHeader>
           <Image h="120px" src="/localish.svg" alt="localish logo" />
         </DrawerHeader>
 
-        <DrawerBody bg="greenPrimary.100">
+        <DrawerBody>
           <DrawerMenuItem
             itemName="Education"
             icon={<VscMortarBoard />}

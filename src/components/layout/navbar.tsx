@@ -17,7 +17,7 @@ const NavBar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Flex as="nav" align="center" p="4" bg="greenPrimary.100">
+    <Flex as="nav" align="center" p="4">
       <Link href="/">
         <ChakraLink>
           <Image h="40px" src="/localish.svg" alt="localish logo" />
