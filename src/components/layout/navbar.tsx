@@ -27,7 +27,7 @@ const NavBar = () => {
         </ChakraLink>
       </Link>
       <Text ml="4" textColor="greenSecondary.400">
-        hyper-localized communitites
+        hyper-local-communities
       </Text>
 
       <Spacer />

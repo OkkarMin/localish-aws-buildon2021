@@ -48,7 +48,7 @@ const DrawerMenu = ({ isOpen, onClose }) => {
             localish
           </Heading>
           <Text textColor="greenSecondary.400" fontSize="md">
-            hyper-localized communitites
+            hyper-local-communities
           </Text>
         </DrawerHeader>
 
