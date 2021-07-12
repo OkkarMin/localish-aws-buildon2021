@@ -128,18 +128,20 @@ const SignUp = () => {
           <Box as={"form"} mt={10}>
             <Stack spacing={4}>
               <Input
+                type="text"
                 placeholder="Full name"
                 bg="gray.300"
                 _placeholder={{ color: "gray.500" }}
               />
               <Input
-                placeholder="fullname@domain.com"
+                type="tel"
+                placeholder="81234567"
                 bg="gray.300"
                 _placeholder={{ color: "gray.500" }}
               />
-
               <Input
-                placeholder="81234567"
+                type="password"
+                placeholder="******"
                 bg="gray.300"
                 _placeholder={{ color: "gray.500" }}
               />
