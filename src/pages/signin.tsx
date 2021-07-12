@@ -24,7 +24,7 @@ const SignIn = () => {
           </Heading>
         </Heading>
 
-        <Box rounded={"lg"} bg="gray.100" boxShadow={"lg"} p={8}>
+        <Box rounded={"lg"} bg="gray.100" p={8}>
           <Stack spacing={4}>
             <FormControl id="phone">
               <FormLabel>Phone Number</FormLabel>
