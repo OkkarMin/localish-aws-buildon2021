@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 import {
-  Box,
   Flex,
   Heading,
   IconButton,
@@ -10,6 +9,7 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
+
 import { HamburgerIcon } from "@chakra-ui/icons";
 
 import DrawerMenu from "./drawer-menu";
