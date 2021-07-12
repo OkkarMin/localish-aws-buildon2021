@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import {
+  Button,
   Flex,
   IconButton,
   Image,
@@ -17,7 +18,7 @@ const NavBar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Flex as="nav" align="center" p="4">
+    <Flex as="nav" align="center" p="4" borderBottomColor="red">
       <Link href="/">
         <ChakraLink>
           <Image h="40px" src="/localish.svg" alt="localish logo" />
@@ -26,7 +27,14 @@ const NavBar = () => {
 
       <Spacer />
 
+      <Link href="/signup">
+        <Button colorScheme="greenPrimary">Join</Button>
+      </Link>
+      <Link href="/signin">
+        <Button ml="4">Sign-in</Button>
+      </Link>
       <IconButton
+        ml="4"
         aria-label="Open menu drawer"
         icon={<HamburgerIcon />}
         bg="transparent"
@@ -34,7 +42,6 @@ const NavBar = () => {
         _active={{ backgroundColor: "transparent" }}
         onClick={onOpen}
       ></IconButton>
-
       <DrawerMenu isOpen={isOpen} onClose={onClose} />
     </Flex>
   );
