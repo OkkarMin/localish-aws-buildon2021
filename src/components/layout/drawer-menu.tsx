@@ -12,6 +12,7 @@ import {
   Link as ChakraLink,
   Text,
 } from "@chakra-ui/react";
+import { EditIcon } from "@chakra-ui/icons";
 
 import { VscMortarBoard } from "react-icons/vsc";
 import { GiThreeFriends } from "react-icons/gi";
@@ -72,6 +73,16 @@ const DrawerMenu = ({ isOpen, onClose }) => {
             itemName="Local News"
             icon={<IoNewspaperOutline />}
             href="/local-news"
+          />
+          <DrawerMenuItem
+            itemName="Volunteer Sign-up"
+            icon={<EditIcon />}
+            href="/volunteer-signup"
+          />
+          <DrawerMenuItem
+            itemName="Admin volunteer applications"
+            icon={<EditIcon />}
+            href="/adminVolunteerApplications"
           />
         </DrawerBody>
       </DrawerContent>
