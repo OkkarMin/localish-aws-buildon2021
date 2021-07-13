@@ -47,7 +47,10 @@ const SignUp = () => {
         py={{ base: 10, sm: 20, lg: 32 }}
       >
         <Stack spacing={{ base: 10, md: 20 }}>
-          <Heading fontSize={{ base: "3xl", sm: "4xl", md: "5xl", lg: "6xl" }}>
+          <Heading
+            fontSize={{ base: "3xl", sm: "4xl", md: "5xl", lg: "6xl" }}
+            fontWeight="extrabold"
+          >
             Your neighbours are on localish 🤝
           </Heading>
           <Stack direction={"row"} spacing={4} align={"center"}>
@@ -117,6 +120,7 @@ const SignUp = () => {
             <Heading
               color={"gray.800"}
               fontSize={{ base: "2xl", sm: "3xl", md: "4xl" }}
+              fontWeight="extrabold"
             >
               Join localish
               <Text as={"span"} color="greenPrimary.600">

@@ -4,22 +4,18 @@ import {
   FormControl,
   FormLabel,
   Input,
-  Checkbox,
   Stack,
-  Link,
   Button,
   Heading,
-  Text,
-  useColorModeValue,
 } from "@chakra-ui/react";
 
 const SignIn = () => {
   return (
     <Flex maxH="100vh" align="center" justify="center">
       <Stack spacing={8} mx={"auto"} py={12} px={6}>
-        <Heading fontSize={"4xl"}>
+        <Heading fontSize={"4xl"} fontWeight="extrabold">
           Sign in to start{" "}
-          <Heading as="span" color="greenPrimary.600">
+          <Heading as="span" color="greenPrimary.600" fontWeight="extrabold">
             localish-ing
           </Heading>
         </Heading>
