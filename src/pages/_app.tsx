@@ -6,6 +6,14 @@ import theme from "../theme";
 
 import NavBar from "../components/layout/navbar";
 
+import Amplify from "@aws-amplify/core";
+import awsmobile from "../../aws-exports";
+
+Amplify.configure({
+  ...awsmobile,
+  ssr: true,
+});
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider resetCSS theme={theme}>

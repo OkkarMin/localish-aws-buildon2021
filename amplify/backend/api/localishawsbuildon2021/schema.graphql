@@ -1,0 +1,12 @@
+type VolunteerForm @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  email: String
+  address: String
+  phone: String
+  daysFree: AWSJSON
+  commonLanguage: AWSJSON
+  dialects: AWSJSON
+  experience: String
+}
+ 
