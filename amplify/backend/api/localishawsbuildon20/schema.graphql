@@ -9,4 +9,3 @@ type VolunteerForm @model @auth(rules: [{allow: public}]) {
   dialects: AWSJSON
   experience: String
 }
- 

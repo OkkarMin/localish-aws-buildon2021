@@ -1,6 +1,6 @@
 {
   "api": {
-    "localishawsbuildon2021": {
+    "localishawsbuildon20": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
       "output": {
