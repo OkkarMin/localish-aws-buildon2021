@@ -1,134 +1,242 @@
 [
     {
-        "title": "Topic 1",
+        "headline": "Are You Too Clever For Success?",
+        "title": "0",
         "date": "Mar 10, 2019",
-        "user_name": "Khatab wedaa",
-        "user_image": "https://images.unsplash.com/photo-1502980426475-b83966705988?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=40&q=80",
+        "user_name": "Surabhi Malani",
+        "user_image": "https://avatars.githubusercontent.com/u/47130821?v=4",
         "content": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!",
         "content_full": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!",
         
         "read_more": "",
-        "topic": "Design",
-        "image":"https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=320&q=80",
-        "image_alt": "nike-air",
+        "topic": "Business",
+        "theme":"blue",
+        "image":"https://images.unsplash.com/photo-1499209974431-9dddcece7f88?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+        "image_alt": "success",
 
         "likes": 50,
-        "dislikes":0
+        "dislikes":0,
+        "comments":3,
+
+        "comments_list": [
+            {
+                "date": "Mar 10, 2019",
+                "user_name": "Surabhi Malani",
+                "user_image": "https://avatars.githubusercontent.com/u/47130821?v=4",
+                "content": "So cool!"          
+            },
+            {
+                "date": "Mar 9, 2019",
+                "user_name": "Ying Sheng",
+                "user_image": "https://avatars.githubusercontent.com/u/70012669?v=4",
+                "content": "Amazing"          
+            },
+            {
+                "date": "Mar 10, 2019",
+                "user_name": "Okkar Min",
+                "user_image": "https://avatars.githubusercontent.com/u/24297303?v=4",
+                "content": "Wow"          
+            }
+        ]
     },
 
     {
-        "title": "Topic 2",
-        "date": "Mar 10, 2019",
-        "user_name": "Khatab wedaa",
-        "user_image": "https://images.unsplash.com/photo-1502980426475-b83966705988?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=40&q=80",
+        "headline": "Six Types Of Investors – Which Group Are You In?",
+        "title": "1",
+        "date": "Mar 9, 2019",
+        "user_name": "Ying Sheng",
+        "user_image": "https://avatars.githubusercontent.com/u/70012669?v=4",
         "content": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!",
         "content_full": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!",
         
         "read_more": "",
-        "topic": "Design",
-        "image":"https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=320&q=80",
-        "image_alt": "nike-air",
+        "topic": "Business",
+        "theme":"blue",
+        "image":"https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80",
+        "image_alt": "investor",
 
         "likes": 12,
-        "dislikes":0
+        "dislikes":0,
+        "comments":3,
+        "comments_list": [
+            {
+                "date": "Mar 10, 2019",
+                "user_name": "Surabhi Malani",
+                "user_image": "https://avatars.githubusercontent.com/u/47130821?v=4",
+                "content": "So cool!"          
+            },
+            {
+                "date": "Mar 9, 2019",
+                "user_name": "Ying Sheng",
+                "user_image": "https://avatars.githubusercontent.com/u/70012669?v=4",
+                "content": "Amazing"          
+            },
+            {
+                "date": "Mar 10, 2019",
+                "user_name": "Okkar Min",
+                "user_image": "https://avatars.githubusercontent.com/u/24297303?v=4",
+                "content": "Wow"          
+            }
+        ]
 
     },
     {
-        "title": "Topic 3",
-        "date": "Mar 10, 2019",
-        "user_name": "Khatab wedaa",
-        "user_image": "https://images.unsplash.com/photo-1502980426475-b83966705988?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=40&q=80",
+        "headline": "How I Doubled My Money With Facebook Ads",
+        "title": "2",
+        "date": "Mar 9, 2019",
+        "user_name": "Okkar Min",
+        "user_image": "https://avatars.githubusercontent.com/u/24297303?v=4",
         "content": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!",
         "content_full": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!",
         "read_more": "",
-        "topic": "Design",
-        "image":"https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=320&q=80",
+        "topic": "Business",
+        "theme":"blue",
+        "image":"https://images.unsplash.com/photo-1500496733680-167c3db69389?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=939&q=80",
         "image_alt": "nike-air",
 
         "likes": 56,
-        "dislikes":0
+        "dislikes":0,
+        "comments":3,
+        "comments_list": [
+            {
+                "date": "Mar 10, 2019",
+                "user_name": "Surabhi Malani",
+                "user_image": "https://avatars.githubusercontent.com/u/47130821?v=4",
+                "content": "So cool!"          
+            },
+            {
+                "date": "Mar 9, 2019",
+                "user_name": "Ying Sheng",
+                "user_image": "https://avatars.githubusercontent.com/u/70012669?v=4",
+                "content": "Amazing"          
+            },
+            {
+                "date": "Mar 10, 2019",
+                "user_name": "Okkar Min",
+                "user_image": "https://avatars.githubusercontent.com/u/24297303?v=4",
+                "content": "Wow"          
+            }
+        ]
 
     },
     {
-        "title": "Topic 4",
-        "date": "Mar 10, 2019",
-        "user_name": "Khatab wedaa",
-        "user_image": "https://images.unsplash.com/photo-1502980426475-b83966705988?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=40&q=80",
+        "headline": "Happiness Hack: 10 Ways To Be Happier, Backed By Science ",
+        "title": "3",
+        "date": "Mar 7, 2019",
+        "user_name": "Ying Sheng",
+        "user_image": "https://avatars.githubusercontent.com/u/70012669?v=4",
         "content": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!",
         "content_full": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!",
         "read_more": "",
-        "topic": "Design",
-        "image":"https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=320&q=80",
-        "image_alt": "nike-air",
+        "topic": "Health",
+        "theme":"pink",
+        "image":"https://images.unsplash.com/photo-1580640611343-3f53b12a5b1d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80",
+        "image_alt": "happy",
 
         "likes": 30,
-        "dislikes":0
+        "dislikes":0,
+        "comments":3,
+        "comments_list": [
+            {
+                "date": "Mar 10, 2019",
+                "user_name": "Surabhi Malani",
+                "user_image": "https://avatars.githubusercontent.com/u/47130821?v=4",
+                "content": "So cool!"          
+            },
+            {
+                "date": "Mar 9, 2019",
+                "user_name": "Ying Sheng",
+                "user_image": "https://avatars.githubusercontent.com/u/70012669?v=4",
+                "content": "Amazing"          
+            },
+            {
+                "date": "Mar 10, 2019",
+                "user_name": "Okkar Min",
+                "user_image": "https://avatars.githubusercontent.com/u/24297303?v=4",
+                "content": "Wow"          
+            }
+        ]
 
     },
     {
-        "title": "Topic 5",
-        "date": "Mar 10, 2019",
-        "user_name": "Khatab wedaa",
-        "user_image": "https://images.unsplash.com/photo-1502980426475-b83966705988?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=40&q=80",
+        "headline": "How to take care of your mental health",
+        "title": "4",
+        "date": "Mar 6, 2019",
+        "user_name": "Okkar Min",
+        "user_image": "https://avatars.githubusercontent.com/u/24297303?v=4",
         "content": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!",
         "content_full": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!",
         "read_more": "",
-        "topic": "Design",
-        "image":"https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=320&q=80",
-        "image_alt": "nike-air",
+        "topic": "Health",
+        "theme":"pink",
+        "image":"https://images.unsplash.com/photo-1564121211835-e88c852648ab?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+        "image_alt": "mental health",
 
         "likes": 40,
-        "dislikes":0
+        "dislikes":0,
+        "comments":3,
+        "comments_list": [
+            {
+                "date": "Mar 10, 2019",
+                "user_name": "Surabhi Malani",
+                "user_image": "https://avatars.githubusercontent.com/u/47130821?v=4",
+                "content": "So cool!"          
+            },
+            {
+                "date": "Mar 9, 2019",
+                "user_name": "Ying Sheng",
+                "user_image": "https://avatars.githubusercontent.com/u/70012669?v=4",
+                "content": "Amazing"          
+            },
+            {
+                "date": "Mar 10, 2019",
+                "user_name": "Okkar Min",
+                "user_image": "https://avatars.githubusercontent.com/u/24297303?v=4",
+                "content": "Wow"          
+            }
+        ]
 
     },
     {
-        "title": "Topic 6",
-        "date": "Mar 10, 2019",
-        "user_name": "Khatab wedaa",
-        "user_image": "https://images.unsplash.com/photo-1502980426475-b83966705988?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=40&q=80",
+        "headline": "Craving tea in this rainy weather?",
+        "title": "5",
+        "date": "Mar 5, 2019",
+        "user_name": "Surabhi Malani",
+        "user_image": "https://avatars.githubusercontent.com/u/47130821?v=4",
         "content": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!",
         "content_full": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!",
         "read_more": "",
-        "topic": "Design",
-        "image":"https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=320&q=80",
-        "image_alt": "nike-air",
+        "topic": "Life Style",
+        "theme":"yellow",
+        "image":"https://images.unsplash.com/photo-1523906630133-f6934a1ab2b9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80",
+        "image_alt": "tea",
 
-        "likes": 10,
-        "dislikes":0
-
-    },
-    {
-        "title": "Topic 7",
-        "date": "Mar 10, 2019",
-        "user_name": "Khatab wedaa",
-        "user_image": "https://images.unsplash.com/photo-1502980426475-b83966705988?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=40&q=80",
-        "content": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!",
-        "content_full": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!",
-        "read_more": "",
-        "topic": "Design",
-        "image":"https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=320&q=80",
-        "image_alt": "nike-air",
-
-        "likes": 20,
-        "dislikes":0
-
-    },
-    {
-        "title": "Topic 8",
-        "date": "Mar 10, 2019",
-        "user_name": "Khatab wedaa",
-        "user_image": "https://images.unsplash.com/photo-1502980426475-b83966705988?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=40&q=80",
-        "content": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!",
-        "content_full": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!",
-        "read_more": "",
-        "topic": "Design",
-        "image":"https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=320&q=80",
-        "image_alt": "nike-air",
-
-        "likes": 10,
-        "dislikes":0
+        "likes": 40,
+        "dislikes":0,
+        "comments":3,
+        "comments_list": [
+            {
+                "date": "Mar 10, 2019",
+                "user_name": "Surabhi Malani",
+                "user_image": "https://avatars.githubusercontent.com/u/47130821?v=4",
+                "content": "So cool!"          
+            },
+            {
+                "date": "Mar 9, 2019",
+                "user_name": "Ying Sheng",
+                "user_image": "https://avatars.githubusercontent.com/u/70012669?v=4",
+                "content": "Amazing"          
+            },
+            {
+                "date": "Mar 10, 2019",
+                "user_name": "Okkar Min",
+                "user_image": "https://avatars.githubusercontent.com/u/24297303?v=4",
+                "content": "Wow"          
+            }
+        ]
 
     }
+    
     
 ]
 

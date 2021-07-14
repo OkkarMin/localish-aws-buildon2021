@@ -14,6 +14,7 @@ const Education = () => {
         </ChakraLink>
       </Link>
     </Flex>
+
   );
 };
 
