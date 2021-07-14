@@ -8,7 +8,7 @@ import { DataStore } from "@aws-amplify/datastore";
 import { VolunteerForm } from "../../../models";
 
 export default function Form() {
-  const [form, setForm] = useState([]);
+  const [form, setForm] = useState();
   const router = useRouter();
 
   useEffect(async () => {
@@ -18,11 +18,7 @@ export default function Form() {
     setForm(result);
   }, []);
 
-  const languages = JSON.parse(form.commonLanguage);
-
-  const dialects = JSON.parse(form.dialects);
-
-  return (
+  return form ? (
     <Box align="center">
       <VStack
         width="70vw"
@@ -66,7 +62,7 @@ export default function Form() {
           <Text fontSize="xl" fontWeight="bold">
             Common language(s):
           </Text>
-          {languages.map((language) => {
+          {JSON.parse(form.commonLanguage).map((language) => {
             return <Text>{language}</Text>;
           })}
         </HStack>
@@ -74,11 +70,14 @@ export default function Form() {
           <Text fontSize="xl" fontWeight="bold">
             Dialect(s):
           </Text>
-          {dialects.map((dialect) => {
-            return <Text>{dialect}</Text>;
-          })}
+          {form.dialects &&
+            JSON.parse(form.dialects).map((dialect) => {
+              return <Text>{dialect}</Text>;
+            })}
         </HStack>
       </VStack>
     </Box>
+  ) : (
+    <div></div>
   );
 }
