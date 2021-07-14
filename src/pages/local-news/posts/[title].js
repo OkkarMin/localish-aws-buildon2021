@@ -236,29 +236,20 @@ const Details = (article) => {
         </Flex>
 
        <SimpleGrid minChildWidth="500px"  spacing="2" mt="4" px={["4", "8"]}>
-        {localnews.map((newsArticle)=> {
-                if (newsArticle.title == article.article.title){
+        
+
+            {
+                article.article.comments_list.map((comment, i) => {
                     return(
-                        newsArticle.comments_list.map((comments)=> {
-                            {console.log(comments.date)}
-                            {console.log(comments.user_image)}
-                            {console.log(comments.user_name)}
-                            {console.log(comments.content)}
-                            return(
-                            <CommentCard 
+                        <CommentCard key = {i}
                             w ="full"
-                                date = {comments.date} 
-                                user_image = {comments.user_image} 
-                                user_name = {comments.user_name} 
-                                content = {comments.content} 
+                                date = {comment.date} 
+                                user_image = {comment.user_image} 
+                                user_name = {comment.user_name} 
+                                content = {comment.content} 
                                 />
-                            )
-                        }
-                        )
                     )
-                    }
-                } 
-            )
+                })
             }
       </SimpleGrid>
     </div>
