@@ -1,13 +1,27 @@
-import { withSSRContext } from "aws-amplify";
-import { VolunteerForm } from "../../../models";
-import { useRouter } from "next/dist/client/router";
-import { VStack, HStack, Box, Text, Heading } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 
-export default function from({ form }) {
+import { useRouter } from "next/router";
+
+import { VStack, HStack, Box, Text } from "@chakra-ui/react";
+
+import { DataStore } from "@aws-amplify/datastore";
+import { VolunteerForm } from "../../../models";
+
+export default function Form() {
+  const [form, setForm] = useState([]);
   const router = useRouter();
-  if (router.isFallback) {
-    return <div>Loading...</div>;
-  }
+
+  useEffect(async () => {
+    const { id } = router.query;
+    const result = await DataStore.query(VolunteerForm, id);
+
+    setForm(result);
+  }, []);
+
+  const languages = JSON.parse(form.commonLanguage);
+
+  const dialects = JSON.parse(form.dialects);
+
   return (
     <Box align="center">
       <VStack
@@ -52,52 +66,19 @@ export default function from({ form }) {
           <Text fontSize="xl" fontWeight="bold">
             Common language(s):
           </Text>
-          {/* {languages.flatmap((language) => {
-            <Text>{language}</Text>;
-          })} */}
-          <Text>{form.commonLanguage}</Text>
-          {/* for(i=0, i<form.commonLanguage.length, i++){
-                <Text>{form.commonLanguage[i]}</Text>
-              }
-           */}
+          {languages.map((language) => {
+            return <Text>{language}</Text>;
+          })}
         </HStack>
         <HStack>
           <Text fontSize="xl" fontWeight="bold">
             Dialect(s):
           </Text>
-
-          <Text>{form.dialects}</Text>
+          {dialects.map((dialect) => {
+            return <Text>{dialect}</Text>;
+          })}
         </HStack>
       </VStack>
     </Box>
   );
 }
-
-export const getStaticPaths = async (req) => {
-  const { DataStore } = withSSRContext(req);
-  const volunteerForms = await DataStore.query(VolunteerForm);
-
-  const paths = volunteerForms.map((form) => {
-    return {
-      params: { id: form.id },
-    };
-  });
-  return {
-    paths,
-    fallback: true,
-  };
-};
-
-export const getStaticProps = async (req) => {
-  const { DataStore } = withSSRContext(req);
-  const { params } = req;
-  const { id } = params;
-  const form = await DataStore.query(VolunteerForm, id);
-
-  return {
-    props: {
-      form: JSON.parse(JSON.stringify(form)),
-    },
-    revalidate: 100,
-  };
-};
