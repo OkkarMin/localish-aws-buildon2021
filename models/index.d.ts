@@ -4,10 +4,6 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 
 
-type VolunteerFormMetaData = {
-  readOnlyFields: 'createdAt' | 'updatedAt';
-}
-
 export declare class VolunteerForm {
   readonly id: string;
   readonly name?: string;
@@ -20,6 +16,6 @@ export declare class VolunteerForm {
   readonly experience?: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
-  constructor(init: ModelInit<VolunteerForm, VolunteerFormMetaData>);
-  static copyOf(source: VolunteerForm, mutator: (draft: MutableModel<VolunteerForm, VolunteerFormMetaData>) => MutableModel<VolunteerForm, VolunteerFormMetaData> | void): VolunteerForm;
+  constructor(init: ModelInit<VolunteerForm>);
+  static copyOf(source: VolunteerForm, mutator: (draft: MutableModel<VolunteerForm>) => MutableModel<VolunteerForm> | void): VolunteerForm;
 }
