@@ -4,8 +4,6 @@ import { useRouter } from "next/dist/client/router";
 import { VStack, HStack, Box, Text, Heading } from "@chakra-ui/react";
 
 export default function from({ form }) {
-  console.log(form);
-
   const router = useRouter();
   if (router.isFallback) {
     return <div>Loading...</div>;

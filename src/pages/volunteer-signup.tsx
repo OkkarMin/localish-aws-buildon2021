@@ -110,9 +110,6 @@ const VolunteerSignup = () => {
           }}
           onSubmit={(values, actions) => {
             //setTimeout(() => {
-            console.log(values);
-
-            console.log(values.experience);
 
             JSON.stringify(values);
 

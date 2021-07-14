@@ -24,7 +24,6 @@ const index = () => {
     });
     fetchApplications();
   }, []);
-  console.log(applications);
 
   return (
     <Flex width="full" flexWrap="wrap" direction="row">
