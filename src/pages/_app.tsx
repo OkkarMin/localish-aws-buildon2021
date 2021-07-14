@@ -7,10 +7,13 @@ import theme from "../theme";
 import NavBar from "../components/layout/navbar";
 
 import Amplify from "@aws-amplify/core";
-import awsmobile from "../../aws-exports";
 
 Amplify.configure({
-  ...awsmobile,
+  aws_project_region: "ap-southeast-1",
+  aws_appsync_graphqlEndpoint: process.env.NEXT_PUBLIC_GQL_URL,
+  aws_appsync_region: "ap-southeast-1",
+  aws_appsync_authenticationType: "API_KEY",
+  aws_appsync_apiKey: process.env.NEXT_PUBLIC_APPSYNC_API,
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
