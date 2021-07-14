@@ -71,7 +71,8 @@ const ShareIncrement = () => {
 return <Button w="full" > <ExternalLinkIcon  w={6} h={6} /> Shares </Button>
 }
 
-  
+
+
 const CommentCard = ({date, content, user_image, user_name}) => {
     return(
         
@@ -80,7 +81,7 @@ const CommentCard = ({date, content, user_image, user_name}) => {
       alignItems="center"
       justifyContent="center"
     >
-        date
+        
         <HStack justify="space-between" >
             <Box
                 w="full"
@@ -110,6 +111,7 @@ const CommentCard = ({date, content, user_image, user_name}) => {
                     cursor="pointer"
                     >
                     {user_name}
+                    
                     </Link>
                     <Spacer />
 
@@ -196,7 +198,7 @@ const Details = (article) => {
         {article.article.headline}
       </chakra.h2>
 
-      <Flex direction="row">
+      {/* <Flex direction="row">
         <Box w="xxs" mb="1" p="1" shadow="base" rounded="md" bg="green.400">
           {article.article.likes}
         </Box>
@@ -205,7 +207,7 @@ const Details = (article) => {
           {article.article.dislikes}
         </Box>
         Dislikes
-      </Flex>
+      </Flex> */}
       <Flex
       alignItems="center"
       justifyContent="center"
@@ -233,33 +235,32 @@ const Details = (article) => {
 
         </Flex>
 
-    <CommentCard w ="full" date= "01 March 2020" content="very nice" user_image = "https://avatars.githubusercontent.com/u/47130821?v=4" user_name = "Surabhi"/>
-       <div>    
-            {localnews.map((newsArticle)=> {
+       <SimpleGrid minChildWidth="500px"  spacing="2" mt="4" px={["4", "8"]}>
+        {localnews.map((newsArticle)=> {
                 if (newsArticle.title == article.article.title){
-                    newsArticle.comments_list.map((comments)=> {
-                        {console.log(comments.date)}
-                        {console.log(comments.user_image)}
-                        {console.log(comments.user_name)}
-                        {console.log(comments.content)}
-                        
-                        <CommentCard 
-                        w ="full"
-                            date = {comments.date} 
-                            user_image = {comments.user_image} 
-                            user_name = {comments.user_name} 
-                            content = {comments.content} 
-                            />
-                            
-                        
-                    }
+                    return(
+                        newsArticle.comments_list.map((comments)=> {
+                            {console.log(comments.date)}
+                            {console.log(comments.user_image)}
+                            {console.log(comments.user_name)}
+                            {console.log(comments.content)}
+                            return(
+                            <CommentCard 
+                            w ="full"
+                                date = {comments.date} 
+                                user_image = {comments.user_image} 
+                                user_name = {comments.user_name} 
+                                content = {comments.content} 
+                                />
+                            )
+                        }
+                        )
                     )
                     }
-                }
-                
+                } 
             )
             }
-            </div> 
+      </SimpleGrid>
     </div>
   );
 };
