@@ -1,0 +1,40 @@
+[
+    {
+        "title":"0",
+        "theme":"blue",
+        "category":"Offer",
+        "location":"650456",
+        "time":"15 March 2021",
+        "date_posted":"15 March 2021",
+        "tip":"$6.00",
+        "user_name": "Surabhi Malani",
+        "user_image": "https://avatars.githubusercontent.com/u/47130821?v=4",
+        "content":"Selling Kpop grp (Exo) items. Albums, badges, poker cards etc at low price. Pm for photos of items."
+    },
+    {
+        "title":"1",
+        "theme":"green",
+        "category":"Request",
+        "location":"650234",
+        "time":"14 March 2021",
+        "date_posted":"14 March 2021",
+        "tip":"$5.00",
+        "user_name": "Okkar Min",
+        "user_image": "https://avatars.githubusercontent.com/u/24297303?v=4",
+        "content":"Anyone giving away sunblock/sunscreen at bukit batok area ?"
+    },
+    {
+        "title":"2",
+        "theme":"orange",
+        "category":"Giveaway",
+        "location":"650123",
+        "time":"13 March 2021",
+        "date_posted":"13 March 2021",
+        "tip":"$5.00",
+        "user_name": "Ying Sheng",
+        "user_image": "https://avatars.githubusercontent.com/u/70012669?v=4",
+        "content":"Shoe bench. Well used."
+    }
+    
+]
+
