@@ -26,7 +26,7 @@ const { useState } = React
 
 const localNews = () => {
   return (
-        <SimpleGrid minChildWidth="500px"  spacing="2" mt="4" px={["4", "8"]}>
+        <SimpleGrid  spacing="2" mt="4" px={["4", "8"]}>
       {localnews.map((newsArticle)=> {
           {console.log(newsArticle.theme)}
         return (
@@ -44,6 +44,7 @@ const localNews = () => {
             dislikes = {newsArticle.dislikes} 
             headline = {newsArticle.headline} 
             theme = {newsArticle.theme}
+            comments = {newsArticle.comments}
             />
             
         )
@@ -102,8 +103,14 @@ const DislikeIncrement = ({ increment, dislikes, dislikeCounter, dislikeCount}) 
       };
     return <Button colorScheme="red"  onClick={handleClick}> {dislikes + dislikeCount} <TriangleDownIcon w={6} h={6} /> </Button>
   }
+
+  const CommentsButton = ({ comments}) => {
+    
+
+    return <Button colorScheme="teal" > {comments} <ChatIcon w={6} h={6} /> </Button>
+  }
   
-const Card = ({ title, date, user_name, user_image, content, read_more, topic, image, image_alt, likes, dislikes, headline, theme }) => {
+const Card = ({ title, date, user_name, user_image, content, read_more, topic, image, image_alt, likes, dislikes, headline, theme, comments }) => {
     const [liked, setLiked] = useState(false)
     const [disliked, setDisliked] = useState(false)
 
@@ -154,7 +161,7 @@ const Card = ({ title, date, user_name, user_image, content, read_more, topic, i
     >
         <HStack justify="space-between" >
             <Box
-                w="m"
+                w="full"
                 h="m"
                 mx="2"
                 mb="2"
@@ -225,38 +232,40 @@ const Card = ({ title, date, user_name, user_image, content, read_more, topic, i
 
                 {/* <Flex justifyContent="space-between" alignItems="center" > */}
                 <Flex as="nav" align="center" mt={4}>
-                    <Image
+                <Box backgroundColor="gray.100"
+        w="fit-content"
+        h="auto"
+        borderRadius="10">
+            <HStack direction = "column" mx={4}
+                    my={1}>
+    <Image
                     w={10}
                     h={10}
-                    mx={4}
                     rounded="full"
                     fit="cover"
                     display={{ base: "none", sm: "block" }}
                     src={user_image}
                     alt="avatar"
                     />
-                    <Link href="/"
+                    <chakra.p
                     
                     color={useColorModeValue("gray.700", "gray.200")}
                     fontWeight="700"
-                    cursor="pointer"
                     >
-                    {user_name}
-                    </Link>
+                    {user_name}   
+                    </chakra.p>
+                    </HStack>
+                    </Box>
+
                     <Spacer />
                     <LikeIncrement increment={1} likes = {likes} likeCounter= {likeCounter} likeCount = {likeCount} />   
                     <DislikeIncrement increment={1} dislikes = {dislikes} dislikeCounter= {dislikeCounter} dislikeCount = {dislikeCount} />
                     
-                    <IconButton colorScheme="teal" icon={<ChatIcon  w={6} h={6} />} /> 
+                    <CommentsButton comments = {comments} />
+
+                    
 
                 </Flex>
-                {/* <Link href="/"
-                    color={useColorModeValue("brand.600", "brand.400")}
-                    _hover={{ textDecor: "underline" }}
-                    
-                >
-                    Read more
-                </Link> */}
                 
             </Box>
       </HStack>

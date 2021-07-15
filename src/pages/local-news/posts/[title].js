@@ -104,6 +104,7 @@ const CommentCard = ({date, content, user_image, user_name}) => {
                     src={user_image}
                     alt="avatar"
                     />
+                    
                     <Link href="/"
                     
                     color={useColorModeValue("gray.700", "gray.200")}
