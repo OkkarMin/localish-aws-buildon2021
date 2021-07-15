@@ -14,6 +14,13 @@ Amplify.configure({
   aws_appsync_region: "ap-southeast-1",
   aws_appsync_authenticationType: "API_KEY",
   aws_appsync_apiKey: process.env.NEXT_PUBLIC_APPSYNC_API,
+  aws_cognito_identity_pool_id:
+    "ap-southeast-1:3b026575-69b0-4f5b-ae17-ae003706abda",
+  aws_cognito_region: "ap-southeast-1",
+  aws_user_pools_id: process.env.NEXT_PUBLIC_USERS_POOL_ID,
+  aws_user_pools_web_client_id:
+    process.env.NEXT_PUBLIC_USERS_POOL_WEB_CLIENT_ID,
+  oauth: {},
 });
 
 function MyApp({ Component, pageProps }: AppProps) {

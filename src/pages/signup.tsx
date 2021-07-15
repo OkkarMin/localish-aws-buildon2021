@@ -1,15 +1,23 @@
+import { useState } from "react";
+import { useRouter } from "next/router";
+import { Auth } from "aws-amplify";
+
 import {
-  Box,
-  Flex,
-  Stack,
-  Heading,
-  Text,
-  Container,
-  Input,
-  Button,
-  SimpleGrid,
   Avatar,
   AvatarGroup,
+  Box,
+  Button,
+  Center,
+  Container,
+  Flex,
+  Heading,
+  HStack,
+  Input,
+  PinInput,
+  PinInputField,
+  SimpleGrid,
+  Stack,
+  Text,
   useBreakpointValue,
 } from "@chakra-ui/react";
 
@@ -37,6 +45,39 @@ const avatars = [
 ];
 
 const SignUp = () => {
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [password, setPassword] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [confirmationCode, setConfirmationCode] = useState("");
+  const [cfmSignUpState, setCfmSignUpState] = useState(true);
+  const router = useRouter();
+
+  const signUp = async () => {
+    try {
+      const { user } = await Auth.signUp({
+        username: `+65${phoneNumber}`,
+        password,
+        attributes: {
+          name: fullName,
+        },
+      });
+
+      user && setCfmSignUpState(true);
+    } catch (error) {
+      console.log("error signing up:", error);
+    }
+  };
+
+  const confirmSignUp = async () => {
+    try {
+      await Auth.confirmSignUp(`+65${phoneNumber}`, confirmationCode);
+      router.push("/local-board");
+    } catch (error) {
+      webkitConvertPointFromPageToNode;
+      console.log(error);
+    }
+  };
+
   return (
     <Box position={"relative"}>
       <Container
@@ -109,52 +150,110 @@ const SignUp = () => {
             </Flex>
           </Stack>
         </Stack>
-        <Stack
-          bg="gray.100"
-          rounded={"xl"}
-          p={{ base: 4, sm: 6, md: 8 }}
-          spacing={{ base: 8 }}
-          maxW={{ lg: "lg" }}
-        >
-          <Stack spacing={4}>
-            <Heading
-              color={"gray.800"}
-              fontSize={{ base: "2xl", sm: "3xl", md: "4xl" }}
-              fontWeight="extrabold"
-            >
-              Join localish
-              <Text as={"span"} color="greenPrimary.600">
-                !
-              </Text>
-            </Heading>
-          </Stack>
-
-          <Box as={"form"} mt={10}>
+        {cfmSignUpState ? (
+          <Stack
+            bg="gray.100"
+            rounded={"xl"}
+            p={{ base: 4, sm: 6, md: 8 }}
+            spacing={{ base: 8 }}
+            maxW={{ lg: "lg" }}
+          >
             <Stack spacing={4}>
-              <Input
-                type="text"
-                placeholder="Full name"
-                bg="gray.300"
-                _placeholder={{ color: "gray.500" }}
-              />
-              <Input
-                type="tel"
-                placeholder="81234567"
-                bg="gray.300"
-                _placeholder={{ color: "gray.500" }}
-              />
-              <Input
-                type="password"
-                placeholder="******"
-                bg="gray.300"
-                _placeholder={{ color: "gray.500" }}
-              />
+              <Heading
+                color={"gray.800"}
+                fontSize={{ base: "2xl", sm: "3xl", md: "4xl" }}
+                fontWeight="extrabold"
+              >
+                Enter confirmation code sent to your phone
+              </Heading>
             </Stack>
-            <Button mt={8} w={"full"} colorScheme="greenPrimary">
-              Join
-            </Button>
-          </Box>
-        </Stack>
+
+            <Box as={"form"} mt={10}>
+              <Center>
+                <HStack justifySelf="center">
+                  <PinInput
+                    size="lg"
+                    value={confirmationCode}
+                    onChange={(value) => setConfirmationCode(value)}
+                  >
+                    <PinInputField />
+                    <PinInputField />
+                    <PinInputField />
+                    <PinInputField />
+                    <PinInputField />
+                    <PinInputField />
+                  </PinInput>
+                </HStack>
+              </Center>
+              <Button
+                mt={8}
+                w={"full"}
+                colorScheme="greenPrimary"
+                onClick={confirmSignUp}
+              >
+                Confirm Sign-up
+              </Button>
+            </Box>
+          </Stack>
+        ) : (
+          <Stack
+            bg="gray.100"
+            rounded={"xl"}
+            p={{ base: 4, sm: 6, md: 8 }}
+            spacing={{ base: 8 }}
+            maxW={{ lg: "lg" }}
+          >
+            <Stack spacing={4}>
+              <Heading
+                color={"gray.800"}
+                fontSize={{ base: "2xl", sm: "3xl", md: "4xl" }}
+                fontWeight="extrabold"
+              >
+                Join localish
+                <Text as={"span"} color="greenPrimary.600">
+                  !
+                </Text>
+              </Heading>
+            </Stack>
+
+            <Box as={"form"} mt={10}>
+              <Stack spacing={4}>
+                <Input
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                  type="text"
+                  placeholder="Full name"
+                  bg="gray.300"
+                  _placeholder={{ color: "gray.500" }}
+                />
+                <Input
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  type="tel"
+                  placeholder="81234567"
+                  bg="gray.300"
+                  _placeholder={{ color: "gray.500" }}
+                />
+                <Input
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  type="password"
+                  placeholder="your-super-secure-password"
+                  bg="gray.300"
+                  _placeholder={{ color: "gray.500" }}
+                />
+              </Stack>
+              <Button
+                mt={8}
+                w={"full"}
+                colorScheme="greenPrimary"
+                onClick={signUp}
+              >
+                Join
+              </Button>
+            </Box>
+          </Stack>
+        )}
       </Container>
     </Box>
   );
