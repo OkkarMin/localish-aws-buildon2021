@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import {
   Flex,
   FormControl,
@@ -12,35 +11,48 @@ import {
   HStack,
   VStack,
   Textarea,
+  useToast,
 } from "@chakra-ui/react";
 
 import { Formik, Form, Field } from "formik";
 
-import { FaUser } from "react-icons/fa";
-import { ArrowBackIcon } from "@chakra-ui/icons";
+import { DataStore } from "@aws-amplify/datastore";
+import { VolunteerForm } from "../models";
 
 const VolunteerSignup = () => {
-  const [form, setForm] = useState([]);
+  const toast = useToast();
 
-  const setFormDetails = (values) => {
+  const setFormDetails = async (values) => {
     let name = values.name;
     let email = values.email;
     let address = values.address;
     let phone = values.phone;
-    let daysFree = values.daysFree;
-    let commonLanguage = values.commonLanguage;
-    let dialects = values.dialects;
+    let daysFree = JSON.stringify(values.daysFree);
+    let commonLanguage = JSON.stringify(values.commonLanguage);
+    let dialects = JSON.stringify(values.dialects);
     let experience = values.experience;
-    setForm([
-      name,
-      email,
-      address,
-      phone,
-      daysFree,
-      commonLanguage,
-      dialects,
-      experience,
-    ]);
+
+    await DataStore.save(
+      new VolunteerForm({
+        name: name,
+        email: email,
+        address: address,
+        phone: phone,
+        daysFree: daysFree,
+        commonLanguage: commonLanguage,
+        dialects: dialects,
+        experience: experience,
+      })
+    );
+    toast({
+      title: "Form submitted",
+      description:
+        "Form successfully submitted. The committee will contact you soon!!",
+      status: "success",
+      duration: 2500,
+      isClosable: true,
+      position: "top",
+    });
   };
 
   function validateName(value) {
@@ -108,15 +120,12 @@ const VolunteerSignup = () => {
             dialects: [],
             experience: "",
           }}
-          onSubmit={(values, actions) => {
-            //setTimeout(() => {
-
+          onSubmit={(values, { resetForm }) => {
             JSON.stringify(values);
 
             setFormDetails(values);
 
-            actions.setSubmitting(false);
-            //}, 1000);
+            resetForm();
           }}
         >
           {(props) => (
