@@ -49,7 +49,7 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
   const [confirmationCode, setConfirmationCode] = useState("");
-  const [cfmSignUpState, setCfmSignUpState] = useState(true);
+  const [cfmSignUpState, setCfmSignUpState] = useState(false);
   const router = useRouter();
 
   const signUp = async () => {
