@@ -5,6 +5,7 @@ import {
   Box,
   Image,
   HStack,
+  VStack,
   useColorModeValue,
   SimpleGrid,
   Button,
@@ -77,12 +78,11 @@ const CommentCard = ({date, content, user_image, user_name}) => {
     return(
         
         <Flex
-      p={50}
+      p={2}
       alignItems="center"
       justifyContent="center"
     >
         
-        <HStack justify="space-between" >
             <Box
                 w="full"
                 mx="2"
@@ -93,33 +93,6 @@ const CommentCard = ({date, content, user_image, user_name}) => {
                 bg="white"
                 _hover={{ shadow: "2xl", textDecoration: "none" }}
             >
-                <Flex as="nav" align="center" mt={4}>
-                    <Image
-                    w={10}
-                    h={10}
-                    mx={4}
-                    rounded="full"
-                    fit="cover"
-                    display={{ base: "none", sm: "block" }}
-                    src={user_image}
-                    alt="avatar"
-                    />
-                    
-                    <Link href="/"
-                    
-                    color={useColorModeValue("gray.700", "gray.200")}
-                    fontWeight="700"
-                    cursor="pointer"
-                    >
-                    {user_name}
-                    
-                    </Link>
-                    <Spacer />
-
-                </Flex>
-                <Spacer/>
-                
-
                 <Box mt={2}>
                 
                 <chakra.p mt={2} color={useColorModeValue("gray.600", "gray.300")}>
@@ -127,6 +100,36 @@ const CommentCard = ({date, content, user_image, user_name}) => {
                     
                 </chakra.p>
                 </Box>
+
+                <HStack direction = "column">
+                <Box backgroundColor="teal.100"
+        w="fit-content"
+        h="auto"
+        borderRadius="10">
+            <HStack direction = "column" mx={4}
+                    my={1}>
+    <Image
+                    w={10}
+                    h={10}
+                    rounded="full"
+                    fit="cover"
+                    display={{ base: "none", sm: "block" }}
+                    src={user_image}
+                    alt="avatar"
+                    />
+                    <chakra.p
+                    
+                    color={useColorModeValue("gray.700", "gray.200")}
+                    fontWeight="700"
+                    >
+                    {user_name}   
+                    </chakra.p>
+                    </HStack>
+                    </Box>
+                <Spacer/>
+                
+
+                
                 <Spacer />
                 <Flex justifyContent="space-between" alignItems="center">
                 <chakra.span
@@ -138,9 +141,9 @@ const CommentCard = ({date, content, user_image, user_name}) => {
                 </Flex>
                 
                 {/* <Flex justifyContent="space-between" alignItems="center" > */}
-                
+                </HStack>
             </Box>
-      </HStack>
+      
 
       
     
@@ -172,14 +175,30 @@ const Details = (article) => {
 
     
   return (
+
     <div>
-      {/* {console.log(article.article.title)}
-            {article.article.title} */}
-      <Link href="/local-news">
+        <Link href="/local-news">
         <ChakraLink>
           <ArrowBackIcon w="8" h="8" />
         </ChakraLink>
       </Link>
+      <Box align="center"
+      >
+    <Box width = "1000px" align="left"
+      
+      height="full">
+    <VStack
+        // width="70vw"
+        // backgroundColor="gray.100"
+        borderRadius="10"
+        align="left"
+        height="full"
+        padding="10"
+      >
+      {/* {console.log(article.article.title)}
+            {article.article.title} */}
+      
+      
       <chakra.span
         fontSize="sm"
         color={useColorModeValue("gray.600", "gray.400")}
@@ -198,30 +217,61 @@ const Details = (article) => {
       >
         {article.article.headline}
       </chakra.h2>
-
-      {/* <Flex direction="row">
-        <Box w="xxs" mb="1" p="1" shadow="base" rounded="md" bg="green.400">
-          {article.article.likes}
-        </Box>
-        Likes
-        <Box w="xxs" mb="1" p="1" shadow="base" rounded="md" bg="red.400">
-          {article.article.dislikes}
-        </Box>
-        Dislikes
-      </Flex> */}
+    
+      <chakra.p mt={2} color={useColorModeValue("gray.600", "gray.300")}>
+                {article.article.content}
+                    
+    </chakra.p>
+    
+        <Box backgroundColor="gray.100"
+        w="fit-content"
+        h="auto"
+        borderRadius="10">
+            <HStack direction = "column" mx={4}
+                    my={1}>
+    <Image
+                    w={10}
+                    h={10}
+                    rounded="full"
+                    fit="cover"
+                    display={{ base: "none", sm: "block" }}
+                    src={article.article.user_image}
+                    alt="avatar"
+                    />
+                    <chakra.p
+                    
+                    color={useColorModeValue("gray.700", "gray.200")}
+                    fontWeight="700"
+                    >
+                    {article.article.user_name}   
+                    </chakra.p>
+                    </HStack>
+                    </Box>
+                    
+                    
       <Flex
       alignItems="center"
       justifyContent="center"
     >
       <Image
-        h={400}
-        
+        // h={400}
+        w="fit-content"
         fit="cover"
         mt={2}
         src={article.article.image}
         alt={article.article.image_alt}
       />
+      
       </Flex>
+      <chakra.p
+                    align="center"
+                    color={useColorModeValue("gray.700", "gray.200")}
+                    fontWeight="2000"
+                    fontSize="10px"
+                    fontStyle="italic"
+                    >
+                    Image credits: unsplash.com
+                    </chakra.p>
       <chakra.p mt={2} color={useColorModeValue("gray.600", "gray.300")}>
         {article.article.content_full}
       </chakra.p>
@@ -236,7 +286,7 @@ const Details = (article) => {
 
         </Flex>
 
-       <SimpleGrid minChildWidth="500px"  spacing="2" mt="4" px={["4", "8"]}>
+       <SimpleGrid   mt="2">
         
 
             {
@@ -253,6 +303,9 @@ const Details = (article) => {
                 })
             }
       </SimpleGrid>
+    </VStack>
+    </Box>
+    </Box>
     </div>
   );
 };
