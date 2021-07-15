@@ -10,6 +10,11 @@
       "StackName": "amplify-localishawsbuildon20-dev-144626",
       "StackId": "arn:aws:cloudformation:ap-southeast-1:058072509873:stack/amplify-localishawsbuildon20-dev-144626/3b59b650-e46f-11eb-999c-06b1f00f8c64",
       "AmplifyAppId": "debay3ges96k4"
+    },
+    "categories": {
+      "auth": {
+        "localishawsbuildon20": {}
+      }
     }
   }
 }
