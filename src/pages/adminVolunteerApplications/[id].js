@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { useRouter } from "next/router";
 
-import { VStack, HStack, Box, Text } from "@chakra-ui/react";
+import { VStack, HStack, Box, Text, Button } from "@chakra-ui/react";
 
 import { DataStore } from "@aws-amplify/datastore";
 import { VolunteerForm } from "../../../models";
@@ -62,8 +62,8 @@ export default function Form() {
           <Text fontSize="xl" fontWeight="bold">
             Common language(s):
           </Text>
-          {JSON.parse(form.commonLanguage).map((language) => {
-            return <Text>{language}</Text>;
+          {JSON.parse(form.commonLanguage).map((language, i) => {
+            return <Text key={i}>{language}</Text>;
           })}
         </HStack>
         <HStack>
@@ -71,9 +71,13 @@ export default function Form() {
             Dialect(s):
           </Text>
           {form.dialects &&
-            JSON.parse(form.dialects).map((dialect) => {
-              return <Text>{dialect}</Text>;
+            JSON.parse(form.dialects).map((dialect, i) => {
+              return <Text key={i}>{dialect}</Text>;
             })}
+        </HStack>
+        <HStack justify="space-evenly">
+          <Button colorScheme="green">Accept</Button>
+          <Button colorScheme="red">Reject</Button>
         </HStack>
       </VStack>
     </Box>
