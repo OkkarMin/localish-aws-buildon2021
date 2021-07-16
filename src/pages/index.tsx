@@ -83,9 +83,8 @@ const Index = () => {
               <Icon as={VscMortarBoard} w="6" h="6" />
               <Heading fontSize="lg">Education</Heading>
               <Text>
-                Stay in the loop with latest tech by learning how the latest
-                tech work, we partner with Tech Lingo to deliver latest tech
-                news for you while making it easily comprehensible
+                Stay in the loop with latest tech by reading easily
+                comprehensible articles from Tech Lingo
               </Text>
             </VStack>
           </Box>
@@ -105,8 +104,8 @@ const Index = () => {
               <Icon as={FaChalkboardTeacher} w="6" h="6" />
               <Heading fontSize="lg">Local board</Heading>
               <Text>
-                Never miss a nearby lobang again! Share and read lobangs as well
-                as interesting information nuggets with your neighbours
+                Never miss a nearby lobang and interesting information nuggets
+                again!
               </Text>
             </VStack>
           </Box>
@@ -116,9 +115,8 @@ const Index = () => {
               <Icon as={MdLocalActivity} w="6" h="6" />
               <Heading fontSize="lg">Neighbourhood Activities</Heading>
               <Text>
-                You want to dance? You want to draw? You want to take part in
-                Mobile Legend competiton? Drop by once in awhile to see what
-                activites there are in your neighbourhood
+                Drop by once in awhile to see what activites there are in your
+                neighbourhood
               </Text>
             </VStack>
           </Box>

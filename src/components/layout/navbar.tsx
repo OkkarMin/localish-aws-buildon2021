@@ -24,7 +24,7 @@ const NavBar = () => {
   const router = useRouter();
 
   return user ? (
-    <Flex as="nav" align="center" p="4" borderBottomColor="red">
+    <Flex as="nav" align="center" p="8" borderBottomColor="red">
       <Link href="/">
         <ChakraLink>
           <Image h="40px" src="/localish.svg" alt="localish logo" />
@@ -55,7 +55,7 @@ const NavBar = () => {
       <DrawerMenu isOpen={isOpen} onClose={onClose} />
     </Flex>
   ) : (
-    <Flex as="nav" align="center" p="4" borderBottomColor="red">
+    <Flex as="nav" align="center" p="8" borderBottomColor="red">
       <Link href="/">
         <ChakraLink>
           <Image h="40px" src="/localish.svg" alt="localish logo" />
