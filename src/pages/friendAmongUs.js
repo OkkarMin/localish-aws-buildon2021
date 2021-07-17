@@ -18,10 +18,10 @@ const FriendAmongUs = () => {
       <FriendImage />
       <HStack spacing="10">
         <Link href="/friendAmongUsProfile">
-          <Button>Create profile</Button>
+          <Button colorScheme="teal">Create profile</Button>
         </Link>
         <Link href="/matchFriends">
-          <Button>Start matching!!</Button>
+          <Button colorScheme="teal">Start matching!!</Button>
         </Link>
       </HStack>
     </VStack>

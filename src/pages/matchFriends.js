@@ -52,7 +52,7 @@ const MatchFriends = () => {
     <Box align="center">
       <HStack justify="center">
         <Link href="/friendAmongUs">
-          <Button>
+          <Button colorScheme="teal">
             <ArrowBackIcon />
           </Button>
         </Link>
@@ -83,8 +83,8 @@ const MatchFriends = () => {
       ) : (
         <Text></Text>
       )}
-      <Button positon="fixed" top="450">
-        <ChatIcon mr="2" /> Start chatting!!
+      <Button colorScheme="teal" positon="fixed" top="450">
+        <ChatIcon mr="2" /> Chats
       </Button>
     </Box>
   );
