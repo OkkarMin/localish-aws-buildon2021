@@ -6,20 +6,24 @@ import {
   Button,
   Link as ChakraLink,
   VStack,
+  HStack,
 } from "@chakra-ui/react";
 
-import { ArrowBackIcon } from "@chakra-ui/icons";
+import { FriendImage } from "../components/friendAmongUs/friendImage";
 
 const FriendAmongUs = () => {
   return (
     <VStack align="center" justify="center">
-      <Heading>FriendAmongUs Page</Heading>
-      <Link href="/friendAmongUsProfile">
-        <Button>Edit profile</Button>
-      </Link>
-      <Link href="/matchFriends">
-        <Button>Start matching!!</Button>
-      </Link>
+      <Heading>Friend Among Us</Heading>
+      <FriendImage />
+      <HStack spacing="10">
+        <Link href="/friendAmongUsProfile">
+          <Button>Create profile</Button>
+        </Link>
+        <Link href="/matchFriends">
+          <Button>Start matching!!</Button>
+        </Link>
+      </HStack>
     </VStack>
   );
 };
