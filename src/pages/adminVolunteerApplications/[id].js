@@ -2,24 +2,30 @@ import { useEffect, useState } from "react";
 
 import { useRouter } from "next/router";
 
-import { VStack, HStack, Box, Text, Button } from "@chakra-ui/react";
+import { VStack, HStack, Box, Text, Button, Avatar } from "@chakra-ui/react";
 
 import { DataStore } from "@aws-amplify/datastore";
-import { VolunteerForm } from "../../../models";
+import { VolunteerForm } from "../../models";
+import { Storage } from "aws-amplify";
 
 export default function Form() {
   const [form, setForm] = useState();
+  const [avatar, setAvatar] = useState("");
   const router = useRouter();
 
   useEffect(async () => {
     const { id } = router.query;
     const result = await DataStore.query(VolunteerForm, id);
 
+    const data = await Storage.get(result.avatarKey);
+    setAvatar(data);
+
     setForm(result);
   }, []);
 
   return form ? (
     <Box align="center">
+      <Avatar src={avatar} />
       <VStack
         width="70vw"
         backgroundColor="gray.100"

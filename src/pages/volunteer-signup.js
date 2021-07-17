@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Flex,
   FormControl,
@@ -6,7 +7,7 @@ import {
   Button,
   FormErrorMessage,
   Box,
-  CheckboxGroup,
+  Avatar,
   Checkbox,
   HStack,
   VStack,
@@ -17,9 +18,26 @@ import {
 import { Formik, Form, Field } from "formik";
 
 import { DataStore } from "@aws-amplify/datastore";
+import { Storage } from "aws-amplify";
+
 import { VolunteerForm } from "../models";
 
 const VolunteerSignup = () => {
+  const [file, setFile] = useState({
+    fileUrl: "",
+    targetFile: {},
+  });
+
+  const handleSetFile = (e) => {
+    const targetFile = e.target.files[0];
+    const fileUrl = URL.createObjectURL(targetFile);
+    console.log(targetFile);
+    setFile({
+      fileUrl,
+      targetFile,
+    });
+  };
+
   const toast = useToast();
 
   const setFormDetails = async (values) => {
@@ -32,18 +50,34 @@ const VolunteerSignup = () => {
     let dialects = JSON.stringify(values.dialects);
     let experience = values.experience;
 
-    await DataStore.save(
-      new VolunteerForm({
-        name: name,
-        email: email,
-        address: address,
-        phone: phone,
-        daysFree: daysFree,
-        commonLanguage: commonLanguage,
-        dialects: dialects,
-        experience: experience,
-      })
-    );
+    const saltedAvatarKey = Math.random() + file.targetFile.name;
+
+    try {
+      const result = await Storage.put(saltedAvatarKey, file.targetFile, {
+        level: "public",
+        contentType: file.targetFile.type,
+      });
+      console.log(result);
+
+      await DataStore.save(
+        new VolunteerForm({
+          name: name,
+          email: email,
+          address: address,
+          phone: phone,
+          daysFree: daysFree,
+          commonLanguage: commonLanguage,
+          dialects: dialects,
+          experience: experience,
+          avatarKey: result.key,
+        })
+      );
+
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
+
     toast({
       title: "Form submitted",
       description:
@@ -109,6 +143,11 @@ const VolunteerSignup = () => {
   return (
     <Box align="center">
       <Flex direction="column" width={["70vw"]} height="full">
+        <HStack>
+          {file.fileUrl ? <Avatar src={file.fileUrl} /> : <div></div>}
+          <Input type="file" onChange={handleSetFile} />
+        </HStack>
+
         <Formik
           initialValues={{
             name: "",
@@ -122,6 +161,8 @@ const VolunteerSignup = () => {
           }}
           onSubmit={(values, { resetForm }) => {
             JSON.stringify(values);
+
+            //handleSetUploadAvatar(values.name);
 
             setFormDetails(values);
 
@@ -269,16 +310,9 @@ const VolunteerSignup = () => {
                 )}
               </Field>
 
-              <Field
-                name="dialects"
-                // validate={validateDialects}
-              >
+              <Field name="dialects">
                 {({ field, form }) => (
-                  <FormControl
-                  // isInvalid={
-                  //   form.errors.commonLanguage && form.touched.commonLanguage
-                  // }
-                  >
+                  <FormControl>
                     <FormLabel marginTop="2" htmlFor="dialects">
                       Dialects
                     </FormLabel>
@@ -299,19 +333,11 @@ const VolunteerSignup = () => {
                         Hindi
                       </Checkbox>
                     </VStack>
-                    {/* <FormErrorMessage>
-                      {form.errors.commonLanguage}
-                    </FormErrorMessage> */}
                   </FormControl>
                 )}
               </Field>
 
-              <Button
-                mt={4}
-                colorScheme="teal"
-                //isLoading={props.isSubmitting}
-                type="submit"
-              >
+              <Button mt={4} colorScheme="teal" type="submit">
                 Submit
               </Button>
             </Form>

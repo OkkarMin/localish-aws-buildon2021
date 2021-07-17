@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-import { chakra, Flex, Box, Image, Icon, Text } from "@chakra-ui/react";
+import { chakra, Flex, Box, Avatar, Icon, Text } from "@chakra-ui/react";
 
 import { PhoneIcon, EmailIcon } from "@chakra-ui/icons";
 
+import { Storage } from "aws-amplify";
+
 // const VolunteerCard = React.forwardRef(funtion VolunteerCard({ name, email, phone, experience, onclick, href }, ref) {
 const VolunteerCard = React.forwardRef(function VolunteerCard(
-  { name, email, phone, experience, onClick, href },
+  { name, email, phone, experience, avatarKey, onClick, href },
   ref
 ) {
+  const [avatar, setAvatar] = useState("");
+
+  useEffect(async () => {
+    const data = await Storage.get(avatarKey);
+    setAvatar(data);
+    console.log(data);
+  }, []);
+  console.log(avatarKey);
+
   return (
     <span href={href} onClick={onClick} ref={ref}>
       <Flex
@@ -27,6 +38,10 @@ const VolunteerCard = React.forwardRef(function VolunteerCard(
           overflow="hidden"
         >
           <Box py={4} px={6}>
+            <Avatar
+              // src={`https://localish1storage144626-dev.s3.ap-southeast-1.amazonaws.com/public/${avatarKey}`}
+              src={avatar}
+            />
             <chakra.h1
               fontSize="xl"
               fontWeight="bold"
