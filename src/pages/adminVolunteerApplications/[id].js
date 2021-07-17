@@ -25,66 +25,68 @@ export default function Form() {
 
   return form ? (
     <Box align="center">
-      <Avatar src={avatar} />
       <VStack
-        width="70vw"
+        width="30vw"
         backgroundColor="gray.100"
         borderRadius="10"
-        align="left"
         height="full"
         padding="10"
+        shadow="lg"
       >
-        <HStack>
-          <Text fontSize="xl" fontWeight="bold">
-            Name:
-          </Text>
-          <Text>{form.name}</Text>
-        </HStack>
-        <HStack>
-          <Text fontSize="xl" fontWeight="bold">
-            Contact:
-          </Text>
-          <Text>{form.phone}</Text>
-        </HStack>
-        <HStack>
-          <Text fontSize="xl" fontWeight="bold">
-            Address:
-          </Text>
-          <Text>{form.address}</Text>
-        </HStack>
-        <HStack>
-          <Text fontSize="xl" fontWeight="bold">
-            Email:
-          </Text>
-          <Text>{form.email}</Text>
-        </HStack>
+        <Avatar size="xl" src={avatar} />
         <VStack>
-          <Text fontSize="xl" fontWeight="bold">
-            Experience:
-          </Text>
-          <Text>{form.experience}</Text>
-        </VStack>
-        <HStack>
-          <Text fontSize="xl" fontWeight="bold">
-            Common language(s):
-          </Text>
-          {JSON.parse(form.commonLanguage).map((language, i) => {
-            return <Text key={i}>{language}</Text>;
-          })}
-        </HStack>
-        <HStack>
-          <Text fontSize="xl" fontWeight="bold">
-            Dialect(s):
-          </Text>
-          {form.dialects &&
-            JSON.parse(form.dialects).map((dialect, i) => {
-              return <Text key={i}>{dialect}</Text>;
+          <HStack>
+            <Text fontSize="xl" fontWeight="bold">
+              Name:
+            </Text>
+            <Text>{form.name}</Text>
+          </HStack>
+          <HStack>
+            <Text fontSize="xl" fontWeight="bold">
+              Contact:
+            </Text>
+            <Text>{form.phone}</Text>
+          </HStack>
+          <HStack>
+            <Text fontSize="xl" fontWeight="bold">
+              Address:
+            </Text>
+            <Text>{form.address}</Text>
+          </HStack>
+          <HStack>
+            <Text fontSize="xl" fontWeight="bold">
+              Email:
+            </Text>
+            <Text>{form.email}</Text>
+          </HStack>
+          <VStack>
+            <Text fontSize="xl" fontWeight="bold">
+              Experience:
+            </Text>
+            <Text>{form.experience}</Text>
+          </VStack>
+          <HStack>
+            <Text fontSize="xl" fontWeight="bold">
+              Common language(s):
+            </Text>
+            {JSON.parse(form.commonLanguage).map((language, i) => {
+              return <Text key={i}>{language}</Text>;
             })}
-        </HStack>
-        <HStack justify="space-evenly">
-          <Button colorScheme="green">Accept</Button>
-          <Button colorScheme="red">Reject</Button>
-        </HStack>
+          </HStack>
+          <HStack>
+            <Text fontSize="xl" fontWeight="bold">
+              Dialect(s):
+            </Text>
+            {form.dialects &&
+              JSON.parse(form.dialects).map((dialect, i) => {
+                return <Text key={i}>{dialect}</Text>;
+              })}
+          </HStack>
+          <HStack spacing="10">
+            <Button colorScheme="green">Accept</Button>
+            <Button colorScheme="red">Reject</Button>
+          </HStack>
+        </VStack>
       </VStack>
     </Box>
   ) : (
