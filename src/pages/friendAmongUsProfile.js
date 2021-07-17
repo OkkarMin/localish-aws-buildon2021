@@ -65,7 +65,7 @@ const FriendAmongUsProfile = () => {
     <Box align="center">
       <Flex
         direction="column"
-        width={["50vw"]}
+        width={["full", "50vw"]}
         height="full"
         shadow="lg"
         py={4}

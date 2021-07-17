@@ -144,7 +144,7 @@ const VolunteerSignup = () => {
     <Box align="center" mb="5">
       <Flex
         direction="column"
-        width={["50vw"]}
+        width={["full", "50vw"]}
         height="full"
         shadow="lg"
         p="10"
@@ -259,7 +259,10 @@ const VolunteerSignup = () => {
                       <FormLabel marginTop="2" htmlFor="daysFree">
                         Days free for volunteer work
                       </FormLabel>
-                      <HStack justify="space-around">
+                      <Flex
+                        direction={["column", "row"]}
+                        justify="space-around"
+                      >
                         <Checkbox {...field} value="Monday">
                           Monday
                         </Checkbox>
@@ -281,7 +284,7 @@ const VolunteerSignup = () => {
                         <Checkbox {...field} value="Sunday">
                           Sunday
                         </Checkbox>
-                      </HStack>
+                      </Flex>
                       <FormErrorMessage>
                         {form.errors.daysFree}
                       </FormErrorMessage>
