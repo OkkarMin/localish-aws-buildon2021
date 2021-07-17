@@ -64,6 +64,7 @@ const MatchFriends = () => {
           className="swipe"
           key={character.name}
           onSwipe={(dir) => swiped(dir, character.name)}
+          preventSwipe={["up", "down"]}
         >
           <Box position="fixed" width="100%" mt="20">
             <FriendCard
