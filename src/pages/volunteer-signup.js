@@ -141,10 +141,14 @@ const VolunteerSignup = () => {
   }
 
   return (
-    <Box align="center">
-      <Flex direction="column" width={["70vw"]} height="full">
+    <Box align="center" mb="5">
+      <Flex direction="column" width={["50vw"]} height="full">
         <HStack>
-          {file.fileUrl ? <Avatar src={file.fileUrl} /> : <div></div>}
+          {file.fileUrl ? (
+            <Avatar size="xl" src={file.fileUrl} />
+          ) : (
+            <Avatar size="xl" />
+          )}
           <Input type="file" onChange={handleSetFile} />
         </HStack>
 
