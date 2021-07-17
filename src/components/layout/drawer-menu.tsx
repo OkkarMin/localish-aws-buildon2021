@@ -57,7 +57,7 @@ const DrawerMenu = ({ isOpen, onClose }) => {
           <DrawerMenuItem
             itemName="Friend Among Us"
             icon={<GiThreeFriends />}
-            href="/friend-among-us"
+            href="/friendAmongUs"
           />
           <DrawerMenuItem
             itemName="Neighbourhood Activitites"
