@@ -20,7 +20,8 @@
     "next-seo": "^4.26.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-icons": "^4.2.0"
+    "react-icons": "^4.2.0",
+    "react-tinder-card": "^1.4.0"
   },
   "devDependencies": {
     "@types/node": "^14.6.0",
