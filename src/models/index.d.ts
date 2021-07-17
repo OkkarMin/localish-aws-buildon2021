@@ -4,8 +4,23 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 
 
+type FriendsAmongUsMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
 type VolunteerFormMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
+export declare class FriendsAmongUs {
+  readonly id: string;
+  readonly name?: string;
+  readonly interests?: string;
+  readonly others?: string;
+  readonly createdAt?: string;
+  readonly updatedAt?: string;
+  constructor(init: ModelInit<FriendsAmongUs, FriendsAmongUsMetaData>);
+  static copyOf(source: FriendsAmongUs, mutator: (draft: MutableModel<FriendsAmongUs, FriendsAmongUsMetaData>) => MutableModel<FriendsAmongUs, FriendsAmongUsMetaData> | void): FriendsAmongUs;
 }
 
 export declare class VolunteerForm {
@@ -18,6 +33,7 @@ export declare class VolunteerForm {
   readonly commonLanguage?: string;
   readonly dialects?: string;
   readonly experience?: string;
+  readonly avatarKey?: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
   constructor(init: ModelInit<VolunteerForm, VolunteerFormMetaData>);

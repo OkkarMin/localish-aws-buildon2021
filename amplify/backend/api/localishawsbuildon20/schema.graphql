@@ -1,3 +1,10 @@
+type FriendsAmongUs @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  interests: AWSJSON
+  others: String
+}
+
 type VolunteerForm @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String
@@ -8,4 +15,6 @@ type VolunteerForm @model @auth(rules: [{allow: public}]) {
   commonLanguage: AWSJSON
   dialects: AWSJSON
   experience: String
+  avatarKey: String
 }
+ 

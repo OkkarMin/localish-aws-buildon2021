@@ -1,6 +1,6 @@
 {
     "identityPoolName": "testAuthIdentityPool",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "locali9ec21413",
     "userPoolName": "localishawsbuildon20",
     "autoVerifiedAttributes": [
