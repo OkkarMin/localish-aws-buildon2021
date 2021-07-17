@@ -44,13 +44,18 @@ const LocalBoardNew = () => {
     let tip = values.tip;
     let user_image = values.user_image;
     let content = values.content;
-    let theme = "blue"
-    if (category == "Offer"){
+    let theme = "";
+
+    if (value == "Offer"){
       theme = "green"
     }
-    else if (category == "Giveaway" ){
+    else if (value == "Giveaway" ){
       theme = "orange"
     }
+    else{
+      theme = "blue"
+    }
+    {console.log(value)}
   //   await DataStore.save(
   //     new LocalBoard({
   //     "category": "Lorem ipsum dolor sit amet",
@@ -67,6 +72,7 @@ const LocalBoardNew = () => {
   //   })
   // );
     await DataStore.save(
+      
       new LocalBoard({
          "user_name" : user_name,
         "email" : email,
