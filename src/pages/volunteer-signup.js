@@ -142,7 +142,14 @@ const VolunteerSignup = () => {
 
   return (
     <Box align="center" mb="5">
-      <Flex direction="column" width={["50vw"]} height="full">
+      <Flex
+        direction="column"
+        width={["50vw"]}
+        height="full"
+        shadow="lg"
+        p="10"
+        rounded="lg"
+      >
         <HStack>
           {file.fileUrl ? (
             <Avatar size="xl" src={file.fileUrl} />
