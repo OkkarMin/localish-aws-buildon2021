@@ -21,45 +21,31 @@ const FriendCard = React.forwardRef(function VolunteerCard(
   return (
     <span href={href} onClick={onClick} ref={ref}>
       <VStack
-        w={["full", "30vw"]}
+        w={["full", "20vw"]}
         justifyContent="center"
-        backgroundColor="green.100"
+        backgroundColor="greenPrimary.100"
         shadow="lg"
         rounded="lg"
         height="30vh"
         py={4}
         px={6}
       >
-        <chakra.h1
-          fontSize="xl"
-          fontWeight="bold"
-          //color={useColorModeValue("gray.800", "white")}
-        >
+        <chakra.h1 fontSize="2xl" fontWeight="bold">
           {name}
         </chakra.h1>
-        <HStack>
-          <chakra.h3
-            fontSize="xl"
-            fontWeight="bold"
-            //color={useColorModeValue("gray.800", "white")}
-          >
-            Interest(s):
-          </chakra.h3>
-          {JSON.parse(interests).map((interest, i) => (
-            <Text key={i}>{interest}</Text>
-          ))}
-        </HStack>
-        <HStack>
-          <chakra.h3
-            fontSize="xl"
-            fontWeight="bold"
-            //color={useColorModeValue("gray.800", "white")}
-          >
-            Other(s):
-          </chakra.h3>
 
-          <Text>{others}</Text>
-        </HStack>
+        <chakra.h3 fontSize="xl" fontWeight="bold">
+          Interest(s):
+        </chakra.h3>
+        {JSON.parse(interests).map((interest, i) => (
+          <Text key={i}>{interest}</Text>
+        ))}
+
+        <chakra.h3 fontSize="xl" fontWeight="bold">
+          Other(s):
+        </chakra.h3>
+
+        <Text>{others}</Text>
       </VStack>
     </span>
   );
