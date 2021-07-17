@@ -22,16 +22,47 @@ import { ArrowBackIcon } from "@chakra-ui/icons";
 
 import localboard from "../data/localboard.json";
 
+import { DataStore } from '@aws-amplify/datastore';
+import { LocalBoard } from '../models';
 
-const { useState } = React
+import { useEffect, useState } from "react";
 
 const localBoard = () => {
+    const [applications, setapplications] = useState([]);
+    useEffect(() => {
+        async function fetchApplications() {
+            const applicationsData = await DataStore.query(LocalBoard);
+            console.log(applicationsData);
+          setapplications(applicationsData);
+        }
+    
+        DataStore.observe(LocalBoard).subscribe(() => {
+          fetchApplications();
+        });
+        fetchApplications();
+      }, []);
+
   return (
+    <div>
+        <Button mt={1} colorScheme="teal" align="right" mr="10px">
+                <Link href="/local-board-/create"
+                    px={3}
+                    py={1}
+                    
+                    fontSize="sm"
+                    fontWeight="700"
+                    rounded="md"
+                    
+                >
+                    Create New
+                    
+                </Link>
+                </Button>
         <SimpleGrid minChildWidth="200px" spacing="2" mt="4" px={["4", "8"]}>
-      {localboard.map((localPost)=> {
+      {applications.map((localPost, i)=> {
        
         return (
-        <Card2 key={localPost.title} 
+        <Card2 key={i} 
         title = {localPost.title} 
         category={localPost.category}
         location = {localPost.location}
@@ -51,6 +82,7 @@ const localBoard = () => {
     }
     )}
     </SimpleGrid>
+    </div>
     
   )
     
@@ -160,7 +192,7 @@ const Card2 = ({ title, category, location, time, date_posted, tip, user_name, u
 
                 <Box mt={2}>
                 <chakra.p mt={2} color={useColorModeValue("gray.600", "gray.300")}>
-                Tip: {tip}
+                Tip: $ {Number.parseFloat(tip)}
                 </chakra.p>
                 </Box>
 

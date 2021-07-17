@@ -4,12 +4,23 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 
 
-type FriendsAmongUsMetaData = {
-  readOnlyFields: 'createdAt' | 'updatedAt';
-}
-
-type VolunteerFormMetaData = {
-  readOnlyFields: 'createdAt' | 'updatedAt';
+export declare class LocalBoard {
+  readonly id: string;
+  readonly category?: string;
+  readonly location?: number;
+  readonly time?: string;
+  readonly date_posted?: string;
+  readonly content?: string;
+  readonly user_name?: string;
+  readonly user_image?: string;
+  readonly tip?: number;
+  readonly email?: string;
+  readonly phone?: string;
+  readonly theme?: string;
+  readonly createdAt?: string;
+  readonly updatedAt?: string;
+  constructor(init: ModelInit<LocalBoard>);
+  static copyOf(source: LocalBoard, mutator: (draft: MutableModel<LocalBoard>) => MutableModel<LocalBoard> | void): LocalBoard;
 }
 
 export declare class FriendsAmongUs {
@@ -19,8 +30,8 @@ export declare class FriendsAmongUs {
   readonly others?: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
-  constructor(init: ModelInit<FriendsAmongUs, FriendsAmongUsMetaData>);
-  static copyOf(source: FriendsAmongUs, mutator: (draft: MutableModel<FriendsAmongUs, FriendsAmongUsMetaData>) => MutableModel<FriendsAmongUs, FriendsAmongUsMetaData> | void): FriendsAmongUs;
+  constructor(init: ModelInit<FriendsAmongUs>);
+  static copyOf(source: FriendsAmongUs, mutator: (draft: MutableModel<FriendsAmongUs>) => MutableModel<FriendsAmongUs> | void): FriendsAmongUs;
 }
 
 export declare class VolunteerForm {
@@ -36,6 +47,6 @@ export declare class VolunteerForm {
   readonly avatarKey?: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
-  constructor(init: ModelInit<VolunteerForm, VolunteerFormMetaData>);
-  static copyOf(source: VolunteerForm, mutator: (draft: MutableModel<VolunteerForm, VolunteerFormMetaData>) => MutableModel<VolunteerForm, VolunteerFormMetaData> | void): VolunteerForm;
+  constructor(init: ModelInit<VolunteerForm>);
+  static copyOf(source: VolunteerForm, mutator: (draft: MutableModel<VolunteerForm>) => MutableModel<VolunteerForm> | void): VolunteerForm;
 }

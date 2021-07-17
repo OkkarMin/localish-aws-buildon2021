@@ -1,3 +1,18 @@
+type LocalBoard @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  category: String
+  location: Int
+  time: String
+  date_posted: String
+  content: String
+  user_name: String
+  user_image: String
+  tip: Float
+  email: String
+  phone: String
+  theme: String
+}
+
 type FriendsAmongUs @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String
