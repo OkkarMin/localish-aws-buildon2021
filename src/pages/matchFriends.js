@@ -1,25 +1,20 @@
-import { useEffect, useState } from "react";
-import {
-  Box,
-  Text,
-  VStack,
-  Flex,
-  Heading,
-  Button,
-  HStack,
-  Center,
-} from "@chakra-ui/react";
+import { useEffect, useState, useContext } from "react";
+import { Box, Text, Heading, Button, HStack } from "@chakra-ui/react";
 import { ChatIcon, ArrowBackIcon } from "@chakra-ui/icons";
 
 import Link from "next/link";
 
 import { DataStore } from "@aws-amplify/datastore";
 import { FriendsAmongUs } from "../models";
-import FriendCard from "../components/friendAmongUs/friendCard";
 
 import TinderCard from "react-tinder-card";
 
+import FriendCard from "../components/friendAmongUs/friendCard";
+import { FriendMatchesContext } from "../context/FriendMatchesContext";
+
 const MatchFriends = () => {
+  const [matchList, setMatchList] = useContext(FriendMatchesContext);
+
   const [applications, setapplications] = useState([]);
   const [likedPerson, setlikedPerson] = useState();
   const [lastDirection, setLastDirection] = useState();
@@ -41,7 +36,8 @@ const MatchFriends = () => {
 
   const swiped = (direction, likedPerson) => {
     if (direction == "right") {
-      likeList.push(likedPerson);
+      //likeList.push(likedPerson);
+      setMatchList((prev) => [...prev, likedPerson]);
       setlikedPerson(likedPerson);
       setLastDirection(direction);
     }

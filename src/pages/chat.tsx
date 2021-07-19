@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useContext } from "react";
 
 import {
   Flex,
@@ -12,6 +12,8 @@ import {
   Box,
   Spacer,
 } from "@chakra-ui/react";
+
+import { FriendMatchesContext } from "../context/FriendMatchesContext";
 
 const ChatMessage = ({ message, isMe }) => (
   <Box alignSelf={isMe ? "flex-end" : "flex-start"}>
@@ -29,6 +31,7 @@ const ChatMessage = ({ message, isMe }) => (
 );
 
 const Chat = () => {
+  const [matchList, setMatchList] = useContext(FriendMatchesContext);
   const [messages, setMessages] = useState([
     { message: "Hello", isMe: true },
     { message: "World", isMe: false },
@@ -55,6 +58,7 @@ const Chat = () => {
             <Avatar name="Okkar Min" />
             <Text>Okkar Min</Text>
           </HStack>
+
           <HStack alignSelf="flex-start">
             <Avatar name="Ying Sheng" />
             <Text>Ying Sheng</Text>
@@ -63,6 +67,14 @@ const Chat = () => {
             <Avatar name="Surabhi" />
             <Text>Surabhi</Text>
           </HStack>
+          {matchList.map((friend, i) => {
+            return (
+              <HStack key={i} alignSelf="flex-start">
+                <Avatar name={friend} />
+                <Text>{friend}</Text>
+              </HStack>
+            );
+          })}
         </VStack>
       </VStack>
 
