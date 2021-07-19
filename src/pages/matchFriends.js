@@ -84,9 +84,11 @@ const MatchFriends = () => {
       ) : (
         <Text></Text>
       )}
-      <Button colorScheme="teal" positon="fixed" top="450">
-        <ChatIcon mr="2" /> Chats
-      </Button>
+      <Link href="/chat">
+        <Button colorScheme="teal" positon="fixed" top="450">
+          <ChatIcon mr="2" /> Chats
+        </Button>
+      </Link>
     </Box>
   );
 };
