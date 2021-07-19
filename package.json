@@ -1,6 +1,22 @@
 {
-  "name": "with-chakra-ui-typescript",
-  "version": "1.0.0",
+  "name": "localish-buildon2021",
+  "description": "Project for BuildOnASEAN 2021",
+  "homepage": "https://localish.ml",
+  "contributors": [
+    {
+      "name": "Okkar Min",
+      "url": "https://okkarm.in"
+    },
+    {
+      "name": "Surabhi",
+      "url": "https://surxbhi.github.io/"
+    },
+    {
+      "name": "Yeow Ying Sheng",
+      "url": "https://yeowys.com/"
+    }
+  ],
+  "version": "2.1.1",
   "scripts": {
     "dev": "next",
     "build": "next build",
