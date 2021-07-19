@@ -7,6 +7,8 @@ import theme from "../theme";
 import NavBar from "../components/layout/navbar";
 import Amplify from "@aws-amplify/core";
 
+import { FriendMatchesProvider } from "../context/FriendMatchesContext";
+
 Amplify.configure({
   aws_project_region: "ap-southeast-1",
   aws_appsync_graphqlEndpoint: process.env.NEXT_PUBLIC_GQL_URL,
@@ -26,55 +28,57 @@ Amplify.configure({
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ChakraProvider resetCSS theme={theme}>
-      <DefaultSeo
-        title="localish | hyper-local-communities"
-        description="Built for communities within clusters to bond over shared interests 🤝"
-        canonical="https://localish.ml"
-        openGraph={{
-          title: "localish | hyper-local-communities",
-          description:
-            "Built for communities within clusters to bond over shared interests 🤝",
-          url: "https://localish.ml",
-          images: [
+    <FriendMatchesProvider>
+      <ChakraProvider resetCSS theme={theme}>
+        <DefaultSeo
+          title="localish | hyper-local-communities"
+          description="Built for communities within clusters to bond over shared interests 🤝"
+          canonical="https://localish.ml"
+          openGraph={{
+            title: "localish | hyper-local-communities",
+            description:
+              "Built for communities within clusters to bond over shared interests 🤝",
+            url: "https://localish.ml",
+            images: [
+              {
+                url: "/meta_image.png",
+                width: 1200,
+                height: 628,
+                alt: "Localish site's meta image",
+              },
+            ],
+          }}
+          twitter={{
+            cardType: "summary_large_image",
+          }}
+          additionalLinkTags={[
             {
-              url: "/meta_image.png",
-              width: 1200,
-              height: 628,
-              alt: "Localish site's meta image",
+              rel: "apple-touch-icon",
+              sizes: "180x180",
+              href: "/apple-touch-icon.png",
             },
-          ],
-        }}
-        twitter={{
-          cardType: "summary_large_image",
-        }}
-        additionalLinkTags={[
-          {
-            rel: "apple-touch-icon",
-            sizes: "180x180",
-            href: "/apple-touch-icon.png",
-          },
-          {
-            rel: "icon",
-            type: "image/png",
-            sizes: "32x32",
-            href: "/favicon-32x32.png",
-          },
-          {
-            rel: "icon",
-            type: "image/png",
-            sizes: "16x16",
-            href: "/favicon-16x16.png",
-          },
-          {
-            rel: "manifest",
-            href: "/site.webmanifest",
-          },
-        ]}
-      />
-      <NavBar />
-      <Component {...pageProps} />
-    </ChakraProvider>
+            {
+              rel: "icon",
+              type: "image/png",
+              sizes: "32x32",
+              href: "/favicon-32x32.png",
+            },
+            {
+              rel: "icon",
+              type: "image/png",
+              sizes: "16x16",
+              href: "/favicon-16x16.png",
+            },
+            {
+              rel: "manifest",
+              href: "/site.webmanifest",
+            },
+          ]}
+        />
+        <NavBar />
+        <Component {...pageProps} />
+      </ChakraProvider>
+    </FriendMatchesProvider>
   );
 }
 
