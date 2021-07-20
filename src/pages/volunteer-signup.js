@@ -13,6 +13,7 @@ import {
   VStack,
   Textarea,
   useToast,
+  Select,
 } from "@chakra-ui/react";
 
 import { Formik, Form, Field } from "formik";
@@ -20,7 +21,7 @@ import { Formik, Form, Field } from "formik";
 import { DataStore } from "@aws-amplify/datastore";
 import { Storage } from "aws-amplify";
 
-import { VolunteerForm } from "../models";
+import { VolunteerForm2 } from "../models";
 
 const VolunteerSignup = () => {
   const [file, setFile] = useState({
@@ -41,15 +42,6 @@ const VolunteerSignup = () => {
   const toast = useToast();
 
   const setFormDetails = async (values) => {
-    let name = values.name;
-    let email = values.email;
-    let address = values.address;
-    let phone = values.phone;
-    let daysFree = JSON.stringify(values.daysFree);
-    let commonLanguage = JSON.stringify(values.commonLanguage);
-    let dialects = JSON.stringify(values.dialects);
-    let experience = values.experience;
-
     const saltedAvatarKey = Math.random() + file.targetFile.name;
 
     try {
@@ -60,15 +52,28 @@ const VolunteerSignup = () => {
       console.log(result);
 
       await DataStore.save(
-        new VolunteerForm({
-          name: name,
-          email: email,
-          address: address,
-          phone: phone,
-          daysFree: daysFree,
-          commonLanguage: commonLanguage,
-          dialects: dialects,
-          experience: experience,
+        new VolunteerForm2({
+          name: values.name,
+          nric: values.nric,
+          dateOfBirth: values.dateOfBirth,
+          gender: values.gender,
+          race: values.race,
+          maritalStatus: values.maritalStatus,
+          nationality: values.nationality,
+          countryOfBirth: values.countryOfBirth,
+          religion: values.religion,
+          commonLanguage: JSON.stringify(values.commonLanguage),
+          dialects: JSON.stringify(values.dialects),
+          highestEducation: values.highestEducation,
+          address: values.address,
+          postalCode: values.postalCode,
+          phone: values.phone,
+          email: values.email,
+          typeOfDwelling: values.typeOfDwelling,
+          occupation: values.occupation,
+          employerName: values.employerName,
+          experience: values.experience,
+          daysFree: JSON.stringify(values.daysFree),
           avatarKey: result.key,
         })
       );
@@ -97,10 +102,98 @@ const VolunteerSignup = () => {
     return error;
   }
 
-  function validateEmail(value) {
+  function validateNRIC(value) {
     let error;
     if (!value) {
-      error = "Email is required";
+      error = "NRIC is required";
+    }
+    return error;
+  }
+
+  function validateDateOfBirth(value) {
+    let error;
+    if (!value) {
+      error = "Date of Birth is required";
+    }
+    return error;
+  }
+
+  function validateGender(value) {
+    let error;
+    if (!value) {
+      error = "Gender is required";
+    }
+    return error;
+  }
+
+  function validateRace(value) {
+    let error;
+    if (!value) {
+      error = "Race is required";
+    }
+    return error;
+  }
+
+  function validateMaritalStatus(value) {
+    let error;
+    if (!value) {
+      error = "Marital status is required";
+    }
+    return error;
+  }
+
+  function validateNationality(value) {
+    let error;
+    if (!value) {
+      error = "Nationality is required";
+    }
+    return error;
+  }
+
+  function validateCountryOfBirth(value) {
+    let error;
+    if (!value) {
+      error = "Country of birth is required";
+    }
+    return error;
+  }
+
+  function validateReligion(value) {
+    let error;
+    if (!value) {
+      error = "Religion is required";
+    }
+    return error;
+  }
+
+  function validateCommonLanguage(value) {
+    let error;
+    if (value.length == 0) {
+      error = "Common language is required";
+    }
+    return error;
+  }
+
+  function validateHighestEducation(value) {
+    let error;
+    if (!value) {
+      error = "Highest education is required";
+    }
+    return error;
+  }
+
+  function validateAddress(value) {
+    let error;
+    if (!value) {
+      error = "Address is required";
+    }
+    return error;
+  }
+
+  function validatePostalCode(value) {
+    let error;
+    if (!value) {
+      error = "Postal code is required";
     }
     return error;
   }
@@ -116,10 +209,34 @@ const VolunteerSignup = () => {
     return error;
   }
 
-  function validateAddress(value) {
+  function validateEmail(value) {
     let error;
     if (!value) {
-      error = "Address is required";
+      error = "Email is required";
+    }
+    return error;
+  }
+
+  function validateTypeOfDwelling(value) {
+    let error;
+    if (!value) {
+      error = "Type of dwelling is required";
+    }
+    return error;
+  }
+
+  function validateOccupation(value) {
+    let error;
+    if (!value) {
+      error = "Occupation is required";
+    }
+    return error;
+  }
+
+  function validateEmployerName(value) {
+    let error;
+    if (!value) {
+      error = "Employer/Company is required";
     }
     return error;
   }
@@ -128,14 +245,6 @@ const VolunteerSignup = () => {
     let error;
     if (value.length == 0) {
       error = "Day(s) free to volunteer is required";
-    }
-    return error;
-  }
-
-  function validateCommonLanguage(value) {
-    let error;
-    if (value.length == 0) {
-      error = "Common language is required";
     }
     return error;
   }
@@ -162,13 +271,26 @@ const VolunteerSignup = () => {
         <Formik
           initialValues={{
             name: "",
-            email: "",
-            phone: "",
-            address: "",
-            daysFree: [],
+            nric: "",
+            dateOfBirth: "",
+            gender: "",
+            race: "",
+            maritalStatus: "",
+            nationality: "",
+            countryOfBirth: "",
+            religion: "",
             commonLanguage: [],
             dialects: [],
+            highestEducation: "",
+            address: "",
+            postalCode: "",
+            phone: "",
+            email: "",
+            typeOfDwelling: "",
+            occupation: "",
+            employerName: "",
             experience: "",
+            daysFree: [],
           }}
           onSubmit={(values, { resetForm }) => {
             JSON.stringify(values);
@@ -195,19 +317,294 @@ const VolunteerSignup = () => {
                   </FormControl>
                 )}
               </Field>
-              <Field name="email" validate={validateEmail}>
+
+              <Field name="nric" validate={validateNRIC}>
                 {({ field, form }) => (
                   <FormControl
-                    isInvalid={form.errors.email && form.touched.email}
+                    isInvalid={form.errors.nric && form.touched.nric}
                   >
-                    <FormLabel marginTop="2" htmlFor="email">
-                      Email
+                    <FormLabel marginTop="2" htmlFor="name">
+                      NRIC
                     </FormLabel>
-                    <Input {...field} id="email" placeholder="email" />
-                    <FormErrorMessage>{form.errors.email}</FormErrorMessage>
+                    <Input {...field} id="nric" placeholder="nric" />
+                    <FormErrorMessage>{form.errors.nric}</FormErrorMessage>
                   </FormControl>
                 )}
               </Field>
+
+              <Field name="dateOfBirth" validate={validateDateOfBirth}>
+                {({ field, form }) => (
+                  <FormControl
+                    isInvalid={
+                      form.errors.dateOfBirth && form.touched.dateOfBirth
+                    }
+                  >
+                    <FormLabel marginTop="2" htmlFor="dateOfBirth">
+                      Date of Birth
+                    </FormLabel>
+                    <Input
+                      {...field}
+                      id="dateOfBirth"
+                      placeholder="dateOfBirth"
+                    />
+                    <FormErrorMessage>
+                      {form.errors.dateOfBirth}
+                    </FormErrorMessage>
+                  </FormControl>
+                )}
+              </Field>
+
+              <Field as="select" name="gender" validate={validateGender}>
+                {({ field, form }) => (
+                  <FormControl
+                    isInvalid={form.errors.gender && form.touched.gender}
+                  >
+                    <FormLabel marginTop="2" htmlFor="gender">
+                      Gender
+                    </FormLabel>
+                    {/* <Input /> */}
+                    <Select {...field} id="gender" placeholder="gender">
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                    </Select>
+                    <FormErrorMessage>{form.errors.gender}</FormErrorMessage>
+                  </FormControl>
+                )}
+              </Field>
+
+              <Field name="race" validate={validateRace}>
+                {({ field, form }) => (
+                  <FormControl
+                    isInvalid={form.errors.race && form.touched.race}
+                  >
+                    <FormLabel marginTop="2" htmlFor="race">
+                      Race
+                    </FormLabel>
+                    <Input {...field} id="race" placeholder="race" />
+                    <FormErrorMessage>{form.errors.race}</FormErrorMessage>
+                  </FormControl>
+                )}
+              </Field>
+
+              <Field
+                as="select"
+                name="maritalStatus"
+                validate={validateMaritalStatus}
+              >
+                {({ field, form }) => (
+                  <FormControl
+                    isInvalid={
+                      form.errors.maritalStatus && form.touched.maritalStatus
+                    }
+                  >
+                    <FormLabel marginTop="2" htmlFor="maritalStatus">
+                      Marital status
+                    </FormLabel>
+                    <Select
+                      {...field}
+                      id="maritalStatus"
+                      placeholder="maritalStatus"
+                    >
+                      <option value="Male">Single</option>
+                      <option value="Married">Married</option>
+                      <option value="Widowed">Widowed</option>
+                      <option value="Divorce/Separated">
+                        Divorce/Separated
+                      </option>
+                    </Select>
+                    <FormErrorMessage>
+                      {form.errors.maritalStatus}
+                    </FormErrorMessage>
+                  </FormControl>
+                )}
+              </Field>
+
+              <Field name="nationality" validate={validateNationality}>
+                {({ field, form }) => (
+                  <FormControl
+                    isInvalid={
+                      form.errors.nationality && form.touched.nationality
+                    }
+                  >
+                    <FormLabel marginTop="2" htmlFor="nationality">
+                      Nationality
+                    </FormLabel>
+                    <Input
+                      {...field}
+                      id="nationality"
+                      placeholder="nationality"
+                    />
+                    <FormErrorMessage>
+                      {form.errors.nationality}
+                    </FormErrorMessage>
+                  </FormControl>
+                )}
+              </Field>
+
+              <Field name="countryOfBirth" validate={validateCountryOfBirth}>
+                {({ field, form }) => (
+                  <FormControl
+                    isInvalid={
+                      form.errors.countryOfBirth && form.touched.countryOfBirth
+                    }
+                  >
+                    <FormLabel marginTop="2" htmlFor="countryOfBirth">
+                      Country of Birth
+                    </FormLabel>
+                    <Input
+                      {...field}
+                      id="countryOfBirth"
+                      placeholder="countryOfBirth"
+                    />
+                    <FormErrorMessage>
+                      {form.errors.countryOfBirth}
+                    </FormErrorMessage>
+                  </FormControl>
+                )}
+              </Field>
+
+              <Field name="religion" validate={validateReligion}>
+                {({ field, form }) => (
+                  <FormControl
+                    isInvalid={form.errors.religion && form.touched.religion}
+                  >
+                    <FormLabel marginTop="2" htmlFor="religion">
+                      Religion
+                    </FormLabel>
+                    <Input {...field} id="religion" placeholder="religion" />
+                    <FormErrorMessage>{form.errors.religion}</FormErrorMessage>
+                  </FormControl>
+                )}
+              </Field>
+
+              <Field name="commonLanguage" validate={validateCommonLanguage}>
+                {({ field, form }) => (
+                  <FormControl
+                    isInvalid={
+                      form.errors.commonLanguage && form.touched.commonLanguage
+                    }
+                  >
+                    <FormLabel marginTop="2" htmlFor="daysFree">
+                      Common language
+                    </FormLabel>
+                    <VStack justify="space-around" align="left">
+                      <Checkbox {...field} value="English">
+                        English
+                      </Checkbox>
+                      <Checkbox {...field} value="Chinese">
+                        Chinese
+                      </Checkbox>
+                      <Checkbox {...field} value="Malay">
+                        Malay
+                      </Checkbox>
+                      <Checkbox {...field} value="Tamil">
+                        Tamil
+                      </Checkbox>
+                    </VStack>
+                    <FormErrorMessage>
+                      {form.errors.commonLanguage}
+                    </FormErrorMessage>
+                  </FormControl>
+                )}
+              </Field>
+
+              <Field name="dialects">
+                {({ field, form }) => (
+                  <FormControl>
+                    <FormLabel marginTop="2" htmlFor="dialects">
+                      Dialects
+                    </FormLabel>
+                    <VStack justify="space-around" align="left">
+                      <Checkbox {...field} value="Hokkien">
+                        Hokkien
+                      </Checkbox>
+                      <Checkbox {...field} value="TeoChew">
+                        TeoChew
+                      </Checkbox>
+                      <Checkbox {...field} value="Cantonese">
+                        Cantonese
+                      </Checkbox>
+                      <Checkbox {...field} value="Hakka">
+                        Hakka
+                      </Checkbox>
+                      <Checkbox {...field} value="Hindi">
+                        Hindi
+                      </Checkbox>
+                    </VStack>
+                  </FormControl>
+                )}
+              </Field>
+
+              <Field
+                as="select"
+                name="highestEducation"
+                validate={validateHighestEducation}
+              >
+                {({ field, form }) => (
+                  <FormControl
+                    isInvalid={
+                      form.errors.highestEducation &&
+                      form.touched.highestEducation
+                    }
+                  >
+                    <FormLabel marginTop="2" htmlFor="highestEducation">
+                      Highest Education
+                    </FormLabel>
+                    <Select
+                      {...field}
+                      id="highestEducation"
+                      placeholder="highestEducation"
+                    >
+                      <option value="Primary">Primary</option>
+                      <option value="Secondary">Secondary</option>
+                      <option value="GCE N/O">GCE N/O</option>
+                      <option value="ITE">ITE</option>
+                      <option value="GCE A">GCE A</option>
+                      <option value="Diploma">Diploma</option>
+                      <option value="Pass Degree">Pass Degree</option>
+                      <option value="Honours Degree">Honours Degree</option>
+                      <option value="Master Degree">Master Degree</option>
+                      <option value="Docterate">Docterate</option>
+                    </Select>
+                    <FormErrorMessage>
+                      {form.errors.highestEducation}
+                    </FormErrorMessage>
+                  </FormControl>
+                )}
+              </Field>
+
+              <Field name="address" validate={validateAddress}>
+                {({ field, form }) => (
+                  <FormControl
+                    isInvalid={form.errors.address && form.touched.address}
+                  >
+                    <FormLabel marginTop="2" htmlFor="address">
+                      Address
+                    </FormLabel>
+                    <Input {...field} id="address" placeholder="address" />
+                    <FormErrorMessage>{form.errors.address}</FormErrorMessage>
+                  </FormControl>
+                )}
+              </Field>
+
+              <Field name="postalCode" validate={validatePostalCode}>
+                {({ field, form }) => (
+                  <FormControl
+                    isInvalid={
+                      form.errors.postalCode && form.touched.postalCode
+                    }
+                  >
+                    <FormLabel marginTop="2" htmlFor="zip">
+                      Postal Code
+                    </FormLabel>
+                    <Input {...field} id="zip" placeholder="postalCode" />
+                    <FormErrorMessage>
+                      {form.errors.postalCode}
+                    </FormErrorMessage>
+                  </FormControl>
+                )}
+              </Field>
+
               <Field name="phone" validate={validatePhone}>
                 {({ field, form }) => (
                   <FormControl
@@ -221,16 +618,97 @@ const VolunteerSignup = () => {
                   </FormControl>
                 )}
               </Field>
-              <Field name="address" validate={validateAddress}>
+
+              <Field name="email" validate={validateEmail}>
                 {({ field, form }) => (
                   <FormControl
-                    isInvalid={form.errors.address && form.touched.address}
+                    isInvalid={form.errors.email && form.touched.email}
                   >
-                    <FormLabel marginTop="2" htmlFor="address">
-                      Address
+                    <FormLabel marginTop="2" htmlFor="email">
+                      Email
                     </FormLabel>
-                    <Input {...field} id="address" placeholder="address" />
-                    <FormErrorMessage>{form.errors.address}</FormErrorMessage>
+                    <Input {...field} id="email" placeholder="email" />
+                    <FormErrorMessage>{form.errors.email}</FormErrorMessage>
+                  </FormControl>
+                )}
+              </Field>
+
+              <Field
+                as="select"
+                name="typeOfDwelling"
+                validate={validateTypeOfDwelling}
+              >
+                {({ field, form }) => (
+                  <FormControl
+                    isInvalid={
+                      form.errors.typeOfDwelling && form.touched.typeOfDwelling
+                    }
+                  >
+                    <FormLabel marginTop="2" htmlFor="typeOfDwelling">
+                      Type of Dwelling
+                    </FormLabel>
+                    <Select
+                      {...field}
+                      id="typeOfDwelling"
+                      placeholder="typeOfDwelling"
+                    >
+                      <option value="HDB">HDB</option>
+                      <option value="HDB Executive">HDB Executive</option>
+                      <option value="HUDC">HUDC</option>
+                      <option value="Semi Detached/Terrace">
+                        Semi Detached/Terrace
+                      </option>
+                      <option value="Condo/Private Apartment">
+                        Condo/Private Apartment
+                      </option>
+                    </Select>
+                    <FormErrorMessage>
+                      {form.errors.typeOfDwelling}
+                    </FormErrorMessage>
+                  </FormControl>
+                )}
+              </Field>
+
+              <Field name="occupation" validate={validateOccupation}>
+                {({ field, form }) => (
+                  <FormControl
+                    isInvalid={
+                      form.errors.occupation && form.touched.occupation
+                    }
+                  >
+                    <FormLabel marginTop="2" htmlFor="occupation">
+                      Occupation
+                    </FormLabel>
+                    <Input
+                      {...field}
+                      id="occupation"
+                      placeholder="occupation"
+                    />
+                    <FormErrorMessage>
+                      {form.errors.occupation}
+                    </FormErrorMessage>
+                  </FormControl>
+                )}
+              </Field>
+
+              <Field name="employerName" validate={validateEmployerName}>
+                {({ field, form }) => (
+                  <FormControl
+                    isInvalid={
+                      form.errors.employerName && form.touched.employerName
+                    }
+                  >
+                    <FormLabel marginTop="2" htmlFor="employerName">
+                      Employer/Company Name
+                    </FormLabel>
+                    <Input
+                      {...field}
+                      id="employerName"
+                      placeholder="Employer/Company Name"
+                    />
+                    <FormErrorMessage>
+                      {form.errors.employerName}
+                    </FormErrorMessage>
                   </FormControl>
                 )}
               </Field>
@@ -290,64 +768,6 @@ const VolunteerSignup = () => {
                       </FormErrorMessage>
                     </FormControl>
                   </VStack>
-                )}
-              </Field>
-
-              <Field name="commonLanguage" validate={validateCommonLanguage}>
-                {({ field, form }) => (
-                  <FormControl
-                    isInvalid={
-                      form.errors.commonLanguage && form.touched.commonLanguage
-                    }
-                  >
-                    <FormLabel marginTop="2" htmlFor="daysFree">
-                      Common language
-                    </FormLabel>
-                    <VStack justify="space-around" align="left">
-                      <Checkbox {...field} value="English">
-                        English
-                      </Checkbox>
-                      <Checkbox {...field} value="Chinese">
-                        Chinese
-                      </Checkbox>
-                      <Checkbox {...field} value="Malay">
-                        Malay
-                      </Checkbox>
-                      <Checkbox {...field} value="Tamil">
-                        Tamil
-                      </Checkbox>
-                    </VStack>
-                    <FormErrorMessage>
-                      {form.errors.commonLanguage}
-                    </FormErrorMessage>
-                  </FormControl>
-                )}
-              </Field>
-
-              <Field name="dialects">
-                {({ field, form }) => (
-                  <FormControl>
-                    <FormLabel marginTop="2" htmlFor="dialects">
-                      Dialects
-                    </FormLabel>
-                    <VStack justify="space-around" align="left">
-                      <Checkbox {...field} value="Hokkien">
-                        Hokkien
-                      </Checkbox>
-                      <Checkbox {...field} value="TeoChew">
-                        TeoChew
-                      </Checkbox>
-                      <Checkbox {...field} value="Cantonese">
-                        Cantonese
-                      </Checkbox>
-                      <Checkbox {...field} value="Hakka">
-                        Hakka
-                      </Checkbox>
-                      <Checkbox {...field} value="Hindi">
-                        Hindi
-                      </Checkbox>
-                    </VStack>
-                  </FormControl>
                 )}
               </Field>
 

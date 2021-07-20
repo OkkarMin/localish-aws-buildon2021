@@ -4,6 +4,10 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 
 
+type VolunteerForm2MetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
 type LocalBoardMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
@@ -14,6 +18,36 @@ type FriendsAmongUsMetaData = {
 
 type VolunteerFormMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
+export declare class VolunteerForm2 {
+  readonly id: string;
+  readonly name?: string;
+  readonly nric?: string;
+  readonly dateOfBirth?: string;
+  readonly gender?: string;
+  readonly race?: string;
+  readonly maritalStatus?: string;
+  readonly nationality?: string;
+  readonly countryOfBirth?: string;
+  readonly religion?: string;
+  readonly commonLanguage?: string;
+  readonly dialects?: string;
+  readonly highestEducation?: string;
+  readonly address?: string;
+  readonly phone?: string;
+  readonly email?: string;
+  readonly typeOfDwelling?: string;
+  readonly occupation?: string;
+  readonly employerName?: string;
+  readonly experience?: string;
+  readonly daysFree?: string;
+  readonly avatarKey?: string;
+  readonly postalCode?: string;
+  readonly createdAt?: string;
+  readonly updatedAt?: string;
+  constructor(init: ModelInit<VolunteerForm2, VolunteerForm2MetaData>);
+  static copyOf(source: VolunteerForm2, mutator: (draft: MutableModel<VolunteerForm2, VolunteerForm2MetaData>) => MutableModel<VolunteerForm2, VolunteerForm2MetaData> | void): VolunteerForm2;
 }
 
 export declare class LocalBoard {

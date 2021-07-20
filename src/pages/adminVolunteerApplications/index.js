@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 import { DataStore } from "@aws-amplify/datastore";
-import { VolunteerForm } from "../../models";
+import { VolunteerForm2 } from "../../models";
 import VolunteerCard from "../../components/volunteerApplication/VolunteerCard";
 
 const MotionBox = motion(Box);
@@ -14,12 +14,12 @@ const index = () => {
 
   useEffect(() => {
     async function fetchApplications() {
-      const applicationsData = await DataStore.query(VolunteerForm);
+      const applicationsData = await DataStore.query(VolunteerForm2);
 
       setapplications(applicationsData);
     }
 
-    DataStore.observe(VolunteerForm).subscribe(() => {
+    DataStore.observe(VolunteerForm2).subscribe(() => {
       fetchApplications();
     });
     fetchApplications();

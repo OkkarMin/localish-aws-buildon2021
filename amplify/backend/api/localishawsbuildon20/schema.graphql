@@ -1,3 +1,29 @@
+type VolunteerForm2 @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  nric: String
+  dateOfBirth: String
+  gender: String
+  race: String
+  maritalStatus: String
+  nationality: String
+  countryOfBirth: String
+  religion: String
+  commonLanguage: AWSJSON
+  dialects: AWSJSON
+  highestEducation: String
+  address: String
+  phone: String
+  email: String
+  typeOfDwelling: String
+  occupation: String
+  employerName: String
+  experience: String
+  daysFree: String
+  avatarKey: String
+  postalCode: String
+}
+
 type LocalBoard @model @auth(rules: [{allow: public}]) {
   id: ID!
   category: String

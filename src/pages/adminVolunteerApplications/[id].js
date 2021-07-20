@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { VStack, HStack, Box, Text, Button, Avatar } from "@chakra-ui/react";
 
 import { DataStore } from "@aws-amplify/datastore";
-import { VolunteerForm } from "../../models";
+import { VolunteerForm2 } from "../../models";
 import { Storage } from "aws-amplify";
 
 export default function Form() {
@@ -15,7 +15,7 @@ export default function Form() {
 
   useEffect(async () => {
     const { id } = router.query;
-    const result = await DataStore.query(VolunteerForm, id);
+    const result = await DataStore.query(VolunteerForm2, id);
 
     const data = await Storage.get(result.avatarKey);
     setAvatar(data);
@@ -43,28 +43,52 @@ export default function Form() {
           </HStack>
           <HStack>
             <Text fontSize="xl" fontWeight="bold">
-              Contact:
+              NRIC:
             </Text>
-            <Text>{form.phone}</Text>
+            <Text>{form.nric}</Text>
           </HStack>
           <HStack>
             <Text fontSize="xl" fontWeight="bold">
-              Address:
+              Date of Birth:
             </Text>
-            <Text>{form.address}</Text>
+            <Text>{form.dateOfBirth}</Text>
           </HStack>
           <HStack>
             <Text fontSize="xl" fontWeight="bold">
-              Email:
+              Gender:
             </Text>
-            <Text>{form.email}</Text>
+            <Text>{form.gender}</Text>
           </HStack>
-          <VStack>
+          <HStack>
             <Text fontSize="xl" fontWeight="bold">
-              Experience:
+              Race:
             </Text>
-            <Text>{form.experience}</Text>
-          </VStack>
+            <Text>{form.race}</Text>
+          </HStack>
+          <HStack>
+            <Text fontSize="xl" fontWeight="bold">
+              Marital status:
+            </Text>
+            <Text>{form.maritalStatus}</Text>
+          </HStack>
+          <HStack>
+            <Text fontSize="xl" fontWeight="bold">
+              Nationality:
+            </Text>
+            <Text>{form.nationality}</Text>
+          </HStack>
+          <HStack>
+            <Text fontSize="xl" fontWeight="bold">
+              Country of Birth:
+            </Text>
+            <Text>{form.countryOfBirth}</Text>
+          </HStack>
+          <HStack>
+            <Text fontSize="xl" fontWeight="bold">
+              Religion:
+            </Text>
+            <Text>{form.religion}</Text>
+          </HStack>
           <HStack>
             <Text fontSize="xl" fontWeight="bold">
               Common language(s):
@@ -82,6 +106,70 @@ export default function Form() {
                 return <Text key={i}>{dialect}</Text>;
               })}
           </HStack>
+          <HStack>
+            <Text fontSize="xl" fontWeight="bold">
+              Highest Education:
+            </Text>
+            <Text>{form.highestEducation}</Text>
+          </HStack>
+          <HStack>
+            <Text fontSize="xl" fontWeight="bold">
+              Address:
+            </Text>
+            <Text>{form.address}</Text>
+          </HStack>
+          <HStack>
+            <Text fontSize="xl" fontWeight="bold">
+              Postal Code:
+            </Text>
+            <Text>{form.postalCode}</Text>
+          </HStack>
+          <HStack>
+            <Text fontSize="xl" fontWeight="bold">
+              Contact:
+            </Text>
+            <Text>{form.phone}</Text>
+          </HStack>
+          <HStack>
+            <Text fontSize="xl" fontWeight="bold">
+              Email:
+            </Text>
+            <Text>{form.email}</Text>
+          </HStack>
+          <HStack>
+            <Text fontSize="xl" fontWeight="bold">
+              Type of Dwelling:
+            </Text>
+            <Text>{form.typeOfDwelling}</Text>
+          </HStack>
+          <HStack>
+            <Text fontSize="xl" fontWeight="bold">
+              Occupation:
+            </Text>
+            <Text>{form.occupation}</Text>
+          </HStack>
+          <HStack>
+            <Text fontSize="xl" fontWeight="bold">
+              Employer/Company Name:
+            </Text>
+            <Text>{form.employerNameail}</Text>
+          </HStack>
+          <VStack>
+            <Text fontSize="xl" fontWeight="bold">
+              Experience:
+            </Text>
+            <Text>{form.experience}</Text>
+          </VStack>
+          <HStack>
+            <Text fontSize="xl" fontWeight="bold">
+              Day(s) free:
+            </Text>
+            {form.daysFree &&
+              JSON.parse(form.daysFree).map((dayFree, i) => {
+                return <Text key={i}>{dayFree}</Text>;
+              })}
+          </HStack>
+
           <HStack spacing="10">
             <Button colorScheme="green">Accept</Button>
             <Button colorScheme="red">Reject</Button>
