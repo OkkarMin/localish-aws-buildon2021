@@ -2,6 +2,7 @@ import React from "react";
 import {
   chakra,
   Box,
+  Spacer,
   FormControl,
   FormLabel,
   FormErrorMessage,
@@ -11,9 +12,12 @@ import {
   Textarea,
   HStack,
   VStack,
+  InputLeftElement,
   useColorModeValue,
   SimpleGrid,
   Button,
+  InputGroup,
+
   Flex,
   useToast,
   Link as ChakraLink,
@@ -23,7 +27,7 @@ import { Formik, Form, Field } from "formik";
 import { DataStore } from '@aws-amplify/datastore';
 import { LocalBoard } from '../../models';
 
-import { TriangleUpIcon, ExternalLinkIcon, ChatIcon } from '@chakra-ui/icons'
+import { PhoneIcon, ExternalLinkIcon, ChatIcon } from '@chakra-ui/icons'
 
 import { ArrowBackIcon } from "@chakra-ui/icons";
 const { useState } = React
@@ -44,6 +48,7 @@ const LocalBoardNew = () => {
     let tip = values.tip;
     let user_image = values.user_image;
     let content = values.content;
+    let details = values.details;
     let theme = "";
 
     if (value == "Offer"){
@@ -56,21 +61,7 @@ const LocalBoardNew = () => {
       theme = "blue"
     }
     {console.log(value)}
-  //   await DataStore.save(
-  //     new LocalBoard({
-  //     "category": "Lorem ipsum dolor sit amet",
-  //     "location": 1020,
-  //     "time": "Lorem ipsum dolor sit amet",
-  //     "date_posted": "Lorem ipsum dolor sit amet",
-  //     "content": "Lorem ipsum dolor sit amet",
-  //     "user_name": "Lorem ipsum dolor sit amet",
-  //     "user_image": "Lorem ipsum dolor sit amet",
-  //     "tip": 1020,
-  //     "email": "Lorem ipsum dolor sit amet",
-  //     "phone": "Lorem ipsum dolor sit amet",
-  //     "them": "Lorem ipsum dolor sit amet"
-  //   })
-  // );
+
     await DataStore.save(
       
       new LocalBoard({
@@ -195,7 +186,8 @@ const LocalBoardNew = () => {
             tip : "",
             user_name : "",
             user_image : "",
-            content : ""
+            content : "",
+            details : ""
           }}
           onSubmit={(values, { resetForm }) => {
             JSON.stringify(values);
@@ -206,7 +198,22 @@ const LocalBoardNew = () => {
           }}
         >
           {(props) => (
-            <Form>
+
+            <Box align = "center"> <chakra.p fontFamily={'Work Sans'} fontWeight={'bold'} fontSize={50}> Create New Local Board Post</chakra.p>
+            <Box  backgroundColor = "pink" rounded={'xl'} width = "640px"  
+            padding= '20px' mb = "20px"
+
+
+            >
+            <Box width = "600px" align="left"  bg={useColorModeValue('white', 'gray.800')}
+            rounded={'xl'}
+            //mt={'100px'}
+            
+            padding= '20px'
+            
+            >
+            <Form mx={4}
+                    my={1}>
               <Field name="category" >
                 {({ field, form }) => (
                   <FormControl
@@ -265,7 +272,13 @@ const LocalBoardNew = () => {
                     <FormLabel marginTop="2" htmlFor="phone">
                       Phone number
                     </FormLabel>
+                    <InputGroup>
+                    <InputLeftElement
+                      pointerEvents="none"
+                      children={<PhoneIcon color="gray.300" />}
+                    />
                     <Input {...field} id="phone" placeholder="phone" />
+                    </InputGroup>
                     <FormErrorMessage>{form.errors.phone}</FormErrorMessage>
                   </FormControl>
                 )}
@@ -276,7 +289,7 @@ const LocalBoardNew = () => {
                     isInvalid={form.errors.location && form.touched.location}
                   >
                     <FormLabel marginTop="2" htmlFor="location">
-                      Address
+                      Postal Code
                     </FormLabel>
                     <Input {...field} id="location" placeholder="postal code" />
                     <FormErrorMessage>{form.errors.location}</FormErrorMessage>
@@ -306,7 +319,15 @@ const LocalBoardNew = () => {
                     <FormLabel marginTop="2" htmlFor="tip">
                       Tip: $
                     </FormLabel>
+                    <InputGroup>
+                      <InputLeftElement
+                        pointerEvents="none"
+                        color="gray.300"
+                        fontSize="1.2em"
+                        children="$"
+                      />
                     <Input {...field} id="tip" placeholder="tip" />
+                    </InputGroup>
                     <FormErrorMessage>{form.errors.tip}</FormErrorMessage>
                   </FormControl>
                 )}
@@ -317,14 +338,27 @@ const LocalBoardNew = () => {
                     isInvalid={form.errors.time && form.touched.time}
                   >
                     <FormLabel marginTop="2" htmlFor="time">
-                      Time
+                      Which date are you offering for?
                     </FormLabel>
-                    <Input {...field} id="name" placeholder="time" />
+                    <Input type="date" {...field} id="time" placeholder="time" />
                     <FormErrorMessage>{form.errors.time}</FormErrorMessage>
                   </FormControl>
                 )}
               </Field>
-
+              <Field name="details" >
+                {({ field, form }) => (
+                  <FormControl>
+                    <FormLabel marginTop="2" htmlFor="details">
+                      Any additional details?
+                    </FormLabel>
+                    <Textarea
+                      {...field}
+                      id="details"
+                      placeholder="Details"
+                    />
+                  </FormControl>
+                )}
+              </Field>
               <Field name="date_posted" validate={validateDate}>
                 {({ field, form }) => (
                   <FormControl
@@ -333,7 +367,7 @@ const LocalBoardNew = () => {
                     <FormLabel marginTop="2" htmlFor="date_posted">
                       Date Posted
                     </FormLabel>
-                    <Input {...field} id="date_posted" placeholder="date posted" />
+                    <Input type="date" {...field} id="date_posted" placeholder="date posted" />
                     <FormErrorMessage>{form.errors.date_posted}</FormErrorMessage>
                   </FormControl>
                 )}
@@ -351,16 +385,21 @@ const LocalBoardNew = () => {
                   </FormControl>
                 )}
               </Field>
-
+              <Box align = "right"> 
               <Button
                 mt={4}
-                colorScheme="teal"
+                colorScheme="pink"
                 //isLoading={props.isSubmitting}
                 type="submit"
               >
                 Submit
               </Button>
+              </Box>
+              
             </Form>
+            </Box>
+            </Box>
+            </Box>
           )}
         </Formik>
       </Flex>
