@@ -16,7 +16,7 @@ import { EditIcon } from "@chakra-ui/icons";
 
 import { VscMortarBoard } from "react-icons/vsc";
 import { GiThreeFriends } from "react-icons/gi";
-import { MdLocalActivity } from "react-icons/md";
+import { MdLocalActivity, MdChatBubbleOutline } from "react-icons/md";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { IoNewspaperOutline } from "react-icons/io5";
 
@@ -58,6 +58,11 @@ const DrawerMenu = ({ isOpen, onClose }) => {
             itemName="Friend Among Us"
             icon={<GiThreeFriends />}
             href="/friendAmongUs"
+          />
+          <DrawerMenuItem
+            itemName="Chats"
+            icon={<MdChatBubbleOutline />}
+            href="/chat"
           />
           <DrawerMenuItem
             itemName="Neighbourhood Activitites"
