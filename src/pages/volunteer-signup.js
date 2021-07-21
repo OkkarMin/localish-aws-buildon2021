@@ -351,6 +351,7 @@ const VolunteerSignup = () => {
                           {...field}
                           id="dateOfBirth"
                           placeholder="dateOfBirth"
+                          type="date"
                         />
                         <FormErrorMessage>
                           {form.errors.dateOfBirth}
