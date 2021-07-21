@@ -41,10 +41,10 @@ export default function Form() {
         padding="10"
         shadow="xl"
       >
-        <Avatar size="xl" src={avatar} />
+        <Avatar size="xl" src={avatar} mb="5" />
 
         <VStack>
-          <SimpleGrid columns={2} spacing="5">
+          <SimpleGrid align="left" columns={2} spacing="5">
             <HStack>
               <Text fontSize="lg" fontWeight="bold">
                 Name:
@@ -166,12 +166,6 @@ export default function Form() {
             </HStack>
             <HStack>
               <Text fontSize="lg" fontWeight="bold">
-                Experience:
-              </Text>
-              <Text>{form.experience}</Text>
-            </HStack>
-            <HStack>
-              <Text fontSize="lg" fontWeight="bold">
                 Day(s) free:
               </Text>
               {form.daysFree &&
@@ -180,7 +174,15 @@ export default function Form() {
                 })}
             </HStack>
           </SimpleGrid>
-          <HStack spacing="10">
+          <Box align="left">
+            <VStack>
+              <Text fontSize="lg" fontWeight="bold">
+                Experience:
+              </Text>
+              <Text>{form.experience}</Text>
+            </VStack>
+          </Box>
+          <HStack pt="5" spacing="10">
             <Button colorScheme="green">Accept</Button>
             <Button colorScheme="red">Reject</Button>
           </HStack>
