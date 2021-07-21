@@ -28,7 +28,7 @@ const VolunteerCard = React.forwardRef(function VolunteerCard(
         shadow="lg"
         rounded="lg"
         w="md"
-        h="250"
+        h="275"
         p="5"
       >
         <Avatar size="lg" src={avatar} />
@@ -36,7 +36,7 @@ const VolunteerCard = React.forwardRef(function VolunteerCard(
           {name}
         </chakra.h1>
 
-        <Text py={2} noOfLines={3}>
+        <Text py={2} noOfLines={2}>
           {experience}
         </Text>
 
