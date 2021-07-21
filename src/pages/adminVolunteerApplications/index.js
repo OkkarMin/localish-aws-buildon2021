@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Box, Text, VStack, Flex } from "@chakra-ui/react";
+import { Box, Button, VStack, Flex } from "@chakra-ui/react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
@@ -26,34 +26,39 @@ const index = () => {
   }, []);
 
   return (
-    <Flex width="full" flexWrap="wrap" direction="row">
-      {applications.map((application, i) => {
-        console.log(application);
-        return (
-          <MotionBox
-            key={i}
-            marginBottom="4"
-            marginX="4"
-            whileHover={{ scale: 1.05 }}
-          >
-            <Link
+    <VStack align="flex-end">
+      <Button colorScheme="green" mr="20">
+        Transcribe form
+      </Button>
+      <Flex width="full" flexWrap="wrap" direction="row">
+        {applications.map((application, i) => {
+          console.log(application);
+          return (
+            <MotionBox
               key={i}
-              href={`/adminVolunteerApplications/${application.id}`}
-              passHref
+              marginBottom="4"
+              marginX="4"
+              whileHover={{ scale: 1.05 }}
             >
-              <VolunteerCard
+              <Link
                 key={i}
-                name={application.name}
-                phone={application.phone}
-                email={application.email}
-                experience={application.experience}
-                avatarKey={application.avatarKey}
-              />
-            </Link>
-          </MotionBox>
-        );
-      })}
-    </Flex>
+                href={`/adminVolunteerApplications/${application.id}`}
+                passHref
+              >
+                <VolunteerCard
+                  key={i}
+                  name={application.name}
+                  phone={application.phone}
+                  email={application.email}
+                  experience={application.experience}
+                  avatarKey={application.avatarKey}
+                />
+              </Link>
+            </MotionBox>
+          );
+        })}
+      </Flex>
+    </VStack>
   );
 };
 
