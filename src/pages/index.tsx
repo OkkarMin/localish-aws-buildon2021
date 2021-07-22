@@ -62,7 +62,7 @@ const Index = () => {
             w="full"
             h="full"
             rounded="lg"
-            src="/main/cta.png"
+            src="/main/cta.svg"
             alt="localish racial harmony call to action picture"
           />
         </Box>
