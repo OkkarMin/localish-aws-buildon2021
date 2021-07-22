@@ -1,5 +1,18 @@
 import { useEffect, useState } from "react";
-import { Box, Button, VStack, Flex } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  VStack,
+  Flex,
+  Text,
+  Stat,
+  StatLabel,
+  StatNumber,
+  StatHelpText,
+  StatGroup,
+  HStack,
+  StatArrow,
+} from "@chakra-ui/react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
@@ -26,10 +39,41 @@ const index = () => {
   }, []);
 
   return (
-    <VStack align="flex-end">
-      <Button colorScheme="green" mr="20">
-        Transcribe form
-      </Button>
+    <Flex direction="column">
+      <Flex direction={["column", "row"]} justify="space-around">
+        <Flex
+          direction={["column", "row"]}
+          justify="space-around"
+          width={["100vw", "50vw"]}
+        >
+          <VStack>
+            <Text fontWeight="bold" fontSize="xl">
+              Current volunteers
+            </Text>
+            <Text fontWeight="bold" fontSize="xl">
+              15
+            </Text>
+          </VStack>
+          <VStack>
+            <Text color="greenPrimary.700" fontWeight="bold" fontSize="xl">
+              Accepted
+            </Text>
+            <Text fontWeight="bold" fontSize="xl">
+              3
+            </Text>
+          </VStack>
+          <VStack>
+            <Text color="red" fontWeight="bold" fontSize="xl">
+              Rejected
+            </Text>
+            <Text fontWeight="bold" fontSize="xl">
+              5
+            </Text>
+          </VStack>
+        </Flex>
+
+        <Button colorScheme="green">Transcribe form</Button>
+      </Flex>
       <Flex width="full" flexWrap="wrap" direction="row">
         {applications.map((application, i) => {
           console.log(application);
@@ -58,7 +102,7 @@ const index = () => {
           );
         })}
       </Flex>
-    </VStack>
+    </Flex>
   );
 };
 
