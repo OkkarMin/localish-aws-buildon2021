@@ -70,17 +70,22 @@ const NavBar = () => {
       <Link href="/signin">
         <Button ml="4">Sign-in</Button>
       </Link>
-
-      <IconButton
-        ml="4"
-        aria-label="Open menu drawer"
-        icon={<HamburgerIcon />}
-        bg="transparent"
-        _hover={{ backgroundColor: "transparent" }}
-        _active={{ backgroundColor: "transparent" }}
-        onClick={onOpen}
-      ></IconButton>
-      <DrawerMenu isOpen={isOpen} onClose={onClose} />
+      {user == null ? (
+        <div></div>
+      ) : (
+        <div>
+          <IconButton
+            ml="4"
+            aria-label="Open menu drawer"
+            icon={<HamburgerIcon />}
+            bg="transparent"
+            _hover={{ backgroundColor: "transparent" }}
+            _active={{ backgroundColor: "transparent" }}
+            onClick={onOpen}
+          ></IconButton>
+          <DrawerMenu isOpen={isOpen} onClose={onClose} />
+        </div>
+      )}
     </Flex>
   );
 };

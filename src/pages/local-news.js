@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   chakra,
   Box,
@@ -36,7 +36,8 @@ import { ArrowBackIcon } from "@chakra-ui/icons";
 import localnews from "../data/localnews.json";
 import { DataStore } from "@aws-amplify/datastore";
 import { LocalAnnoucement, LocalNews } from "../models";
-import { useEffect, useState } from "react";
+import userControlLevel from "../hooks/userControlLevel";
+
 const BlogTags = (props) => {
   return (
     <HStack spacing={2} marginTop={props.marginTop}>
@@ -67,7 +68,9 @@ export const BlogAuthor = (props) => {
   );
 };
 const categories = ["Business", "LifeStyle", "Health"];
+
 const localNews = () => {
+  const { controlLevel } = userControlLevel();
   const [applications, setapplications] = useState([]);
   const [annoucements, setannoucements] = useState([]);
 
@@ -85,8 +88,8 @@ const localNews = () => {
       fetchApplications();
     });
     DataStore.observe(LocalAnnoucement).subscribe(() => {
-        fetchApplications();
-      });
+      fetchApplications();
+    });
     fetchApplications();
   }, []);
 
@@ -94,42 +97,48 @@ const localNews = () => {
     // <HStack>
     <div>
       <Box align="right">
-        <Button
-          mt={1}
-          colorScheme="teal"
-          align="right"
-          mr="10px"
-          maxWidth="fit-content"
-        >
-          <Link
-            href="/local-news/posts/add"
-            px={3}
-            py={1}
-            fontSize="sm"
-            fontWeight="700"
-            rounded="md"
-          >
-            Create New Neighbourhood Annoucement
-          </Link>
-        </Button>
-        <Button
-          mt={1}
-          colorScheme="teal"
-          align="right"
-          mr="10px"
-          maxWidth="fit-content"
-        >
-          <Link
-            href="/local-news/posts/create"
-            px={3}
-            py={1}
-            fontSize="sm"
-            fontWeight="700"
-            rounded="md"
-          >
-            Create New Local News
-          </Link>
-        </Button>
+        {controlLevel == "admin" ? (
+          <div>
+            <Button
+              mt={1}
+              colorScheme="teal"
+              align="right"
+              mr="10px"
+              maxWidth="fit-content"
+            >
+              <Link
+                href="/local-news/posts/add"
+                px={3}
+                py={1}
+                fontSize="sm"
+                fontWeight="700"
+                rounded="md"
+              >
+                Create New Neighbourhood Annoucement
+              </Link>
+            </Button>
+            <Button
+              mt={1}
+              colorScheme="teal"
+              align="right"
+              mr="10px"
+              maxWidth="fit-content"
+            >
+              <Link
+                href="/local-news/posts/create"
+                px={3}
+                py={1}
+                fontSize="sm"
+                fontWeight="700"
+                rounded="md"
+              >
+                Create New Local News
+              </Link>
+            </Button>{" "}
+          </div>
+        ) : (
+          <div></div>
+        )}
       </Box>
       <SimpleGrid columns="2" minChildwidth="1200px">
         <Box ml="50px">
@@ -181,7 +190,7 @@ const localNews = () => {
                           return (
                             <Card
                               key={i}
-                              id = {newsArticle.id}
+                              id={newsArticle.id}
                               title={newsArticle.title}
                               date={new Date(
                                 newsArticle.date

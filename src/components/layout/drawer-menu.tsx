@@ -1,4 +1,8 @@
+import { useEffect, useState } from "react";
+
 import Link from "next/link";
+
+import userControlLevel from "../../hooks/userControlLevel";
 
 import {
   Drawer,
@@ -34,6 +38,10 @@ const DrawerMenuItem = ({ itemName, icon, href }) => {
 };
 
 const DrawerMenu = ({ isOpen, onClose }) => {
+  const { controlLevel } = userControlLevel();
+
+  console.log(controlLevel);
+
   return (
     <Drawer
       isOpen={isOpen}
@@ -84,11 +92,15 @@ const DrawerMenu = ({ isOpen, onClose }) => {
             icon={<EditIcon />}
             href="/volunteer-signup"
           />
-          <DrawerMenuItem
-            itemName="Admin volunteer applications"
-            icon={<EditIcon />}
-            href="/adminVolunteerApplications"
-          />
+          {controlLevel == "admin" ? (
+            <DrawerMenuItem
+              itemName="Admin volunteer applications"
+              icon={<EditIcon />}
+              href="/adminVolunteerApplications"
+            />
+          ) : (
+            <div></div>
+          )}
         </DrawerBody>
       </DrawerContent>
     </Drawer>
