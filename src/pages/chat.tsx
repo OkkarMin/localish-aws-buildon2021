@@ -141,7 +141,6 @@ const Chat = () => {
           onKeyDown={(e) => {
             if (e.key === "Enter") {
               const s = chatSessions.find((session) => session.isSelected);
-              console.log(s);
               setMessages(
                 messages.concat(
                   { message: chatInput, isMe: true, from: s.name },
