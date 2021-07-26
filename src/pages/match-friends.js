@@ -46,14 +46,11 @@ const MatchFriends = () => {
 
   return (
     <Box align="center">
-      <HStack justify="center">
-        <Link href="/friendAmongUs">
-          <Button colorScheme="teal">
-            <ArrowBackIcon />
-          </Button>
-        </Link>
-        <Heading>Friend Among Us</Heading>
-      </HStack>
+      <Link href="/friend-among-us">
+        <Button position="fixed" left="100" colorScheme="teal">
+          <ArrowBackIcon />
+        </Button>
+      </Link>
 
       {applications.map((character, i) => (
         <TinderCard
