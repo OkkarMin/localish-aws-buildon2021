@@ -2,7 +2,6 @@ import { useEffect, useState, useRef, useContext } from "react";
 
 import {
   Flex,
-  Button,
   Input,
   Text,
   HStack,
@@ -10,17 +9,16 @@ import {
   Heading,
   Avatar,
   Box,
-  Spacer,
 } from "@chakra-ui/react";
 
 import { FriendMatchesContext } from "../context/FriendMatchesContext";
 
-const ChatMessage = ({ message, isMe }) => (
+const ChatMessage = ({ message, isMe, from }) => (
   <Box alignSelf={isMe ? "flex-end" : "flex-start"}>
     <HStack alignItems="baseline">
       <VStack>
-        <Avatar name={isMe ? "ME" : "Okkar Min"} />
-        <Text>{isMe ? "Me" : "Okkar Min"}</Text>
+        <Avatar name={isMe ? "ME" : from} />
+        <Text>{isMe ? "Me" : from}</Text>
       </VStack>
 
       <Box p="4" bg="gray.200" borderRadius="base">
@@ -33,10 +31,24 @@ const ChatMessage = ({ message, isMe }) => (
 const Chat = () => {
   const [matchList, setMatchList] = useContext(FriendMatchesContext);
   const [messages, setMessages] = useState([
-    { message: "Hello", isMe: true },
-    { message: "World", isMe: false },
+    { message: "Hello", isMe: true, from: "" },
+    { message: "World", isMe: false, from: "Okkar Min" },
   ]);
   const [chatInput, setChatInput] = useState("");
+  const [chatSessions, setChatSessions] = useState([
+    {
+      name: "Okkar Min",
+      isSelected: true,
+    },
+    {
+      name: "Yeow Ying Sheng",
+      isSelected: false,
+    },
+    {
+      name: "Surabhi",
+      isSelected: false,
+    },
+  ]);
   const messagesEndRef = useRef(null);
 
   // When the user types something, scroll to bottom of messges
@@ -46,6 +58,35 @@ const Chat = () => {
     }
   }, [messages]);
 
+  const ChatSession = ({ name, isSelected }) => (
+    <HStack
+      alignSelf="flex-start"
+      borderRadius="md"
+      p={isSelected ? "2" : "0"}
+      width="full"
+      bg={isSelected ? "greenPrimary.100" : ""}
+      _hover={{ cursor: "pointer" }}
+      onClick={() => {
+        setChatSessions(
+          chatSessions.map((session) => {
+            if (session.name === name) {
+              return { ...session, isSelected: true };
+            }
+            return { ...session, isSelected: false };
+          })
+        );
+
+        setMessages([
+          { message: "Hello", isMe: true, from: "" },
+          { message: "World", isMe: false, from: name },
+        ]);
+      }}
+    >
+      <Avatar name={name} />
+      <Text>{name}</Text>
+    </HStack>
+  );
+
   return (
     <HStack spacing="0">
       <VStack alignSelf="flex-start" minW="2xs" minH="auto" bg="gray.100">
@@ -53,20 +94,15 @@ const Chat = () => {
           Chats
         </Heading>
 
-        <VStack alignSelf="flex-start" p="4" spacing="4">
-          <HStack alignSelf="flex-start">
-            <Avatar name="Okkar Min" />
-            <Text>Okkar Min</Text>
-          </HStack>
+        <VStack alignSelf="flex-start" p="4" spacing="4" width="full">
+          {chatSessions.map((session, i: number) => (
+            <ChatSession
+              key={i}
+              name={session.name}
+              isSelected={session.isSelected}
+            />
+          ))}
 
-          <HStack alignSelf="flex-start">
-            <Avatar name="Ying Sheng" />
-            <Text>Ying Sheng</Text>
-          </HStack>
-          <HStack alignSelf="flex-start">
-            <Avatar name="Surabhi" />
-            <Text>Surabhi</Text>
-          </HStack>
           {matchList.map((friend, i) => {
             return (
               <HStack key={i} alignSelf="flex-start">
@@ -83,11 +119,15 @@ const Chat = () => {
       <Flex d="column" w="full" p="8">
         <Flex direction="column" p="8" w="full" maxH="70vh" overflow="auto">
           {messages.map(
-            (message: { message: string; isMe: boolean }, i: number) => (
+            (
+              message: { message: string; isMe: boolean; from: string },
+              i: number
+            ) => (
               <ChatMessage
                 key={i}
                 message={message.message}
                 isMe={message.isMe}
+                from={message.from}
               />
             )
           )}
@@ -101,10 +141,16 @@ const Chat = () => {
           value={chatInput}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
+              const s = chatSessions.find((session) => session.isSelected);
+              console.log(s);
               setMessages(
                 messages.concat(
-                  { message: chatInput, isMe: true },
-                  { message: chatInput, isMe: false }
+                  { message: chatInput, isMe: true, from: s.name },
+                  {
+                    message: chatInput,
+                    isMe: false,
+                    from: s.name,
+                  }
                 )
               );
               setChatInput("");
