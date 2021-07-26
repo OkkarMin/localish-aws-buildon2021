@@ -36,8 +36,6 @@ const DrawerMenuItem = ({ itemName, icon, href }) => {
     currentPage = "";
   }
 
-  console.log(currentPage);
-
   return (
     <Link href={href}>
       <ChakraLink>
