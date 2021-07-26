@@ -65,7 +65,7 @@ const DrawerMenu = ({ isOpen, onClose }) => {
           <DrawerMenuItem
             itemName="Friend Among Us"
             icon={<GiThreeFriends />}
-            href="/friendAmongUs"
+            href="/friend-among-us"
           />
           <DrawerMenuItem
             itemName="Chats"
@@ -96,7 +96,7 @@ const DrawerMenu = ({ isOpen, onClose }) => {
             <DrawerMenuItem
               itemName="Admin volunteer applications"
               icon={<EditIcon />}
-              href="/adminVolunteerApplications"
+              href="/admin-volunteer-applications"
             />
           ) : (
             <div></div>

@@ -14,13 +14,12 @@ import { FriendImage } from "../components/friendAmongUs/friendImage";
 const FriendAmongUs = () => {
   return (
     <VStack align="center" justify="center">
-      <Heading>Friend Among Us</Heading>
       <FriendImage />
       <HStack spacing="10">
-        <Link href="/friendAmongUsProfile">
+        <Link href="/friend-among-us-profile">
           <Button colorScheme="teal">Create profile</Button>
         </Link>
-        <Link href="/matchFriends">
+        <Link href="/match-friends">
           <Button colorScheme="teal">Start matching!!</Button>
         </Link>
       </HStack>

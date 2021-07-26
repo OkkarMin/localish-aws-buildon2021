@@ -50,7 +50,7 @@ const FriendAmongUsProfile = () => {
       position: "top",
     });
 
-    router.replace("/matchFriends");
+    router.push("/match-friends");
   };
 
   function validateName(value) {

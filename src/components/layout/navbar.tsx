@@ -6,6 +6,7 @@ import useUser from "../../hooks/useUser";
 import {
   Button,
   Flex,
+  Heading,
   IconButton,
   Image,
   Link as ChakraLink,
@@ -23,6 +24,16 @@ const NavBar = () => {
 
   const router = useRouter();
 
+  let currentPage = "";
+  try {
+    currentPage = router.pathname
+      .split("/")[1]
+      .replaceAll("-", " ")
+      .toLocaleUpperCase();
+  } catch (error) {
+    currentPage = "";
+  }
+
   return user ? (
     <Flex as="nav" align="center" p="8" borderBottomColor="red">
       <Link href="/">
@@ -30,6 +41,10 @@ const NavBar = () => {
           <Image h="40px" src="/localish.svg" alt="localish logo" />
         </ChakraLink>
       </Link>
+
+      <Spacer />
+
+      <Heading textColor="green.500">{currentPage}</Heading>
 
       <Spacer />
 
@@ -61,6 +76,10 @@ const NavBar = () => {
           <Image h="40px" src="/localish.svg" alt="localish logo" />
         </ChakraLink>
       </Link>
+
+      <Spacer />
+
+      <Heading textColor="green.500">{currentPage}</Heading>
 
       <Spacer />
 
