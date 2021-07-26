@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
-
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import userControlLevel from "../../hooks/userControlLevel";
 
@@ -25,12 +24,33 @@ import { FaChalkboardTeacher } from "react-icons/fa";
 import { IoNewspaperOutline } from "react-icons/io5";
 
 const DrawerMenuItem = ({ itemName, icon, href }) => {
+  const router = useRouter();
+
+  let currentPage = "";
+  try {
+    currentPage = router.pathname
+      .split("/")[1]
+      .replaceAll("-", " ")
+      .toLowerCase();
+  } catch (error) {
+    currentPage = "";
+  }
+
+  console.log(currentPage);
+
   return (
     <Link href={href}>
       <ChakraLink>
-        <HStack mb="2">
+        <HStack
+          p={currentPage === itemName.toLowerCase() ? "2" : "0"}
+          mb="2"
+          background={
+            currentPage === itemName.toLowerCase() ? "greenPrimary.100" : ""
+          }
+          borderRadius="md"
+        >
           {icon}
-          <Text>{itemName}</Text>
+          <Text fontSize="xl">{itemName}</Text>
         </HStack>
       </ChakraLink>
     </Link>
@@ -51,7 +71,14 @@ const DrawerMenu = ({ isOpen, onClose }) => {
       <DrawerContent>
         <DrawerCloseButton />
         <DrawerHeader>
-          <Image h="120px" src="/localish.svg" alt="localish logo" />
+          <Link href="/">
+            <Image
+              h="120px"
+              src="/localish.svg"
+              alt="localish logo"
+              _hover={{ cursor: "pointer" }}
+            />
+          </Link>
         </DrawerHeader>
 
         <DrawerBody>
@@ -66,12 +93,12 @@ const DrawerMenu = ({ isOpen, onClose }) => {
             href="/friend-among-us"
           />
           <DrawerMenuItem
-            itemName="Chats"
+            itemName="Chat"
             icon={<MdChatBubbleOutline />}
             href="/chat"
           />
           <DrawerMenuItem
-            itemName="Neighbourhood Activitites"
+            itemName="Friendly Neighbourhood Activities"
             icon={<MdLocalActivity />}
             href="/friendly-neighbourhood-activities"
           />
@@ -86,13 +113,13 @@ const DrawerMenu = ({ isOpen, onClose }) => {
             href="/local-news"
           />
           <DrawerMenuItem
-            itemName="Volunteer Sign-up"
+            itemName="Volunteer Signup"
             icon={<EditIcon />}
             href="/volunteer-signup"
           />
           {controlLevel == "admin" ? (
             <DrawerMenuItem
-              itemName="Admin volunteer applications"
+              itemName="Admin Volunteer Applications"
               icon={<EditIcon />}
               href="/admin-volunteer-applications"
             />
