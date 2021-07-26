@@ -16,9 +16,7 @@ const VolunteerCard = React.forwardRef(function VolunteerCard(
   useEffect(async () => {
     const data = await Storage.get(avatarKey);
     setAvatar(data);
-    console.log(data);
   }, []);
-  console.log(avatarKey);
 
   return (
     <span href={href} onClick={onClick} ref={ref}>

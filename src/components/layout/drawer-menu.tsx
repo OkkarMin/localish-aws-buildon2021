@@ -40,8 +40,6 @@ const DrawerMenuItem = ({ itemName, icon, href }) => {
 const DrawerMenu = ({ isOpen, onClose }) => {
   const { controlLevel } = userControlLevel();
 
-  console.log(controlLevel);
-
   return (
     <Drawer
       isOpen={isOpen}
