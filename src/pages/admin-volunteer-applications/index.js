@@ -76,7 +76,6 @@ const index = () => {
       </Flex>
       <Flex width="full" flexWrap="wrap" direction="row">
         {applications.map((application, i) => {
-          console.log(application);
           return (
             <MotionBox
               key={i}
@@ -86,7 +85,7 @@ const index = () => {
             >
               <Link
                 key={i}
-                href={`/adminVolunteerApplications/${application.id}`}
+                href={`/admin-volunteer-applications/${application.id}`}
                 passHref
               >
                 <VolunteerCard
