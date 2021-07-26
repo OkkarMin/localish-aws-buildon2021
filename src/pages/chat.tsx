@@ -30,6 +30,13 @@ const ChatMessage = ({ message, isMe, from }) => (
 
 const Chat = () => {
   const [matchList, setMatchList] = useContext(FriendMatchesContext);
+  const updatedMatchList = matchList.map((match: string) => {
+    return {
+      name: match,
+      isSelected: false,
+    };
+  });
+
   const [messages, setMessages] = useState([
     { message: "Hello", isMe: true, from: "" },
     { message: "World", isMe: false, from: "Okkar Min" },
@@ -48,6 +55,7 @@ const Chat = () => {
       name: "Surabhi",
       isSelected: false,
     },
+    ...updatedMatchList,
   ]);
   const messagesEndRef = useRef(null);
 
@@ -102,15 +110,6 @@ const Chat = () => {
               isSelected={session.isSelected}
             />
           ))}
-
-          {matchList.map((friend, i) => {
-            return (
-              <HStack key={i} alignSelf="flex-start">
-                <Avatar name={friend} />
-                <Text>{friend}</Text>
-              </HStack>
-            );
-          })}
         </VStack>
       </VStack>
 
