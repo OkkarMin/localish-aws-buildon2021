@@ -1,3 +1,45 @@
+type AccessControl @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  phoneNumber: String
+  accessLevel: String
+}
+
+type LocalAnnoucement @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  date: AWSDate
+  content_full: String
+  image: String
+  link: String
+  title: String
+}
+
+type LocalNewsComment @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  date: AWSDate
+  user_name: String
+  user_image: String
+  content: String
+  LocalNews: LocalNews @connection
+}
+
+type LocalNews @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  title: String
+  date: AWSDate
+  user_image: String
+  user_name: String
+  content: String
+  content_full: String
+  topic: String
+  image: String
+  image_alt: String
+  likes: Int
+  dislikes: Int
+  headline: String
+  theme: String
+  read_more: String
+}
+
 type VolunteerForm2 @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String
@@ -28,8 +70,8 @@ type LocalBoard @model @auth(rules: [{allow: public}]) {
   id: ID!
   category: String
   location: Int
-  time: String
-  date_posted: String
+  time: AWSDate
+  date_posted: AWSDate
   content: String
   user_name: String
   user_image: String

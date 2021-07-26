@@ -4,9 +4,10 @@ import { schema } from './schema';
 
 
 
-const { LocalAnnoucement, LocalNewsComment, LocalNews, VolunteerForm2, LocalBoard, FriendsAmongUs, VolunteerForm } = initSchema(schema);
+const { AccessControl, LocalAnnoucement, LocalNewsComment, LocalNews, VolunteerForm2, LocalBoard, FriendsAmongUs, VolunteerForm } = initSchema(schema);
 
 export {
+  AccessControl,
   LocalAnnoucement,
   LocalNewsComment,
   LocalNews,
