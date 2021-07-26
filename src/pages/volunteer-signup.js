@@ -297,6 +297,7 @@ const VolunteerSignup = () => {
             JSON.stringify(values);
 
             //handleSetUploadAvatar(values.name);
+            console.log(values);
 
             setFormDetails(values);
 
@@ -360,7 +361,7 @@ const VolunteerSignup = () => {
                     )}
                   </Field>
 
-                  <Field as="select" name="gender" validate={validateGender}>
+                  <Field name="gender" validate={validateGender}>
                     {({ field, form }) => (
                       <FormControl
                         isInvalid={form.errors.gender && form.touched.gender}
@@ -396,11 +397,7 @@ const VolunteerSignup = () => {
                     )}
                   </Field>
 
-                  <Field
-                    as="select"
-                    name="maritalStatus"
-                    validate={validateMaritalStatus}
-                  >
+                  <Field name="maritalStatus" validate={validateMaritalStatus}>
                     {({ field, form }) => (
                       <FormControl
                         isInvalid={
@@ -505,7 +502,6 @@ const VolunteerSignup = () => {
                   </Field>
 
                   <Field
-                    as="select"
                     name="highestEducation"
                     validate={validateHighestEducation}
                   >
@@ -611,7 +607,6 @@ const VolunteerSignup = () => {
 
                 <HStack align="top" spacing="10">
                   <Field
-                    as="select"
                     name="typeOfDwelling"
                     validate={validateTypeOfDwelling}
                   >
