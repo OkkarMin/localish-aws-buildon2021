@@ -18,6 +18,15 @@ import { HamburgerIcon } from "@chakra-ui/icons";
 
 import DrawerMenu from "./drawer-menu";
 
+function titleCase(title) {
+  title = title.toLowerCase();
+  const words = title.split(" ");
+  const titleCaseWords = words.map(
+    (word) => word[0].toUpperCase() + word.substring(1)
+  );
+  return titleCaseWords.join(" ");
+}
+
 const NavBar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { user, signOut } = useUser();
@@ -30,6 +39,7 @@ const NavBar = () => {
       .split("/")[1]
       .replaceAll("-", " ")
       .toLocaleUpperCase();
+    currentPage = titleCase(currentPage);
   } catch (error) {
     currentPage = "";
   }
