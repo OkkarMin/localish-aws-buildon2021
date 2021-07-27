@@ -18,7 +18,7 @@ import { HamburgerIcon } from "@chakra-ui/icons";
 
 import DrawerMenu from "./drawer-menu";
 
-function titleCase(title) {
+function titleCase(title: string) {
   title = title.toLowerCase();
   const words = title.split(" ");
   const titleCaseWords = words.map(
