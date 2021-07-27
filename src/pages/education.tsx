@@ -7,7 +7,6 @@ import {
   Button,
   chakra,
   Checkbox,
-  Flex,
   Link,
   SimpleGrid,
 } from "@chakra-ui/react";
@@ -51,6 +50,7 @@ const Education = () => {
 
   return (
     <Box mt="4" p="4">
+      {/* List of checkboxes */}
       <SimpleGrid minChildWidth="180px">
         <Checkbox
           size="lg"
@@ -85,6 +85,8 @@ const Education = () => {
             </Checkbox>
           ))}
       </SimpleGrid>
+
+      {/* List of Education cards */}
       <SimpleGrid mt="4" columns={2}>
         {feed.map((item: any, i: number) => {
           // make a set out of all possible categories
