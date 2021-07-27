@@ -2,7 +2,15 @@ import React, { useEffect, useState } from "react";
 import Parser from "rss-parser";
 const RSSParser = new Parser();
 
-import { Box, Button, chakra, Link, SimpleGrid } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  chakra,
+  Checkbox,
+  Flex,
+  Link,
+  SimpleGrid,
+} from "@chakra-ui/react";
 
 const EducationCard = ({ title, content, link }) => {
   return (
@@ -26,10 +34,12 @@ const EducationCard = ({ title, content, link }) => {
 
 const Education = () => {
   const [feed, setFeed] = useState([]);
+  const [categories, setCategories] = useState(new Set());
+  const [checkedCategories, setCheckedCategories] = useState([]);
 
   useEffect(() => {
     async function getRSSFeed() {
-      const CORS_PROXY = "https://api.allorigins.win/raw?url=";
+      const CORS_PROXY = "https://cors-anywhere.herokuapp.com/";
       const feed = await RSSParser.parseURL(
         CORS_PROXY + "https://techlingo.co/feed"
       );
@@ -40,18 +50,76 @@ const Education = () => {
   }, []);
 
   return (
-    <SimpleGrid mt="4" p={["4", "8"]} columns={2}>
-      {feed.map((item: any, i: number) => {
-        return (
-          <EducationCard
-            key={i}
-            title={item.title}
-            content={item.contentSnippet}
-            link={item.link}
-          />
-        );
-      })}
-    </SimpleGrid>
+    <Box mt="4" p="4">
+      <SimpleGrid minChildWidth="180px">
+        <Checkbox
+          size="lg"
+          colorScheme="greenPrimary"
+          isChecked={checkedCategories.length == 0}
+          onChange={() => setCheckedCategories([])}
+        >
+          Show All
+        </Checkbox>
+
+        {Array.from(categories)
+          .splice(30, categories.size)
+          .map((category, i) => (
+            <Checkbox
+              key={i}
+              size="lg"
+              colorScheme="greenPrimary"
+              isChecked={checkedCategories.includes(category)}
+              onChange={(e) => {
+                // checked, add it to checkedCategories
+                if (e.target.checked)
+                  setCheckedCategories([...checkedCategories, category]);
+
+                // uncheck, remove it from checkedCategories
+                if (!e.target.checked)
+                  setCheckedCategories([
+                    ...checkedCategories.filter((c) => c != category),
+                  ]);
+              }}
+            >
+              {category}
+            </Checkbox>
+          ))}
+      </SimpleGrid>
+      <SimpleGrid mt="4" columns={2}>
+        {feed.map((item: any, i: number) => {
+          // make a set out of all possible categories
+          for (const category of item.categories) {
+            if (categories.has(category)) {
+              continue;
+            }
+            setCategories(categories.add(category));
+          }
+
+          // render only if relevant categories are checked
+          if (checkedCategories.length == 0) {
+            return (
+              <EducationCard
+                key={i}
+                title={item.title}
+                content={item.contentSnippet}
+                link={item.link}
+              />
+            );
+          }
+
+          return checkedCategories.some((c) => item.categories.includes(c)) ? (
+            <EducationCard
+              key={i}
+              title={item.title}
+              content={item.contentSnippet}
+              link={item.link}
+            />
+          ) : (
+            <div></div>
+          );
+        })}
+      </SimpleGrid>
+    </Box>
   );
 };
 
