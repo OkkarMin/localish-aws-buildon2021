@@ -17,7 +17,7 @@ import {
   SimpleGrid,
   Button,
   InputGroup,
-
+Icon,
   Flex,
   useToast,
   Link as ChakraLink,
@@ -33,6 +33,7 @@ import { ArrowBackIcon } from "@chakra-ui/icons";
 const { useState } = React
 import Link from "next/link";
 
+import { AiFillAudio } from "react-icons/ai";
 
 const LocalBoardNew = () => {
   const toast = useToast();
@@ -58,7 +59,7 @@ const LocalBoardNew = () => {
       theme = "orange"
     }
     else{
-      theme = "blue"
+      theme = "pink"
     }
     {console.log(value)}
 
@@ -174,6 +175,37 @@ const LocalBoardNew = () => {
   return (
     <Box align="center">
       <Flex direction="column" width={["70vw"]} height="full">
+        <Box align = "center"> <chakra.p fontFamily={'Work Sans'} fontWeight={'bold'} fontSize={50}> Create New Local Board Post</chakra.p>
+        <Box  backgroundColor = "pink" rounded={'xl'} width = "640px"  
+              padding= '20px' mb = "20px" >
+                <Box width = "600px"   bg={useColorModeValue('white', 'gray.800')}
+            rounded={'xl'}
+            //mt={'100px'}
+            
+            padding= '20px'
+            
+            >
+               {/* <Button > Hello</Button> */}
+               <HStack align="center"> 
+               <Button
+              mt={1}
+              colorScheme="pink"
+              align="center"
+              as={AiFillAudio}
+              mr="10px"
+              maxWidth="fit-content"
+            >
+              <Link href="/">
+              </Link>
+            </Button>
+            <chakra.p color={"pink.500"} fontFamily={'Work Sans'} fontWeight={'bold'} fontSize={30}> Send a voice note</chakra.p>
+            </HStack>
+            </Box>
+                </Box>
+            <chakra.p mb = "20px"  fontFamily={'Work Sans'} fontWeight={'bold'} fontSize={30}> Or </chakra.p>
+
+              <Box  backgroundColor = "pink" rounded={'xl'} width = "640px"  
+              padding= '20px' mb = "20px">
         <Formik
           initialValues={{
             name: "",
@@ -199,12 +231,7 @@ const LocalBoardNew = () => {
         >
           {(props) => (
 
-            <Box align = "center"> <chakra.p fontFamily={'Work Sans'} fontWeight={'bold'} fontSize={50}> Create New Local Board Post</chakra.p>
-            <Box  backgroundColor = "pink" rounded={'xl'} width = "640px"  
-            padding= '20px' mb = "20px"
-
-
-            >
+            
             <Box width = "600px" align="left"  bg={useColorModeValue('white', 'gray.800')}
             rounded={'xl'}
             //mt={'100px'}
@@ -398,10 +425,11 @@ const LocalBoardNew = () => {
               
             </Form>
             </Box>
-            </Box>
-            </Box>
+            
           )}
         </Formik>
+        </Box>
+            </Box>
       </Flex>
     </Box>
   );

@@ -185,6 +185,9 @@ const backgrounds = [
     );
   }
   
+const categories = [["Offer", "green"], ["Giveaway", "orange"], ["Request", "pink"]];
+
+
   export default function GridBlurredBackdrop() {
     const [applications, setapplications] = useState([]);
     useEffect(() => {
@@ -200,7 +203,7 @@ const backgrounds = [
         fetchApplications();
       }, []);
     return (
-      <Flex
+      <div
         textAlign={'center'}
         pt={10}
         justifyContent={'center'}
@@ -226,6 +229,28 @@ const backgrounds = [
         {/* <Image src ={'../public/background_localboard.j{pg'} ></Image>  backgroundImage="https://images.unsplash.com/photo-1542888743-a0323a8bd3df?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1701&q=80" */}
         <Box 
         > 
+<VStack>
+        {categories.map((c) => {
+              return (
+                <div>
+                  <Box
+                    border="1px"
+                    borderColor={c[1]}
+                    rounded={"xl"}
+                    width="full"
+                    // mb="50px"
+                    // ml="50px"
+                  >
+                    <Box ml="10px" mb="1">
+                      <chakra.h1
+                        fontSize="xl"
+                        color={useColorModeValue("gray.700", "white")}
+                        fontWeight="700"
+                        color = {c[1]}
+                      >
+                        {c[0]}
+                      </chakra.h1>
+                    </Box>
         <SimpleGrid
           columns={{ base: 1, xl: 2 }}
           spacing={'20'}
@@ -234,7 +259,7 @@ const backgrounds = [
           mx={'auto'}>
         
           {applications.map((localPost, i)=> {
-       
+            if (c[0] == localPost.category) {
             return (
             <TestmonialCard key={i} 
             title = {localPost.title} 
@@ -251,20 +276,17 @@ const backgrounds = [
             />
             )
           }
-          )
-        }
+        })}
         </SimpleGrid>
         </Box>
-        {/* <Box>
-          <Icon viewBox="0 0 40 35" mt={14} boxSize={10} color={'purple.400'}>
-            <path
-              fill={'currentColor'}
-              d="M10.7964 5.04553e-07C8.66112 -0.000123335 6.57374 0.632971 4.79827 1.81922C3.0228 3.00547 1.63898 4.69158 0.82182 6.66433C0.00466116 8.63708 -0.209132 10.8079 0.207477 12.9021C0.624087 14.9964 1.65239 16.9201 3.16233 18.4299L19.1153 34.3828C19.2395 34.5074 19.3871 34.6062 19.5496 34.6736C19.7121 34.741 19.8863 34.7757 20.0622 34.7757C20.2381 34.7757 20.4123 34.741 20.5748 34.6736C20.7373 34.6062 20.8848 34.5074 21.0091 34.3828L36.962 18.4272C38.9319 16.3917 40.0228 13.6636 39.9996 10.8311C39.9764 7.99858 38.8409 5.28867 36.838 3.28573C34.835 1.28279 32.1251 0.147283 29.2926 0.124081C26.4601 0.100879 23.732 1.19184 21.6965 3.1617L20.0622 4.79337L18.4305 3.1617C17.4276 2.15892 16.237 1.36356 14.9267 0.821064C13.6163 0.278568 12.2119 -0.000433066 10.7937 5.04553e-07H10.7964Z"
-            />
-          </Icon>
-        </Box> */}
+        </div>
+              );
+            })}
+            </VStack>
+        </Box>
 
-      </Flex>
+
+      </div>
     );
   }
 
