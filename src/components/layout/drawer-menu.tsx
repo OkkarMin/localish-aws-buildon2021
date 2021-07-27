@@ -22,6 +22,7 @@ import { GiThreeFriends } from "react-icons/gi";
 import { MdLocalActivity, MdChatBubbleOutline } from "react-icons/md";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { IoNewspaperOutline } from "react-icons/io5";
+import { ImStatsDots } from "react-icons/im";
 
 const DrawerMenuItem = ({ itemName, icon, href }) => {
   const router = useRouter();
@@ -116,11 +117,19 @@ const DrawerMenu = ({ isOpen, onClose }) => {
             href="/volunteer-signup"
           />
           {controlLevel == "admin" ? (
-            <DrawerMenuItem
-              itemName="Admin Volunteer Applications"
-              icon={<EditIcon />}
-              href="/admin-volunteer-applications"
-            />
+            <>
+              <DrawerMenuItem
+                itemName="Admin Volunteer Applications"
+                icon={<EditIcon />}
+                href="/admin-volunteer-applications"
+              />
+
+              <DrawerMenuItem
+                itemName="Admin Dashboard"
+                icon={<ImStatsDots />}
+                href="/admin-dashboard"
+              />
+            </>
           ) : (
             <div></div>
           )}
