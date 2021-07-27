@@ -23,6 +23,7 @@ import { MdLocalActivity, MdChatBubbleOutline } from "react-icons/md";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { IoNewspaperOutline } from "react-icons/io5";
 import { ImStatsDots } from "react-icons/im";
+import { CgProfile, CgUserList } from "react-icons/cg";
 
 const DrawerMenuItem = ({ itemName, icon, href }) => {
   const router = useRouter();
@@ -82,6 +83,11 @@ const DrawerMenu = ({ isOpen, onClose }) => {
 
         <DrawerBody>
           <DrawerMenuItem
+            itemName="Volunteer Profile"
+            icon={<CgProfile />}
+            href="/volunteer-profile"
+          />
+          <DrawerMenuItem
             itemName="Education"
             icon={<VscMortarBoard />}
             href="/education"
@@ -119,15 +125,19 @@ const DrawerMenu = ({ isOpen, onClose }) => {
           {controlLevel == "admin" ? (
             <>
               <DrawerMenuItem
+                itemName="Admin Dashboard"
+                icon={<ImStatsDots />}
+                href="/admin-dashboard"
+              />
+              <DrawerMenuItem
                 itemName="Admin Volunteer Applications"
                 icon={<EditIcon />}
                 href="/admin-volunteer-applications"
               />
-
               <DrawerMenuItem
-                itemName="Admin Dashboard"
-                icon={<ImStatsDots />}
-                href="/admin-dashboard"
+                itemName="Volunteer List"
+                icon={<CgUserList />}
+                href="/volunteer-list"
               />
             </>
           ) : (
