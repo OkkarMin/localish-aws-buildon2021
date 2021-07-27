@@ -1,18 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  Box,
-  Button,
-  VStack,
-  Flex,
-  Text,
-  Stat,
-  StatLabel,
-  StatNumber,
-  StatHelpText,
-  StatGroup,
-  HStack,
-  StatArrow,
-} from "@chakra-ui/react";
+import { Box, Button, VStack, Flex, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
@@ -28,13 +15,10 @@ const index = () => {
   useEffect(() => {
     async function fetchApplications() {
       const applicationsData = await DataStore.query(VolunteerForm2);
-
+      console.log(applicationsData);
       setapplications(applicationsData);
     }
 
-    DataStore.observe(VolunteerForm2).subscribe(() => {
-      fetchApplications();
-    });
     fetchApplications();
   }, []);
 

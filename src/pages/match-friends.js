@@ -19,8 +19,6 @@ const MatchFriends = () => {
   const [likedPerson, setlikedPerson] = useState();
   const [lastDirection, setLastDirection] = useState();
 
-  let likeList = [];
-
   useEffect(() => {
     async function fetchApplications() {
       const applicationsData = await DataStore.query(FriendsAmongUs);
@@ -36,7 +34,6 @@ const MatchFriends = () => {
 
   const swiped = (direction, likedPerson) => {
     if (direction == "right") {
-      //likeList.push(likedPerson);
       setMatchList((prev) => [...prev, likedPerson]);
       setlikedPerson(likedPerson);
       setLastDirection(direction);
@@ -46,11 +43,11 @@ const MatchFriends = () => {
 
   return (
     <Box align="center">
-      <Link href="/friend-among-us">
+      {/* <Link href="/friend-among-us">
         <Button position="fixed" left="100" colorScheme="teal">
           <ArrowBackIcon />
         </Button>
-      </Link>
+      </Link> */}
 
       {applications.map((character, i) => (
         <TinderCard
@@ -69,7 +66,9 @@ const MatchFriends = () => {
           </Box>
         </TinderCard>
       ))}
-
+      <Text fontWeight="bold" fontSize="xl">
+        Swipe to match
+      </Text>
       {lastDirection == "right" ? (
         <Text m="5" className="infoText">
           You liked {likedPerson}
@@ -77,6 +76,7 @@ const MatchFriends = () => {
       ) : (
         <Text></Text>
       )}
+
       <Link href="/chat">
         <Button colorScheme="teal" positon="fixed" top="450">
           <ChatIcon mr="2" /> Chats
