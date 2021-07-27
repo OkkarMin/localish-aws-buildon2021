@@ -4,6 +4,10 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 
 
+type VolunteerProfileMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
 type AccessControlMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
@@ -34,6 +38,23 @@ type FriendsAmongUsMetaData = {
 
 type VolunteerFormMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
+export declare class VolunteerProfile {
+  readonly id: string;
+  readonly name?: string;
+  readonly TotalEvents?: string;
+  readonly TotalHours?: string;
+  readonly languages?: string;
+  readonly dialects?: string;
+  readonly badges?: string;
+  readonly events?: string;
+  readonly profileImage?: string;
+  readonly phoneNumber?: string;
+  readonly createdAt?: string;
+  readonly updatedAt?: string;
+  constructor(init: ModelInit<VolunteerProfile, VolunteerProfileMetaData>);
+  static copyOf(source: VolunteerProfile, mutator: (draft: MutableModel<VolunteerProfile, VolunteerProfileMetaData>) => MutableModel<VolunteerProfile, VolunteerProfileMetaData> | void): VolunteerProfile;
 }
 
 export declare class AccessControl {
