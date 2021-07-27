@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useRouter } from "next/router";
 import { Auth } from "aws-amplify";
 
@@ -12,6 +12,7 @@ import {
   Flex,
   Heading,
   HStack,
+  Icon,
   Input,
   PinInput,
   PinInputField,
@@ -20,6 +21,7 @@ import {
   Text,
   useBreakpointValue,
 } from "@chakra-ui/react";
+import { BiImageAdd } from "react-icons/bi";
 
 const avatars = [
   {
@@ -50,6 +52,8 @@ const SignUp = () => {
   const [fullName, setFullName] = useState("");
   const [confirmationCode, setConfirmationCode] = useState("");
   const [cfmSignUpState, setCfmSignUpState] = useState(false);
+  const [avatarLocalURL, setAvatarLocalURL] = useState("");
+  const inputRef = useRef("null");
   const router = useRouter();
 
   const signUp = async () => {
@@ -203,21 +207,44 @@ const SignUp = () => {
             spacing={{ base: 8 }}
             maxW={{ lg: "lg" }}
           >
-            <Stack spacing={4}>
-              <Heading
-                color={"gray.800"}
-                fontSize={{ base: "2xl", sm: "3xl", md: "4xl" }}
-                fontWeight="extrabold"
-              >
-                Join localish
-                <Text as={"span"} color="greenPrimary.600">
-                  !
-                </Text>
-              </Heading>
-            </Stack>
+            <Heading
+              color={"gray.800"}
+              fontSize={{ base: "2xl", sm: "3xl", md: "4xl" }}
+              fontWeight="extrabold"
+            >
+              Join localish
+              <Text as={"span"} color="greenPrimary.600">
+                !
+              </Text>
+            </Heading>
 
             <Box as={"form"} mt={10}>
               <Stack spacing={4}>
+                <Center
+                  position="relative"
+                  onClick={() => inputRef.current.click()}
+                  _hover={{ cursor: "pointer" }}
+                >
+                  <input
+                    type="file"
+                    style={{ display: "none" }}
+                    ref={inputRef}
+                    onChange={(e) => {
+                      setAvatarLocalURL(URL.createObjectURL(e.target.files[0]));
+                    }}
+                  />
+                  <Avatar src={avatarLocalURL} size={"lg"}></Avatar>
+
+                  <Icon
+                    as={BiImageAdd}
+                    w="8"
+                    h="8"
+                    color="greenPrimary.600"
+                    position="absolute"
+                    mt="4"
+                    ml="9"
+                  />
+                </Center>
                 <Input
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
