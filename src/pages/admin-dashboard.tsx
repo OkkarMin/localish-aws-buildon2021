@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 
 import OverviewChart from "../components/adminDashboard/overview-chart";
-import FutureEvents from "../components/adminDashboard/future-events";
+import FutureEvents from "../components/adminDashboard/upcoming-events";
 import PastEvents from "../components/adminDashboard/past-events";
 
 const AdminDashboard = () => {
