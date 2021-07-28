@@ -82,11 +82,16 @@ const DrawerMenu = ({ isOpen, onClose }) => {
         </DrawerHeader>
 
         <DrawerBody>
-          <DrawerMenuItem
-            itemName="Volunteer Profile"
-            icon={<CgProfile />}
-            href="/volunteer-profile"
-          />
+          {controlLevel == "admin" ? (
+            <DrawerMenuItem
+              itemName="Volunteer Profile"
+              icon={<CgProfile />}
+              href="/volunteer-profile"
+            />
+          ) : (
+            <div></div>
+          )}
+
           <DrawerMenuItem
             itemName="Education"
             icon={<VscMortarBoard />}
