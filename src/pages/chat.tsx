@@ -45,7 +45,7 @@ const Chat = () => {
   const [chatSessions, setChatSessions] = useState([
     {
       name: "Okkar Min",
-      isSelected: true,
+      isSelected: false,
     },
     {
       name: "Yeow Ying Sheng",
@@ -53,7 +53,7 @@ const Chat = () => {
     },
     {
       name: "Surabhi",
-      isSelected: false,
+      isSelected: true,
     },
     ...updatedMatchList,
   ]);
