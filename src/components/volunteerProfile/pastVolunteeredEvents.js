@@ -26,21 +26,22 @@ const eventData = [
     eventDescription:
       "Bolly dancing ncorporates Indian modern dance form with other genres, to make it a creative performance art that can also help to improve physcial fitness and health. Join PA Trainer Vanita now",
     role: "Event Manager",
-    feedback: "Did a good job managing the event. Very passionate.",
+    feedback:
+      "He managed a conflict between 2 residents very well. Both party made up in the end. Good conflict management.",
   },
   {
     eventName: "The Joy Of Freelancing In Your Silver Years",
     eventDescription:
       "Freelancing allows you to earn casual income, and it also helps you stay occupied and fulfils your learning aspirations while helping others. Watch this webinar to learn more and how to get started.",
     role: "Event Manager",
-    feedback: "Did a good job managing the event. Very passionate.",
+    feedback: "Very passionated about his work. Love his energy.",
   },
   {
     eventName: "Telecommuting- How Do You Stay Cybersafe",
     eventDescription:
       "Working from Home and Home-based Learning are our new daily norms, which brings us tension and challenges. With increased screen time comes issues such as safety, security and addiction. Learn tips from our speaker on how you could stay cybersafe while telecommuting",
     role: "Event Manager",
-    feedback: "Did a good job managing the event. Very passionate.",
+    feedback: "Goes extra mile to help people. Very good.",
   },
 ];
 
