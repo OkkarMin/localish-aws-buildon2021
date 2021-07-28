@@ -12,12 +12,15 @@ import {
   StatLabel,
   StatNumber,
   VStack,
+  Badge,
 } from "@chakra-ui/react";
 
 import UpcomingRegisteredEvents from "../components/volunteerProfile/upcomingRegisteredEvents";
 import PastVolunteeredEvents from "../components/volunteerProfile/pastVolunteeredEvents";
 import Goals from "../components/volunteerProfile/goals";
 import Leaderboard from "../components/volunteerProfile/leaderboard";
+import Badges from "../components/volunteerProfile/badges";
+import Feedback from "../components/volunteerProfile/feedback";
 
 const VolunteerProfilePage = () => {
   return (
@@ -52,6 +55,10 @@ const VolunteerProfilePage = () => {
       <PastVolunteeredEvents />
 
       <Leaderboard />
+
+      <Badges />
+
+      <Feedback />
     </VStack>
   );
 };
