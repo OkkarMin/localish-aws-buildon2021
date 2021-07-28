@@ -7,6 +7,7 @@ import {
   Button,
   chakra,
   Checkbox,
+  Flex,
   Link,
   SimpleGrid,
   Tabs,
@@ -18,7 +19,13 @@ import {
 
 const EducationCard = ({ title, content, link }) => {
   return (
-    <Box mx={{ lg: 8 }} shadow={{ lg: "lg" }} rounded={{ lg: "lg" }}>
+    <Box
+      m={10}
+      shadow={{ lg: "lg" }}
+      rounded={{ lg: "lg" }}
+      w="auto"
+      _hover={{ shadow: "outline" }}
+    >
       <Box p={6} maxW={{ base: "xl", lg: "5xl" }}>
         <chakra.h2 fontSize={{ base: "2xl", md: "3xl" }} fontWeight="bold">
           {title}
@@ -101,7 +108,7 @@ const Education = () => {
             </SimpleGrid>
 
             {/* List of Education cards */}
-            <SimpleGrid mt="4" columns={2}>
+            <Flex mt="4" direction="column">
               {feed.map((item: any, i: number) => {
                 // make a set out of all possible categories
                 for (const category of item.categories) {
@@ -136,7 +143,7 @@ const Education = () => {
                   <div></div>
                 );
               })}
-            </SimpleGrid>
+            </Flex>
           </TabPanel>
 
           {/* Cultural panel */}
