@@ -81,38 +81,38 @@ const Leaderboard = () => {
                   <Tr bgColor="greenPrimary.500">
                     <Td isNumeric>4</Td>
                     <Td>Ying Sheng</Td>
-                    <Td>130</Td>
+                    <Td>129</Td>
                   </Tr>
                   <Tr>
                     <Td isNumeric>5</Td>
                     <Td>Jia Jun</Td>
-                    <Td>128</Td>
+                    <Td>100</Td>
                   </Tr>
                   <Tr>
                     <Td isNumeric>6</Td>
                     <Td>Qian yu </Td>
-                    <Td>110</Td>
+                    <Td>95</Td>
                   </Tr>
 
                   <Tr>
                     <Td isNumeric>7</Td>
                     <Td>Beng yew</Td>
-                    <Td>105</Td>
+                    <Td>93</Td>
                   </Tr>
                   <Tr>
                     <Td isNumeric>8</Td>
                     <Td>Terence</Td>
-                    <Td>90</Td>
+                    <Td>82</Td>
                   </Tr>
                   <Tr>
                     <Td isNumeric>9</Td>
                     <Td>Guang Yuan</Td>
-                    <Td>92</Td>
+                    <Td>79</Td>
                   </Tr>
                   <Tr>
                     <Td isNumeric>10</Td>
                     <Td>Micheal</Td>
-                    <Td>80</Td>
+                    <Td>75</Td>
                   </Tr>
                 </Tbody>
               </Table>
