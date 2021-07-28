@@ -9,12 +9,13 @@ import {
 } from "@chakra-ui/react";
 
 import OverviewChart from "../components/adminDashboard/overview-chart";
+import FutureEvents from "../components/adminDashboard/future-events";
 
 const AdminDashboard = () => {
   return (
-    <VStack>
+    <VStack align="flex-start">
       {/* Stats */}
-      <SimpleGrid columns={3} spacing={20}>
+      <SimpleGrid columns={3} spacing={20} alignSelf="center">
         <Stat>
           <StatLabel fontSize="lg">Total Events for August/2022</StatLabel>
           <StatNumber fontSize="3xl">5</StatNumber>
@@ -40,6 +41,8 @@ const AdminDashboard = () => {
       </SimpleGrid>
       {/* Chart */}
       <OverviewChart />
+      {/* Future events */}
+      <FutureEvents />
     </VStack>
   );
 };
