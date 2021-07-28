@@ -202,9 +202,6 @@ export default function GridBlurredBackdrop() {
       setapplications(applicationsData);
     }
 
-    DataStore.observe(LocalBoard).subscribe(() => {
-      fetchApplications();
-    });
     fetchApplications();
   }, []);
   return (
@@ -306,9 +303,6 @@ const localBoard = () => {
       setapplications(applicationsData);
     }
 
-    DataStore.observe(LocalBoard).subscribe(() => {
-      fetchApplications();
-    });
     fetchApplications();
   }, []);
 

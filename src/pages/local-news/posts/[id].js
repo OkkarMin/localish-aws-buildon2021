@@ -188,9 +188,6 @@ const Details = () => {
       setcomments(commentsData);
     }
 
-    DataStore.observe(LocalNews).subscribe(() => {
-      fetchApplications();
-    });
     fetchApplications();
   }, []);
 

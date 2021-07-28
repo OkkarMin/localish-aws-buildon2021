@@ -84,12 +84,6 @@ const localNews = () => {
       setannoucements(annoucementsData);
     }
 
-    DataStore.observe(LocalNews).subscribe(() => {
-      fetchApplications();
-    });
-    DataStore.observe(LocalAnnoucement).subscribe(() => {
-      fetchApplications();
-    });
     fetchApplications();
   }, []);
 

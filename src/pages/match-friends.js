@@ -26,9 +26,6 @@ const MatchFriends = () => {
       setapplications(applicationsData);
     }
 
-    DataStore.observe(FriendsAmongUs).subscribe(() => {
-      fetchApplications();
-    });
     fetchApplications();
   }, []);
 
