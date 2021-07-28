@@ -9,6 +9,11 @@ import {
   Checkbox,
   Link,
   SimpleGrid,
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
 } from "@chakra-ui/react";
 
 const EducationCard = ({ title, content, link }) => {
@@ -50,77 +55,120 @@ const Education = () => {
 
   return (
     <Box mt="4" p="4">
-      {/* List of checkboxes */}
-      <SimpleGrid minChildWidth="180px">
-        <Checkbox
-          size="lg"
-          colorScheme="greenPrimary"
-          isChecked={checkedCategories.length == 0}
-          onChange={() => setCheckedCategories([])}
-        >
-          Show All
-        </Checkbox>
+      <Tabs isFitted variant="enclosed-colored" colorScheme="greenPrimary">
+        <TabList mb="1em">
+          <Tab fontSize="xl">Tech News</Tab>
+          <Tab fontSize="xl">Cultural</Tab>
+        </TabList>
 
-        {Array.from(categories)
-          .splice(30, categories.size)
-          .map((category, i) => (
-            <Checkbox
-              key={i}
-              size="lg"
-              colorScheme="greenPrimary"
-              isChecked={checkedCategories.includes(category)}
-              onChange={(e) => {
-                // checked, add it to checkedCategories
-                if (e.target.checked)
-                  setCheckedCategories([...checkedCategories, category]);
+        <TabPanels>
+          {/* Tech News panel */}
+          <TabPanel>
+            {/* List of checkboxes */}
+            <SimpleGrid minChildWidth="180px">
+              <Checkbox
+                size="lg"
+                colorScheme="greenPrimary"
+                isChecked={checkedCategories.length == 0}
+                onChange={() => setCheckedCategories([])}
+              >
+                Show All
+              </Checkbox>
 
-                // uncheck, remove it from checkedCategories
-                if (!e.target.checked)
-                  setCheckedCategories([
-                    ...checkedCategories.filter((c) => c != category),
-                  ]);
-              }}
-            >
-              {category}
-            </Checkbox>
-          ))}
-      </SimpleGrid>
+              {Array.from(categories)
+                .splice(30, categories.size)
+                .map((category, i) => (
+                  <Checkbox
+                    key={i}
+                    size="lg"
+                    colorScheme="greenPrimary"
+                    isChecked={checkedCategories.includes(category)}
+                    onChange={(e) => {
+                      // checked, add it to checkedCategories
+                      if (e.target.checked)
+                        setCheckedCategories([...checkedCategories, category]);
 
-      {/* List of Education cards */}
-      <SimpleGrid mt="4" columns={2}>
-        {feed.map((item: any, i: number) => {
-          // make a set out of all possible categories
-          for (const category of item.categories) {
-            if (categories.has(category)) {
-              continue;
-            }
-            setCategories(categories.add(category));
-          }
+                      // uncheck, remove it from checkedCategories
+                      if (!e.target.checked)
+                        setCheckedCategories([
+                          ...checkedCategories.filter((c) => c != category),
+                        ]);
+                    }}
+                  >
+                    {category}
+                  </Checkbox>
+                ))}
+            </SimpleGrid>
 
-          // render only if relevant categories are checked
-          if (checkedCategories.length == 0) {
-            return (
+            {/* List of Education cards */}
+            <SimpleGrid mt="4" columns={2}>
+              {feed.map((item: any, i: number) => {
+                // make a set out of all possible categories
+                for (const category of item.categories) {
+                  if (categories.has(category)) {
+                    continue;
+                  }
+                  setCategories(categories.add(category));
+                }
+
+                // render only if relevant categories are checked
+                if (checkedCategories.length == 0) {
+                  return (
+                    <EducationCard
+                      key={i}
+                      title={item.title}
+                      content={item.contentSnippet}
+                      link={item.link}
+                    />
+                  );
+                }
+
+                return checkedCategories.some((c) =>
+                  item.categories.includes(c)
+                ) ? (
+                  <EducationCard
+                    key={i}
+                    title={item.title}
+                    content={item.contentSnippet}
+                    link={item.link}
+                  />
+                ) : (
+                  <div></div>
+                );
+              })}
+            </SimpleGrid>
+          </TabPanel>
+
+          {/* Cultural panel */}
+          <TabPanel>
+            <SimpleGrid mt="4" columns={2}>
               <EducationCard
-                key={i}
-                title={item.title}
-                content={item.contentSnippet}
-                link={item.link}
+                title="Indian Culture"
+                content="Uncover how the modern and traditional merge in Littlie India, with our guide to the district’s essential experiences"
+                link="https://www.visitsingapore.com/walking-tour/culture/in-the-neighbourhood-little-india/#culture-heritage"
               />
-            );
-          }
 
-          return checkedCategories.some((c) => item.categories.includes(c)) ? (
-            <EducationCard
-              key={i}
-              title={item.title}
-              content={item.contentSnippet}
-              link={item.link}
-            />
-          ) : (
-            <div></div>
-          );
-        })}
-      </SimpleGrid>
+              <EducationCard
+                title="Malay Culture"
+                content="The Malay Heritage Centre is a must-visit if you’re keen on learning about the rich heritage and culture of Singapore’s Malay community"
+                link="https://www.visitsingapore.com/see-do-singapore/culture-heritage/heritage-discovery/malay-heritage-centre/#culture-heritage"
+              />
+
+              <EducationCard
+                title="Chinese Culture"
+                content="Experience the pulse of Singapore’s history with interactive exhibits and immersive experiences at the Chinatown Heritage Centre"
+                link="https://www.visitsingapore.com/see-do-singapore/culture-heritage/heritage-discovery/chinatown-heritage-centre/"
+              />
+
+              <EducationCard
+                title="Eurasian Culture"
+                content="This engaging heritage attraction takes you through the history and culture of the Eurasian community in Singapore"
+                link="https://www.visitsingapore.com/see-do-singapore/culture-heritage/heritage-discovery/eurasian-heritage-centre/#culture-heritage"
+              />
+            </SimpleGrid>
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
     </Box>
   );
 };
