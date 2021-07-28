@@ -10,10 +10,11 @@ import {
 
 import OverviewChart from "../components/adminDashboard/overview-chart";
 import FutureEvents from "../components/adminDashboard/future-events";
+import PastEvents from "../components/adminDashboard/past-events";
 
 const AdminDashboard = () => {
   return (
-    <VStack align="flex-start">
+    <VStack align="flex-start" spacing="0">
       {/* Stats */}
       <SimpleGrid columns={3} spacing={20} alignSelf="center">
         <Stat>
@@ -39,10 +40,12 @@ const AdminDashboard = () => {
           </StatHelpText>
         </Stat>
       </SimpleGrid>
-      {/* Chart */}
-      <OverviewChart />
-      {/* Future events */}
+
       <FutureEvents />
+
+      <PastEvents />
+
+      <OverviewChart />
     </VStack>
   );
 };

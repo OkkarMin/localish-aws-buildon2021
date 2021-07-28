@@ -1,3 +1,5 @@
+import { Box, Center, Heading } from "@chakra-ui/react";
+
 import {
   ResponsiveContainer,
   BarChart,
@@ -19,18 +21,23 @@ const data = [
 
 const OverviewChart = () => {
   return (
-    <ResponsiveContainer width="100%" aspect={4.0 / 2.0}>
-      <BarChart data={data}>
-        <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
-        <XAxis dataKey="event" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Bar dataKey="male" fill="#47E6A7" />
-        <Bar dataKey="female" fill="#E6477B" />
-        <Bar dataKey="others" fill="#0987A0" />
-      </BarChart>
-    </ResponsiveContainer>
+    <Box w="full" bg="gray.100" p="4">
+      <Heading fontSize="xl" mb="4">
+        Overview Chart
+      </Heading>
+      <ResponsiveContainer width="100%" aspect={4.0 / 2.0}>
+        <BarChart data={data}>
+          <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
+          <XAxis dataKey="event" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="male" fill="#47E6A7" />
+          <Bar dataKey="female" fill="#E6477B" />
+          <Bar dataKey="others" fill="#0987A0" />
+        </BarChart>
+      </ResponsiveContainer>
+    </Box>
   );
 };
 
