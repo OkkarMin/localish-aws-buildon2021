@@ -17,6 +17,7 @@ import {
   SimpleGrid,
   Button,
   InputGroup,
+  Avatar,
 Icon,
   Flex,
   useToast,
@@ -26,7 +27,7 @@ import { Radio, RadioGroup } from "@chakra-ui/react"
 import { Formik, Form, Field } from "formik";
 import { DataStore } from '@aws-amplify/datastore';
 import { LocalBoard } from '../../models';
-
+import { Storage } from "aws-amplify";
 import { PhoneIcon, ExternalLinkIcon, ChatIcon } from '@chakra-ui/icons'
 
 import { ArrowBackIcon } from "@chakra-ui/icons";
@@ -37,7 +38,35 @@ import { AiFillAudio } from "react-icons/ai";
 
 const LocalBoardNew = () => {
   const toast = useToast();
+  const [file, setFile] = useState({
+    fileUrl: "",
+    targetFile: {},
+  });
 
+  const handleSetFile = (e) => {
+    const targetFile = e.target.files[0];
+    const fileUrl = URL.createObjectURL(targetFile);
+    // console.log(targetFile);
+    setFile({
+      fileUrl,
+      targetFile,
+    });
+  };
+
+  const [file2, setFile2] = useState({
+    fileUrl2: "",
+    targetFile2: {},
+  });
+
+  const handleSetFile2= (e) => {
+    const targetFile2 = e.target.files[0];
+    const fileUrl2 = URL.createObjectURL(targetFile2);
+    // console.log(targetFile);
+    setFile2({
+      fileUrl2,
+      targetFile2,
+    });
+  };
   const setFormDetails = async (values) => {
     let user_name = values.name;
     let email = values.email;
@@ -47,11 +76,12 @@ const LocalBoardNew = () => {
     let time = values.time;
     let date_posted = values.date_posted;
     let tip = values.tip;
-    let user_image = values.user_image;
+   
     let content = values.content;
     let details = values.details;
     let theme = "";
 
+    
     if (value == "Offer"){
       theme = "green"
     }
@@ -62,6 +92,22 @@ const LocalBoardNew = () => {
       theme = "pink"
     }
     {console.log(value)}
+    const saltedAvatarKey = Math.random() + file.targetFile.name;
+
+    const saltedAvatarKey2 = Math.random() + file2.targetFile2.name;
+
+
+    try {
+      const result = await Storage.put(saltedAvatarKey, file.targetFile, {
+        level: "public",
+        contentType: file.targetFile.type,
+      });
+      console.log(result);
+
+      const result2 = await Storage.put(saltedAvatarKey2, file2.targetFile2, {
+        level: "public",
+        contentType: file2.targetFile2.type,
+      });
 
     await DataStore.save(
       
@@ -75,11 +121,18 @@ const LocalBoardNew = () => {
         "date_posted" : date_posted,
         "tip" : Number.parseFloat(tip),
         
-        "user_image" : user_image,
+        "user_image" : result.key,
+        "image" : result2.key,
+
         "content" : content,
         "phone":phone
           })
         );
+
+        console.log(result);
+      } catch (error) {
+        console.log(error);
+      }
     toast({
       title: "Form submitted",
       description:
@@ -206,6 +259,8 @@ const LocalBoardNew = () => {
 
               <Box  backgroundColor = "pink" rounded={'xl'} width = "640px"  
               padding= '20px' mb = "20px">
+
+        
         <Formik
           initialValues={{
             name: "",
@@ -278,6 +333,15 @@ const LocalBoardNew = () => {
                   </FormControl>
                 )}
               </Field>
+
+              <HStack mt={3}>
+                {file.fileUrl ? (
+                  <Avatar size="xl" src={file.fileUrl} />
+                ) : (
+                  <Avatar size="xl" />
+                )}
+                <Input type="file" onChange={handleSetFile} />
+              </HStack>
               <Field name="email" validate={validateEmail}>
                 {({ field, form }) => (
                   <FormControl
@@ -386,7 +450,8 @@ const LocalBoardNew = () => {
                   </FormControl>
                 )}
               </Field>
-              <Field name="date_posted" validate={validateDate}>
+              <Input mt={3} type="file" onChange={handleSetFile2} />
+              {/* <Field name="date_posted" validate={validateDate}>
                 {({ field, form }) => (
                   <FormControl
                     isInvalid={form.errors.date_posted && form.touched.date_posted}
@@ -398,8 +463,8 @@ const LocalBoardNew = () => {
                     <FormErrorMessage>{form.errors.date_posted}</FormErrorMessage>
                   </FormControl>
                 )}
-              </Field>
-              <Field name="user_image" validate={validateImage}>
+              </Field> */}
+              {/* <Field name="user_image" validate={validateImage}>
                 {({ field, form }) => (
                   <FormControl
                     isInvalid={form.errors.user_image && form.touched.user_image}
@@ -411,7 +476,7 @@ const LocalBoardNew = () => {
                     <FormErrorMessage>{form.errors.user_image}</FormErrorMessage>
                   </FormControl>
                 )}
-              </Field>
+              </Field> */}
               <Box align = "right"> 
               <Button
                 mt={4}

@@ -25,6 +25,7 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
+  
 } from "@chakra-ui/react";
 
 import { TriangleUpIcon, TriangleDownIcon, ChatIcon } from "@chakra-ui/icons";
@@ -37,6 +38,7 @@ import localnews from "../data/localnews.json";
 import { DataStore } from "@aws-amplify/datastore";
 import { LocalAnnoucement, LocalNews } from "../models";
 import userControlLevel from "../hooks/userControlLevel";
+import { Storage } from "aws-amplify";
 
 const BlogTags = (props) => {
   return (
@@ -180,6 +182,7 @@ const localNews = () => {
                     </Box>
                     <SimpleGrid>
                       {applications.map((newsArticle, i) => {
+            
                         if (c == newsArticle.topic) {
                           return (
                             <Card
@@ -225,13 +228,20 @@ const PublicBoardPost = ({ title, link, content_full, image, date }) => {
   const btnRef = React.useRef();
   const [scrollBehavior, setScrollBehavior] = React.useState("inside");
   console.log(image);
+  const [avatar, setAvatar] = useState("");
+
+
+  useEffect(async () => {
+    const data2 = await Storage.get(image);
+    setAvatar(data2);
+  }, []);
   return (
     <Box>
       <Box borderRadius="lg" overflow="hidden">
         <Box mt={3} ref={btnRef} onClick={onOpen}>
           <Image
             // transform="scale(1.0)"
-            src={image}
+            src={avatar}
             alt="some text"
             width="100%"
             objectFit="contain"
@@ -256,7 +266,7 @@ const PublicBoardPost = ({ title, link, content_full, image, date }) => {
             <HStack>
               <Image
                 // transform="scale(1.0)"
-                src={image}
+                src={avatar}
                 alt="some text"
                 width="50%"
                 objectFit="contain"
@@ -271,66 +281,12 @@ const PublicBoardPost = ({ title, link, content_full, image, date }) => {
             </HStack>
           </ModalBody>
           <ModalFooter>
-            <Button colorScheme="blue">Register</Button>
+          <ChakraLink isExternal href = {link}> <Button colorScheme="blue">  Register</Button>  </ChakraLink>
           </ModalFooter>
         </ModalContent>
       </Modal>
     </Box>
-    // <Box >
-    //     <Box borderRadius="lg" overflow="hidden">
-    //         <Box mt={3} ref={btnRef} onClick={onOpen}>
-    //             <Image
-    //                 // transform="scale(1.0)"
-    //                 src="https://scontent.fsin10-1.fna.fbcdn.net/v/t1.6435-9/212339907_361385365355288_3715464866889335730_n.jpg?_nc_cat=101&ccb=1-3&_nc_sid=8bfeb9&_nc_ohc=2ND1ZlndrVgAX-L7XwU&_nc_ht=scontent.fsin10-1.fna&oh=380f7bbcb689d56bff0cbf8665c61352&oe=61208904"
-    //                 alt="some text"
-    //                 width="100%"
-    //                 objectFit="contain"
-    //                 transition="0.3s ease-in-out"
-    //                 _hover={{
-    //                     transform: 'scale(1.05)',
-    //                 }}
-    //                 />
-    //         </Box>
-    //     </Box>
-    //     <Modal
-    //         onClose={onClose}
-    //         finalFocusRef={btnRef}
-    //         isOpen={isOpen}
-    //         scrollBehavior={scrollBehavior}
-    //     >
-    //         <ModalOverlay />
-    //         <ModalContent>
-    //         <ModalHeader>Modal Title</ModalHeader>
-    //         <ModalCloseButton />
-    //         <ModalBody>
-    //             <HStack>
-
-    //             <Image
-    //             // transform="scale(1.0)"
-    //             src="https://scontent.fsin10-1.fna.fbcdn.net/v/t1.6435-9/212339907_361385365355288_3715464866889335730_n.jpg?_nc_cat=101&ccb=1-3&_nc_sid=8bfeb9&_nc_ohc=2ND1ZlndrVgAX-L7XwU&_nc_ht=scontent.fsin10-1.fna&oh=380f7bbcb689d56bff0cbf8665c61352&oe=61208904"
-    //             alt="some text"
-    //             width="50%"
-    //             objectFit="contain"
-    //             transition="0.3s ease-in-out"
-    //             _hover={{
-    //                 transform: 'scale(1.05)',
-    //             }}
-    //             />
-    //             <Text as="p" fontSize="md" marginTop="2">
-    //             Lorem Ipsum is simply dummy text of the printing and typesetting
-    //             industry. Lorem Ipsum has been the industry's standard dummy text
-    //             ever since the 1500s, when an unknown printer took a galley of
-    //             type and scrambled it to make a type specimen book.
-    //             </Text>
-    //             </HStack>
-
-    //         </ModalBody>
-    //         <ModalFooter>
-    //             <Button colorScheme="blue">Register</Button>
-    //         </ModalFooter>
-    //         </ModalContent>
-    //     </Modal>
-    // </Box>
+    
   );
 };
 
@@ -357,10 +313,20 @@ const Card = ({
 
   const [dislikeCount, setDislikeCount] = useState(0);
   const [likeCount, setLikeCount] = useState(0);
+  const [avatar, setAvatar] = useState("");
+  const [avatar2, setAvatar2] = useState("");
 
+
+useEffect(async () => {
+  const data = await Storage.get(user_image);
+  setAvatar(data);
+
+  const data2 = await Storage.get(image);
+  setAvatar2(data2);
+}, []);
   const likeCounter = (increment) => {
     console.log(increment);
-
+    
     if (liked == false && disliked == false) {
       setLikeCount(likeCount + increment);
       setLiked(true);
@@ -464,7 +430,7 @@ const Card = ({
                     rounded="full"
                     fit="cover"
                     display={{ base: "none", sm: "block" }}
-                    src={user_image}
+                    src={avatar}
                     alt="avatar"
                   />
                   <chakra.p
@@ -483,7 +449,7 @@ const Card = ({
                 </chakra.p> */}
             </Box>
 
-            <Image h="full" w={40} fit="cover" src={image} alt={image_alt} />
+            <Image h="full" w={40} fit="cover" src={avatar2} alt={image_alt} />
           </HStack>
 
           {/* <Flex justifyContent="space-between" alignItems="center" > */}

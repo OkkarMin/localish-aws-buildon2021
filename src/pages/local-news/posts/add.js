@@ -22,6 +22,8 @@ import {
   useToast,
   Link as ChakraLink,
 } from "@chakra-ui/react";
+import { Storage } from "aws-amplify";
+
 import { Radio, RadioGroup } from "@chakra-ui/react"
 import { Formik, Form, Field } from "formik";
 import { DataStore } from '@aws-amplify/datastore';
@@ -36,25 +38,48 @@ import Link from "next/link";
 
 const LocalBoardNew = () => {
   const toast = useToast();
+  const [file, setFile] = useState({
+    fileUrl: "",
+    targetFile: {},
+  });
 
+  const handleSetFile = (e) => {
+    const targetFile = e.target.files[0];
+    const fileUrl = URL.createObjectURL(targetFile);
+    // console.log(targetFile);
+    setFile({
+      fileUrl,
+      targetFile,
+    });
+  };
   const setFormDetails = async (values) => {
     let date_posted = values.date_posted;
     let content_full = values.content_full;
-    let image = values.image;
+    // let image = values.image;
     let link = values.link;
     let title = values.title;
 
+    const saltedAvatarKey = Math.random() + file.targetFile.name;
     
-
+    try {
+      const result = await Storage.put(saltedAvatarKey, file.targetFile, {
+        level: "public",
+        contentType: file.targetFile.type,
+      });
+      console.log(result);
     await DataStore.save(
       new LocalAnnoucement({
       "date": date_posted,
       "content_full": content_full,
-      "image":image,
+      "image":result.key,
       "link":link,
       "title":title
     })
   );
+  console.log(result);
+} catch (error) {
+  console.log(error);
+}
     toast({
       title: "Form submitted",
       description:
@@ -114,7 +139,7 @@ const LocalBoardNew = () => {
             link: "",
             date: "",
             content_full: "",
-            image: "",
+            // image: "",
             title:""
           }}
           onSubmit={(values, { resetForm }) => {
@@ -181,14 +206,15 @@ const LocalBoardNew = () => {
                     <FormLabel marginTop="2" htmlFor="link">
                       Registration Link
                     </FormLabel>
-                    <Textarea
-                      {...field}
-                      id="link"
-                    />
+                    <Input {...field} id="link" placeholder="link" />
+
+                    
                   </FormControl>
                 )}
               </Field>
-              <Field name="image" validate={validateImage}>
+              <Input type="file" onChange={handleSetFile} />
+
+              {/* <Field name="image" validate={validateImage}>
                 {({ field, form }) => (
                   <FormControl
                     isInvalid={form.errors.image && form.touched.image}
@@ -200,14 +226,14 @@ const LocalBoardNew = () => {
                     <FormErrorMessage>{form.errors.image}</FormErrorMessage>
                   </FormControl>
                 )}
-              </Field>
+              </Field> */}
               <Field name="date_posted" validate={validateDate}>
                 {({ field, form }) => (
                   <FormControl
                     isInvalid={form.errors.date_posted && form.touched.date_posted}
                   >
                     <FormLabel marginTop="2" htmlFor="date_posted">
-                      Date Posted
+                      Event Date
                     </FormLabel>
                     <Input type="date" {...field} id="date_posted" placeholder="date posted" />
                     <FormErrorMessage>{form.errors.date_posted}</FormErrorMessage>

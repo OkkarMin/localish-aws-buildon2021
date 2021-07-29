@@ -12,6 +12,7 @@ import {
   Textarea,
   HStack,
   VStack,
+  Avatar,
   InputLeftElement,
   useColorModeValue,
   SimpleGrid,
@@ -26,6 +27,7 @@ import { Radio, RadioGroup } from "@chakra-ui/react"
 import { Formik, Form, Field } from "formik";
 import { DataStore } from '@aws-amplify/datastore';
 import { LocalNews } from '../../../models';
+import { Storage } from "aws-amplify";
 
 import { PhoneIcon, ExternalLinkIcon, ChatIcon } from '@chakra-ui/icons'
 
@@ -34,13 +36,41 @@ const { useState } = React
 import Link from "next/link";
 
 
-const LocalBoardNew = () => {
+const LocalNewsNew = () => {
   const toast = useToast();
+  const [file, setFile] = useState({
+    fileUrl: "",
+    targetFile: {},
+  });
 
+  const handleSetFile = (e) => {
+    const targetFile = e.target.files[0];
+    const fileUrl = URL.createObjectURL(targetFile);
+    // console.log(targetFile);
+    setFile({
+      fileUrl,
+      targetFile,
+    });
+  };
+
+  const [file2, setFile2] = useState({
+    fileUrl2: "",
+    targetFile2: {},
+  });
+
+  const handleSetFile2= (e) => {
+    const targetFile2 = e.target.files[0];
+    const fileUrl2 = URL.createObjectURL(targetFile2);
+    // console.log(targetFile);
+    setFile2({
+      fileUrl2,
+      targetFile2,
+    });
+  };
   const setFormDetails = async (values) => {
     let user_name = values.name;
     let date_posted = values.date_posted;
-    let user_image = values.user_image;
+    // let user_image = values.user_image;
     let content_full = values.content_full;
     let headline = values.headline;
     let image_alt = "";
@@ -58,17 +88,33 @@ const LocalBoardNew = () => {
       theme = "blue"
     }
     {console.log(value)}
+    const saltedAvatarKey = Math.random() + file.targetFile.name;
 
+    const saltedAvatarKey2 = Math.random() + file2.targetFile2.name;
+
+
+    try {
+      const result = await Storage.put(saltedAvatarKey, file.targetFile, {
+        level: "public",
+        contentType: file.targetFile.type,
+      });
+      console.log(result);
+
+      const result2 = await Storage.put(saltedAvatarKey2, file2.targetFile2, {
+        level: "public",
+        contentType: file2.targetFile2.type,
+      });
     await DataStore.save(
       new LocalNews({
       "title": Math.random().toString(),
       "date": date_posted,
-      "user_image": user_image,
+      
       "user_name": user_name,
       "content": "",
       "content_full": content_full,
       "topic": value,
-      "image":image,
+      "user_image" : result.key,
+        "image" : result2.key,
       "image_alt": image_alt,
       "likes": 0,
       "dislikes": 0,
@@ -77,6 +123,10 @@ const LocalBoardNew = () => {
       "read_more": ""
     })
   );
+  console.log(result);
+      } catch (error) {
+        console.log(error);
+      }
     toast({
       title: "Form submitted",
       description:
@@ -210,6 +260,14 @@ const LocalBoardNew = () => {
                   </FormControl>
                 )}
               </Field>
+              <HStack mt={3}>
+                {file.fileUrl ? (
+                  <Avatar size="xl" src={file.fileUrl} />
+                ) : (
+                  <Avatar size="xl" />
+                )}
+                <Input type="file" onChange={handleSetFile} />
+              </HStack>
               
               <Field name="headline" validate={validateHeadline}>
                 {({ field, form }) => (
@@ -239,7 +297,9 @@ const LocalBoardNew = () => {
                   </FormControl>
                 )}
               </Field>
-              <Field name="image" validate={validateImage}>
+              <Input mt={3} type="file" onChange={handleSetFile2} />
+
+              {/* <Field name="image" validate={validateImage}>
                 {({ field, form }) => (
                   <FormControl
                     isInvalid={form.errors.image && form.touched.image}
@@ -251,7 +311,7 @@ const LocalBoardNew = () => {
                     <FormErrorMessage>{form.errors.image}</FormErrorMessage>
                   </FormControl>
                 )}
-              </Field>
+              </Field> */}
               <Field name="date_posted" validate={validateDate}>
                 {({ field, form }) => (
                   <FormControl
@@ -265,7 +325,7 @@ const LocalBoardNew = () => {
                   </FormControl>
                 )}
               </Field>
-              <Field name="user_image" validate={validateImage}>
+              {/* <Field name="user_image" validate={validateImage}>
                 {({ field, form }) => (
                   <FormControl
                     isInvalid={form.errors.user_image && form.touched.user_image}
@@ -277,7 +337,7 @@ const LocalBoardNew = () => {
                     <FormErrorMessage>{form.errors.user_image}</FormErrorMessage>
                   </FormControl>
                 )}
-              </Field>
+              </Field> */}
               <Box align = "right"> 
               <Button
                 mt={4}
@@ -299,4 +359,4 @@ const LocalBoardNew = () => {
     </Box>
   );
 };
-export default LocalBoardNew;
+export default LocalNewsNew;

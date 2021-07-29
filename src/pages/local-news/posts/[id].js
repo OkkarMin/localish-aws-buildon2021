@@ -18,6 +18,7 @@ import {
 import { useRouter } from "next/router";
 
 import { TriangleUpIcon, ExternalLinkIcon, ChatIcon } from "@chakra-ui/icons";
+import { Storage } from "aws-amplify";
 
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import { DataStore } from "@aws-amplify/datastore";
@@ -172,6 +173,9 @@ const Details = () => {
   const [applications, setapplications] = useState([]);
   const [comments, setcomments] = useState([]);
   const router = useRouter();
+
+  const [avatar, setAvatar] = useState("");
+  const [avatar2, setAvatar2] = useState("");
   useEffect(async () => {
     async function fetchApplications() {
       const { id } = router.query;
@@ -186,6 +190,12 @@ const Details = () => {
         (c) => c.LocalNews.id === applicationsData[0].id
       );
       setcomments(commentsData);
+
+      const data = await Storage.get(applicationsData[0].user_image);
+    setAvatar(data);
+
+    const data2 = await Storage.get(applicationsData[0].image);
+    setAvatar2(data2);
     }
 
     fetchApplications();
@@ -251,7 +261,7 @@ const Details = () => {
                   rounded="full"
                   fit="cover"
                   display={{ base: "none", sm: "block" }}
-                  src={applications.user_image}
+                  src={avatar}
                   alt="avatar"
                 />
                 <chakra.p
@@ -269,7 +279,7 @@ const Details = () => {
                 w="fit-content"
                 fit="cover"
                 mt={2}
-                src={applications.image}
+                src={avatar2}
                 alt={applications.image_alt}
               />
             </Flex>
