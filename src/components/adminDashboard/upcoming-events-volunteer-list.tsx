@@ -36,8 +36,6 @@ const UpcomingEventsVolunteerList = ({
       </HStack>
 
       {fakeVolunteer.map((volunteer, i) => {
-        console.log(volunteer);
-
         return (
           <Box flex="1" textAlign="left">
             <HStack>
