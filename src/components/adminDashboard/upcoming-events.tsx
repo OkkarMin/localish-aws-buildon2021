@@ -1,14 +1,11 @@
 import {
   Box,
   Button,
-  Center,
   Text,
   Heading,
   Flex,
   HStack,
   VStack,
-  Stack,
-  SimpleGrid,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -19,14 +16,15 @@ import {
   useDisclosure,
   Spacer,
 } from "@chakra-ui/react";
+import UpcomingEventsVolunteerList from "./upcoming-events-volunteer-list";
 
 const eventData = [
   {
     eventName: "National Steps Challenge",
     eventDescription:
       "Jio your kakis to join National Steps Challenge™️ Season 5: Bonus Round! Earn up to $20 worth of eVouchers simply by clocking steps and Moderate to Vigorous Physical Activity (MVPA) minutes",
-    volunteersRequired: 5,
-    volunteersConfirmed: 5,
+    volunteersRequired: 3,
+    volunteersConfirmed: 3,
   },
   {
     eventName: "Ondeh Ondeh by PA Trainer Hajjah Roziah  ",
@@ -50,7 +48,7 @@ const EventCard = ({
   volunteersRequired,
   volunteersConfirmed,
 }) => {
-  //   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box
       p="4"
@@ -58,7 +56,7 @@ const EventCard = ({
       borderRadius="md"
       width="md"
       bg="white"
-      //   onClick={onOpen}
+      onClick={onOpen}
       _hover={{ cursor: "pointer", shadow: "outline" }}
     >
       <VStack align="flex-start" spacing="4">
@@ -86,21 +84,25 @@ const EventCard = ({
         </Flex>
       </VStack>
 
-      {/* <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={onClose} size="3xl">
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
+          <ModalHeader>Volunteers for {eventName}</ModalHeader>
           <ModalCloseButton />
-          <ModalBody></ModalBody>
+          <ModalBody>
+            <UpcomingEventsVolunteerList
+              volunteersRequired={volunteersRequired}
+              volunteersConfirmed={volunteersConfirmed}
+            />
+          </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
+            <Button colorScheme="greenPrimary" mr={3} onClick={onClose}>
               Close
             </Button>
-            <Button variant="ghost">Secondary Action</Button>
           </ModalFooter>
         </ModalContent>
-      </Modal> */}
+      </Modal>
     </Box>
   );
 };
@@ -113,8 +115,9 @@ const FutureEvents = () => {
       </Heading>
 
       <HStack justify="space-between">
-        {eventData.map((event) => (
+        {eventData.map((event, i) => (
           <EventCard
+            key={i}
             eventName={event.eventName}
             eventDescription={event.eventDescription}
             volunteersRequired={event.volunteersRequired}

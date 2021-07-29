@@ -1,14 +1,11 @@
 import {
   Box,
   Button,
-  Center,
   Text,
   Heading,
   Flex,
   HStack,
   VStack,
-  Stack,
-  SimpleGrid,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -117,8 +114,9 @@ const PastEvents = () => {
       </Heading>
 
       <HStack justify="space-between">
-        {eventData.map((event) => (
+        {eventData.map((event, i) => (
           <EventCard
+            key={i}
             eventName={event.eventName}
             eventDescription={event.eventDescription}
             volunteersRequired={event.volunteersRequired}
