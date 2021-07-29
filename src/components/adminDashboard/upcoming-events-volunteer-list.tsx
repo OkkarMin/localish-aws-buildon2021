@@ -1,12 +1,22 @@
 import { useEffect, useState } from "react";
 
-import { Box, Avatar, Text, Heading, HStack, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Avatar,
+  Text,
+  Heading,
+  HStack,
+  VStack,
+  Spinner,
+  Center,
+} from "@chakra-ui/react";
 
 const UpcomingEventsVolunteerList = ({
   volunteersRequired,
   volunteersConfirmed,
 }) => {
   const [fakeVolunteer, setFakeVolunteer] = useState([]);
+  const [loading, setLoading] = useState(volunteersConfirmed > 0);
 
   useEffect(() => {
     volunteersConfirmed != 0 &&
@@ -14,6 +24,7 @@ const UpcomingEventsVolunteerList = ({
         .then((response) => response.json())
         .then((fakeData) => {
           setFakeVolunteer(fakeData.results);
+          setLoading(false);
         });
   }, []);
 
@@ -34,6 +45,14 @@ const UpcomingEventsVolunteerList = ({
         </Heading>
         <Text fontSize="md">Volunteers confirmed</Text>
       </HStack>
+
+      {loading && (
+        <Box width="full">
+          <Center>
+            <Spinner />
+          </Center>
+        </Box>
+      )}
 
       {fakeVolunteer.map((volunteer, i) => {
         return (
