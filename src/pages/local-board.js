@@ -277,7 +277,7 @@ const categories = [["Offer", "green"], ["Giveaway", "orange"], ["Request", "pin
                     border="1px"
                     borderColor={c[1]}
                     rounded={"xl"}
-                    width ="min-content"
+                    width ="1200px"
                     // mb="50px"
                     // ml="50px"
                   >
@@ -293,7 +293,7 @@ const categories = [["Offer", "green"], ["Giveaway", "orange"], ["Request", "pin
                     </Box>
         <SimpleGrid
           spacing={'20'}
-          columns="4" minChildwidth="1200px"
+          columns="3" minChildwidth="1200px"
           mx={'auto'}>
         
           {applications.map((localPost, i)=> {
