@@ -84,7 +84,7 @@ type LocalBoard @model @auth(rules: [{allow: public}]) {
   category: String
   location: Int
   time: AWSDate
-  date_posted: AWSDate
+  image: String
   content: String
   user_name: String
   user_image: String

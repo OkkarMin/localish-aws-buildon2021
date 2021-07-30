@@ -4,42 +4,6 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 
 
-type VolunteerProfileMetaData = {
-  readOnlyFields: 'createdAt' | 'updatedAt';
-}
-
-type AccessControlMetaData = {
-  readOnlyFields: 'createdAt' | 'updatedAt';
-}
-
-type LocalAnnoucementMetaData = {
-  readOnlyFields: 'createdAt' | 'updatedAt';
-}
-
-type LocalNewsCommentMetaData = {
-  readOnlyFields: 'createdAt' | 'updatedAt';
-}
-
-type LocalNewsMetaData = {
-  readOnlyFields: 'createdAt' | 'updatedAt';
-}
-
-type VolunteerForm2MetaData = {
-  readOnlyFields: 'createdAt' | 'updatedAt';
-}
-
-type LocalBoardMetaData = {
-  readOnlyFields: 'createdAt' | 'updatedAt';
-}
-
-type FriendsAmongUsMetaData = {
-  readOnlyFields: 'createdAt' | 'updatedAt';
-}
-
-type VolunteerFormMetaData = {
-  readOnlyFields: 'createdAt' | 'updatedAt';
-}
-
 export declare class VolunteerProfile {
   readonly id: string;
   readonly name?: string;
@@ -53,8 +17,8 @@ export declare class VolunteerProfile {
   readonly phoneNumber?: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
-  constructor(init: ModelInit<VolunteerProfile, VolunteerProfileMetaData>);
-  static copyOf(source: VolunteerProfile, mutator: (draft: MutableModel<VolunteerProfile, VolunteerProfileMetaData>) => MutableModel<VolunteerProfile, VolunteerProfileMetaData> | void): VolunteerProfile;
+  constructor(init: ModelInit<VolunteerProfile>);
+  static copyOf(source: VolunteerProfile, mutator: (draft: MutableModel<VolunteerProfile>) => MutableModel<VolunteerProfile> | void): VolunteerProfile;
 }
 
 export declare class AccessControl {
@@ -63,8 +27,8 @@ export declare class AccessControl {
   readonly accessLevel?: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
-  constructor(init: ModelInit<AccessControl, AccessControlMetaData>);
-  static copyOf(source: AccessControl, mutator: (draft: MutableModel<AccessControl, AccessControlMetaData>) => MutableModel<AccessControl, AccessControlMetaData> | void): AccessControl;
+  constructor(init: ModelInit<AccessControl>);
+  static copyOf(source: AccessControl, mutator: (draft: MutableModel<AccessControl>) => MutableModel<AccessControl> | void): AccessControl;
 }
 
 export declare class LocalAnnoucement {
@@ -76,8 +40,8 @@ export declare class LocalAnnoucement {
   readonly title?: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
-  constructor(init: ModelInit<LocalAnnoucement, LocalAnnoucementMetaData>);
-  static copyOf(source: LocalAnnoucement, mutator: (draft: MutableModel<LocalAnnoucement, LocalAnnoucementMetaData>) => MutableModel<LocalAnnoucement, LocalAnnoucementMetaData> | void): LocalAnnoucement;
+  constructor(init: ModelInit<LocalAnnoucement>);
+  static copyOf(source: LocalAnnoucement, mutator: (draft: MutableModel<LocalAnnoucement>) => MutableModel<LocalAnnoucement> | void): LocalAnnoucement;
 }
 
 export declare class LocalNewsComment {
@@ -89,8 +53,8 @@ export declare class LocalNewsComment {
   readonly LocalNews?: LocalNews;
   readonly createdAt?: string;
   readonly updatedAt?: string;
-  constructor(init: ModelInit<LocalNewsComment, LocalNewsCommentMetaData>);
-  static copyOf(source: LocalNewsComment, mutator: (draft: MutableModel<LocalNewsComment, LocalNewsCommentMetaData>) => MutableModel<LocalNewsComment, LocalNewsCommentMetaData> | void): LocalNewsComment;
+  constructor(init: ModelInit<LocalNewsComment>);
+  static copyOf(source: LocalNewsComment, mutator: (draft: MutableModel<LocalNewsComment>) => MutableModel<LocalNewsComment> | void): LocalNewsComment;
 }
 
 export declare class LocalNews {
@@ -111,8 +75,8 @@ export declare class LocalNews {
   readonly read_more?: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
-  constructor(init: ModelInit<LocalNews, LocalNewsMetaData>);
-  static copyOf(source: LocalNews, mutator: (draft: MutableModel<LocalNews, LocalNewsMetaData>) => MutableModel<LocalNews, LocalNewsMetaData> | void): LocalNews;
+  constructor(init: ModelInit<LocalNews>);
+  static copyOf(source: LocalNews, mutator: (draft: MutableModel<LocalNews>) => MutableModel<LocalNews> | void): LocalNews;
 }
 
 export declare class VolunteerForm2 {
@@ -141,8 +105,8 @@ export declare class VolunteerForm2 {
   readonly postalCode?: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
-  constructor(init: ModelInit<VolunteerForm2, VolunteerForm2MetaData>);
-  static copyOf(source: VolunteerForm2, mutator: (draft: MutableModel<VolunteerForm2, VolunteerForm2MetaData>) => MutableModel<VolunteerForm2, VolunteerForm2MetaData> | void): VolunteerForm2;
+  constructor(init: ModelInit<VolunteerForm2>);
+  static copyOf(source: VolunteerForm2, mutator: (draft: MutableModel<VolunteerForm2>) => MutableModel<VolunteerForm2> | void): VolunteerForm2;
 }
 
 export declare class LocalBoard {
@@ -150,7 +114,7 @@ export declare class LocalBoard {
   readonly category?: string;
   readonly location?: number;
   readonly time?: string;
-  readonly date_posted?: string;
+  readonly image?: string;
   readonly content?: string;
   readonly user_name?: string;
   readonly user_image?: string;
@@ -160,8 +124,8 @@ export declare class LocalBoard {
   readonly theme?: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
-  constructor(init: ModelInit<LocalBoard, LocalBoardMetaData>);
-  static copyOf(source: LocalBoard, mutator: (draft: MutableModel<LocalBoard, LocalBoardMetaData>) => MutableModel<LocalBoard, LocalBoardMetaData> | void): LocalBoard;
+  constructor(init: ModelInit<LocalBoard>);
+  static copyOf(source: LocalBoard, mutator: (draft: MutableModel<LocalBoard>) => MutableModel<LocalBoard> | void): LocalBoard;
 }
 
 export declare class FriendsAmongUs {
@@ -171,8 +135,8 @@ export declare class FriendsAmongUs {
   readonly others?: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
-  constructor(init: ModelInit<FriendsAmongUs, FriendsAmongUsMetaData>);
-  static copyOf(source: FriendsAmongUs, mutator: (draft: MutableModel<FriendsAmongUs, FriendsAmongUsMetaData>) => MutableModel<FriendsAmongUs, FriendsAmongUsMetaData> | void): FriendsAmongUs;
+  constructor(init: ModelInit<FriendsAmongUs>);
+  static copyOf(source: FriendsAmongUs, mutator: (draft: MutableModel<FriendsAmongUs>) => MutableModel<FriendsAmongUs> | void): FriendsAmongUs;
 }
 
 export declare class VolunteerForm {
@@ -188,6 +152,6 @@ export declare class VolunteerForm {
   readonly avatarKey?: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
-  constructor(init: ModelInit<VolunteerForm, VolunteerFormMetaData>);
-  static copyOf(source: VolunteerForm, mutator: (draft: MutableModel<VolunteerForm, VolunteerFormMetaData>) => MutableModel<VolunteerForm, VolunteerFormMetaData> | void): VolunteerForm;
+  constructor(init: ModelInit<VolunteerForm>);
+  static copyOf(source: VolunteerForm, mutator: (draft: MutableModel<VolunteerForm>) => MutableModel<VolunteerForm> | void): VolunteerForm;
 }

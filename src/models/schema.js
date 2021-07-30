@@ -748,10 +748,10 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "date_posted": {
-                    "name": "date_posted",
+                "image": {
+                    "name": "image",
                     "isArray": false,
-                    "type": "AWSDate",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -1037,5 +1037,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "e9f77da914892c4d8b1a3920724c86e7"
+    "version": "f01caff3e687500140109be1dde96499"
 };
