@@ -74,7 +74,7 @@ const LocalBoardNew = () => {
     let phone = values.phone;
     let location = values.location;
     let time = values.time;
-    let date_posted = values.date_posted;
+    // let date_posted = values.date_posted;
     let tip = values.tip;
    
     let content = values.content;
@@ -118,7 +118,6 @@ const LocalBoardNew = () => {
         "location" : Number.parseInt(location),
         "time" : time,
         "theme": theme,
-        "date_posted" : date_posted,
         "tip" : Number.parseFloat(tip),
         
         "user_image" : result.key,
@@ -269,7 +268,7 @@ const LocalBoardNew = () => {
             category : "",
             location : "",
             time : "",
-            date_posted : "",
+            // date_posted : "",
             tip : "",
             user_name : "",
             user_image : "",
@@ -429,7 +428,7 @@ const LocalBoardNew = () => {
                     isInvalid={form.errors.time && form.touched.time}
                   >
                     <FormLabel marginTop="2" htmlFor="time">
-                      Which date are you offering for?
+                      Availability of Dates:
                     </FormLabel>
                     <Input type="date" {...field} id="time" placeholder="time" />
                     <FormErrorMessage>{form.errors.time}</FormErrorMessage>
