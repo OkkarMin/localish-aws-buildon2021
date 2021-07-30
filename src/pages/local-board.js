@@ -239,9 +239,7 @@ const categories = [["Offer", "green"], ["Giveaway", "orange"], ["Request", "pin
           
         }
     
-        DataStore.observe(LocalBoard).subscribe(() => {
-          fetchApplications();
-        });
+        
         fetchApplications();
       }, []);
     return (
