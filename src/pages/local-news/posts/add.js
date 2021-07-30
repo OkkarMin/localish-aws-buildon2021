@@ -212,7 +212,7 @@ const LocalBoardNew = () => {
                   </FormControl>
                 )}
               </Field>
-              <Input type="file" onChange={handleSetFile} />
+              <Input mt = {3} type="file" onChange={handleSetFile} />
 
               {/* <Field name="image" validate={validateImage}>
                 {({ field, form }) => (
