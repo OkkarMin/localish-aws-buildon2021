@@ -119,7 +119,7 @@ const LocalBoardNew = () => {
         "time" : time,
         "theme": theme,
         "tip" : Number.parseFloat(tip),
-        
+        "details": details,
         "user_image" : result.key,
         "image" : result2.key,
 

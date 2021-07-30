@@ -92,6 +92,7 @@ type LocalBoard @model @auth(rules: [{allow: public}]) {
   email: String
   phone: String
   theme: String
+  details: String
 }
 
 type FriendsAmongUs @model @auth(rules: [{allow: public}]) {

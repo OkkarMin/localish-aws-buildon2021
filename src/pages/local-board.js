@@ -277,7 +277,7 @@ const categories = [["Offer", "green"], ["Giveaway", "orange"], ["Request", "pin
                     border="1px"
                     borderColor={c[1]}
                     rounded={"xl"}
-                    width = "max-content"
+                    width ="min-content"
                     // mb="50px"
                     // ml="50px"
                   >

@@ -122,6 +122,7 @@ export declare class LocalBoard {
   readonly email?: string;
   readonly phone?: string;
   readonly theme?: string;
+  readonly details?: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
   constructor(init: ModelInit<LocalBoard>);
