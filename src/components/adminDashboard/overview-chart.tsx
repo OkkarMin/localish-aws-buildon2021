@@ -25,7 +25,7 @@ const OverviewChart = () => {
       <Heading fontSize="xl" mb="4">
         Overview Chart
       </Heading>
-      <ResponsiveContainer width="100%" aspect={4.0 / 2.0}>
+      <ResponsiveContainer width="70%" aspect={4.0 / 2.0}>
         <BarChart data={data}>
           <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
           <XAxis dataKey="event" />
