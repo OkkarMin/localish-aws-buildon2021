@@ -41,11 +41,11 @@ const AdminDashboard = () => {
         </Stat>
       </SimpleGrid>
 
+      <OverviewChart />
+
       <FutureEvents />
 
       <PastEvents />
-
-      <OverviewChart />
     </VStack>
   );
 };
