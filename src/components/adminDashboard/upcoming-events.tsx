@@ -25,7 +25,7 @@ const eventData = [
       "Jio your kakis to join National Steps Challenge™️ Season 5: Bonus Round! Earn up to $20 worth of eVouchers simply by clocking steps and Moderate to Vigorous Physical Activity (MVPA) minutes",
     volunteersRequired: 3,
     volunteersConfirmed: 3,
-    publicParticipants: 10,
+    publicParticipants: 20,
     MaxPublicParticipants: 20,
   },
   {
@@ -34,7 +34,7 @@ const eventData = [
       "Sometimes, all you want to do is bite into a sweet and chewy Ondeh Ondeh. But did you know you can make this traditional sweet at home? PA Trainer Hajjah Raziah can show you how!",
     volunteersRequired: 10,
     volunteersConfirmed: 8,
-    publicParticipants: 20,
+    publicParticipants: 45,
     MaxPublicParticipants: 50,
   },
   {
