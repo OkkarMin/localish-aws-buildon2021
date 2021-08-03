@@ -93,11 +93,6 @@ const DrawerMenu = ({ isOpen, onClose }) => {
           )}
 
           <DrawerMenuItem
-            itemName="Education"
-            icon={<VscMortarBoard />}
-            href="/education"
-          />
-          <DrawerMenuItem
             itemName="Friend Among Us"
             icon={<GiThreeFriends />}
             href="/friend-among-us"
@@ -108,10 +103,11 @@ const DrawerMenu = ({ isOpen, onClose }) => {
             href="/chat"
           />
           <DrawerMenuItem
-            itemName="Friendly Neighbourhood Activities"
-            icon={<MdLocalActivity />}
-            href="/friendly-neighbourhood-activities"
+            itemName="Education"
+            icon={<VscMortarBoard />}
+            href="/education"
           />
+
           <DrawerMenuItem
             itemName="Local Board"
             icon={<FaChalkboardTeacher />}
@@ -130,14 +126,14 @@ const DrawerMenu = ({ isOpen, onClose }) => {
           {controlLevel == "admin" ? (
             <>
               <DrawerMenuItem
-                itemName="Admin Dashboard"
-                icon={<ImStatsDots />}
-                href="/admin-dashboard"
-              />
-              <DrawerMenuItem
                 itemName="Admin Volunteer Applications"
                 icon={<EditIcon />}
                 href="/admin-volunteer-applications"
+              />
+              <DrawerMenuItem
+                itemName="Admin Dashboard"
+                icon={<ImStatsDots />}
+                href="/admin-dashboard"
               />
               <DrawerMenuItem
                 itemName="Volunteer List"
