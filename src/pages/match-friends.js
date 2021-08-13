@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
-import { Box, Text, Heading, Button, HStack } from "@chakra-ui/react";
-import { ChatIcon, ArrowBackIcon } from "@chakra-ui/icons";
+import { Box, Text, Button } from "@chakra-ui/react";
+import { ChatIcon } from "@chakra-ui/icons";
 
 import Link from "next/link";
 
@@ -13,7 +13,7 @@ import FriendCard from "../components/friendAmongUs/friendCard";
 import { FriendMatchesContext } from "../context/FriendMatchesContext";
 
 const MatchFriends = () => {
-  const [matchList, setMatchList] = useContext(FriendMatchesContext);
+  const [setMatchList] = useContext(FriendMatchesContext);
 
   const [applications, setapplications] = useState([]);
   const [likedPerson, setlikedPerson] = useState();
@@ -40,12 +40,6 @@ const MatchFriends = () => {
 
   return (
     <Box align="center">
-      {/* <Link href="/friend-among-us">
-        <Button position="fixed" left="100" colorScheme="teal">
-          <ArrowBackIcon />
-        </Button>
-      </Link> */}
-
       {applications.map((character, i) => (
         <TinderCard
           className="swipe"
