@@ -1,13 +1,6 @@
 import Link from "next/link";
 
-import {
-  Flex,
-  Heading,
-  Button,
-  Link as ChakraLink,
-  VStack,
-  HStack,
-} from "@chakra-ui/react";
+import { Button, VStack, HStack } from "@chakra-ui/react";
 
 import { FriendImage } from "../components/friendAmongUs/friendImage";
 

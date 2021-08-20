@@ -142,7 +142,6 @@ const FriendAmongUsProfile = () => {
                   </FormControl>
                 )}
               </Field>
-              {/* <Link href={"/"}> */}
               <HStack justify="space-around" mt={5}>
                 <Link href={"/friendAmongUs"}>
                   <Button colorScheme="teal">Back</Button>
@@ -151,7 +150,6 @@ const FriendAmongUsProfile = () => {
                   Submit
                 </Button>
               </HStack>
-              {/* </Link> */}
             </Form>
           )}
         </Formik>
