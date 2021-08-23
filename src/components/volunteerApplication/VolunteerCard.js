@@ -6,7 +6,6 @@ import { PhoneIcon, EmailIcon } from "@chakra-ui/icons";
 
 import { Storage } from "aws-amplify";
 
-// const VolunteerCard = React.forwardRef(funtion VolunteerCard({ name, email, phone, experience, onclick, href }, ref) {
 const VolunteerCard = React.forwardRef(function VolunteerCard(
   { name, email, phone, experience, avatarKey, onClick, href },
   ref
