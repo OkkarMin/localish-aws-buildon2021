@@ -1,14 +1,10 @@
 import {
   Box,
   Button,
-  Center,
   Text,
   Heading,
-  Flex,
   HStack,
   VStack,
-  Stack,
-  SimpleGrid,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -17,7 +13,6 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
-  Spacer,
 } from "@chakra-ui/react";
 
 const eventData = [
