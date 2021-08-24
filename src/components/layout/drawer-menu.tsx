@@ -19,7 +19,7 @@ import { EditIcon } from "@chakra-ui/icons";
 
 import { VscMortarBoard } from "react-icons/vsc";
 import { GiThreeFriends } from "react-icons/gi";
-import { MdLocalActivity, MdChatBubbleOutline } from "react-icons/md";
+import { MdChatBubbleOutline } from "react-icons/md";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { IoNewspaperOutline } from "react-icons/io5";
 import { ImStatsDots } from "react-icons/im";
